@@ -1,5 +1,5 @@
 // Single source of truth for hospital branding
-export const HOSPITAL_NAME = 'Mahalakshmi Multispecility Hospital';
+export const HOSPITAL_NAME = 'Mahalaxmi Health Care';
 
 // Helper function to compose page titles
 export const getPageTitle = (pageTitle?: string): string => {

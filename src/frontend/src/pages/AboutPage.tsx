@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, Heart, Users, Target } from 'lucide-react';
-import { HOSPITAL_NAME, getPageTitle } from '@/config/branding';
+import { getPageTitle } from '@/config/branding';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Heart, Shield, Users, Award } from 'lucide-react';
 
 export default function AboutPage() {
   useEffect(() => {
@@ -11,156 +11,172 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-muted/50 to-background">
+      <section className="bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="container py-16 md:py-24">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">About {HOSPITAL_NAME}</h1>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              Dedicated to providing exceptional healthcare with compassion and commitment since 1985.
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">About Mahalaxmi Health Care</h1>
+            <p className="text-lg text-muted-foreground">
+              Dedicated to providing exceptional healthcare services with compassion, integrity, and clinical excellence
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission & Values */}
+      {/* Mission Section */}
       <section className="container py-16 md:py-24">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Target className="h-8 w-8 text-primary" />
-                <h2 className="text-3xl font-bold tracking-tight">Our Mission</h2>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">
-                At {HOSPITAL_NAME}, our mission is to provide accessible, high-quality healthcare
-                services to our community. We are committed to treating every patient with dignity,
-                respect, and compassion while delivering evidence-based medical care that improves
-                health outcomes and enhances quality of life.
-              </p>
-            </div>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Mission</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              At Mahalaxmi Health Care, our mission is to deliver comprehensive, patient-centered healthcare 
+              that improves the health and wellbeing of our community. We are committed to providing accessible, 
+              high-quality medical services in a caring and respectful environment.
+            </p>
           </div>
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Vision</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              To be the trusted healthcare provider of choice, recognized for clinical quality, 
+              compassionate care, and innovative medical practices that enhance the lives of those we serve.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Heart className="h-8 w-8 text-primary" />
-                <h2 className="text-3xl font-bold tracking-tight">Our Values</h2>
-              </div>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    <strong className="text-foreground">Compassion:</strong> We treat every patient
-                    with empathy and understanding
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    <strong className="text-foreground">Quality:</strong> We strive for the highest
-                    standards in medical care
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    <strong className="text-foreground">Integrity:</strong> We maintain honesty and
-                    ethical practices in all we do
-                  </span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    <strong className="text-foreground">Innovation:</strong> We embrace new
-                    technologies and treatment methods
-                  </span>
-                </li>
-              </ul>
-            </div>
+      {/* Values Section */}
+      <section className="bg-muted/30 py-16 md:py-24">
+        <div className="container">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Core Values</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              The principles that guide everything we do
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Heart,
+                title: 'Compassion',
+                desc: 'We treat every patient with empathy, dignity, and respect',
+              },
+              {
+                icon: Shield,
+                title: 'Integrity',
+                desc: 'We uphold the highest ethical standards in all our practices',
+              },
+              {
+                icon: Users,
+                title: 'Collaboration',
+                desc: 'We work together as a team to deliver the best outcomes',
+              },
+              {
+                icon: Award,
+                title: 'Quality',
+                desc: 'We are committed to continuous improvement and clinical standards',
+              },
+            ].map((value) => (
+              <Card key={value.title} className="text-center">
+                <CardHeader>
+                  <value.icon className="h-12 w-12 text-primary mx-auto mb-2" />
+                  <CardTitle>{value.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{value.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Key Features */}
-      <section className="bg-muted/30 border-y border-border/40">
-        <div className="container py-16 md:py-24">
-          <div className="space-y-4 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose Us</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We combine advanced medical technology with personalized, compassionate care.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card>
+      <section className="container py-16 md:py-24">
+        <div className="text-center space-y-4 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold">Why Choose Us</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            What sets Mahalaxmi Health Care apart
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: 'Experienced Team',
+              desc: 'Our medical professionals bring decades of combined experience and specialized expertise',
+            },
+            {
+              title: 'Modern Facilities',
+              desc: 'State-of-the-art medical equipment and comfortable patient care environments',
+            },
+            {
+              title: 'Accredited Care',
+              desc: 'Meeting rigorous standards for safety, quality, and patient satisfaction',
+            },
+            {
+              title: 'Patient-Centered',
+              desc: 'Your health goals and preferences guide our treatment recommendations',
+            },
+            {
+              title: 'Comprehensive Services',
+              desc: 'From prevention to treatment, we offer a full spectrum of medical care',
+            },
+            {
+              title: '24/7 Emergency',
+              desc: 'Round-the-clock emergency services when you need them most',
+            },
+          ].map((feature) => (
+            <Card key={feature.title}>
               <CardHeader>
-                <Award className="h-10 w-10 text-primary mb-3" />
-                <CardTitle>Accredited Care</CardTitle>
-                <CardDescription>
-                  Nationally recognized for quality care and patient safety standards.
-                </CardDescription>
+                <CardTitle className="text-lg">{feature.title}</CardTitle>
               </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">{feature.desc}</p>
+              </CardContent>
             </Card>
-
-            <Card>
-              <CardHeader>
-                <Users className="h-10 w-10 text-primary mb-3" />
-                <CardTitle>Expert Team</CardTitle>
-                <CardDescription>
-                  Board-certified physicians and specialists with years of experience.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <Heart className="h-10 w-10 text-primary mb-3" />
-                <CardTitle>Patient-Centered</CardTitle>
-                <CardDescription>
-                  Your comfort, dignity, and well-being are our top priorities.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Facilities */}
-      <section className="container py-16 md:py-24">
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight text-center">Our Facilities</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p className="leading-relaxed">
-                {HOSPITAL_NAME} features state-of-the-art medical facilities designed to provide the
-                highest level of care in a comfortable, healing environment. Our campus includes:
+      <section className="bg-muted/30 py-16 md:py-24">
+        <div className="container">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold">Our Facilities</h2>
+              <p className="text-lg text-muted-foreground">
+                Modern infrastructure designed for optimal patient care
               </p>
-              <ul className="space-y-2 ml-6">
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Modern emergency department with 24/7 trauma care</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Advanced surgical suites with robotic-assisted technology</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Comprehensive diagnostic imaging center</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Intensive care units with specialized monitoring</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Family-centered maternity and neonatal care units</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">•</span>
-                  <span>Outpatient clinics and specialty centers</span>
-                </li>
-              </ul>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Inpatient Care</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Comfortable private and semi-private rooms with modern amenities
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>24/7 nursing care</li>
+                    <li>Advanced monitoring systems</li>
+                    <li>Family-friendly visiting hours</li>
+                  </ul>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Diagnostic Services</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Comprehensive diagnostic capabilities for accurate assessments
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Advanced imaging technology</li>
+                    <li>Full-service laboratory</li>
+                    <li>Rapid result turnaround</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>

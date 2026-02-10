@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useActor } from './useActor';
 
-interface ContactSubmission {
+interface ContactFormData {
   name: string;
   contactInfo: string;
   subject: string;
@@ -10,21 +10,27 @@ interface ContactSubmission {
 
 export function useSubmitContact() {
   const { actor } = useActor();
-  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: ContactSubmission) => {
+    mutationFn: async (data: ContactFormData) => {
       if (!actor) {
-        throw new Error('Backend connection not available');
+        throw new Error('Backend actor not available');
       }
 
-      await actor.submitContact(data.name, data.contactInfo, data.subject, data.message);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['contacts'] });
-    },
-    onError: (error: Error) => {
-      console.error('Failed to submit contact:', error);
+      try {
+        await actor.submitContact(
+          data.name,
+          data.contactInfo,
+          data.subject,
+          data.message
+        );
+      } catch (error: any) {
+        // Normalize error messages for better UX
+        if (error.message?.includes('decommission')) {
+          throw new Error('Service is temporarily unavailable. Please try again later.');
+        }
+        throw new Error(error.message || 'Failed to submit contact form');
+      }
     },
   });
 }

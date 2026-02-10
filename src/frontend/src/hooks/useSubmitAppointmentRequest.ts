@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useActor } from './useActor';
 
-interface AppointmentRequestSubmission {
+interface AppointmentRequestData {
   name: string;
   contactDetails: string;
   preferredDateTime: string;
@@ -11,27 +11,28 @@ interface AppointmentRequestSubmission {
 
 export function useSubmitAppointmentRequest() {
   const { actor } = useActor();
-  const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: AppointmentRequestSubmission) => {
+    mutationFn: async (data: AppointmentRequestData) => {
       if (!actor) {
-        throw new Error('Backend connection not available');
+        throw new Error('Backend actor not available');
       }
 
-      await actor.submitAppointmentRequest(
-        data.name,
-        data.contactDetails,
-        data.preferredDateTime,
-        data.departmentService,
-        data.notes
-      );
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['appointments'] });
-    },
-    onError: (error: Error) => {
-      console.error('Failed to submit appointment request:', error);
+      try {
+        await actor.submitAppointmentRequest(
+          data.name,
+          data.contactDetails,
+          data.preferredDateTime,
+          data.departmentService,
+          data.notes
+        );
+      } catch (error: any) {
+        // Normalize error messages for better UX
+        if (error.message?.includes('decommission')) {
+          throw new Error('Service is temporarily unavailable. Please try again later.');
+        }
+        throw new Error(error.message || 'Failed to submit appointment request');
+      }
     },
   });
 }

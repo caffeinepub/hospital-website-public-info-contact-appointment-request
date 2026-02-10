@@ -52,6 +52,7 @@ export interface _SERVICE {
     undefined
   >,
   'submitContact' : ActorMethod<[string, string, string, string], undefined>,
+  'toggleDecommissionMode' : ActorMethod<[], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

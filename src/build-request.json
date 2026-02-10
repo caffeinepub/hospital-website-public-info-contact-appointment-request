@@ -1,90 +1,59 @@
 {
   "kind": "build_request",
-  "title": "Add domain draft state management (save domain as draft)",
+  "title": "Add uploaded image as profile background",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Implement backend persistence for a single \"domain draft\" value that can be saved and later retrieved, including metadata needed to understand when it was last saved.",
-      "target": "backend",
+      "text": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4",
+          "msg-8"
         ],
         "quotes": [
-          "SAVE THIS DOMINE AS DRAFT"
+          "ADD PROFILE BACKROUNG THIS IMAGE",
+          "ADD THIS IMAGE"
         ]
       },
       "acceptanceCriteria": [
-        "A stable, upgrade-safe backend state exists to store a domain draft value (Text) and a last-updated timestamp.",
-        "Backend exposes an update method that saves the domain draft value and updates the last-updated timestamp.",
-        "Backend exposes a query method that returns the current draft domain value (or null/none if not set) and the last-updated timestamp (or null/none if not set).",
-        "Backend behavior is deterministic and does not trap when no draft has been saved yet."
+        "Both files are present in the frontend public static assets directory and are served by the app build without renaming.",
+        "The files can be referenced via a stable URL path in React (no backend involvement)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add a frontend page that allows a user to enter a domain string and save it as a draft, and to view the currently saved draft value and last-updated time.",
+      "text": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4",
+          "msg-8"
         ],
         "quotes": [
-          "SAVE THIS DOMINE AS DRAFT"
+          "ADD PROFILE BACKROUNG THIS IMAGE",
+          "ADD THIS IMAGE"
         ]
       },
       "acceptanceCriteria": [
-        "A new route is added in the TanStack Router (frontend/src/App.tsx) that renders a Domain Draft page (path name is consistent with existing routes, e.g. \"/domain-draft\").",
-        "The page includes a text input for the domain and a \"Save draft\" button.",
-        "The page displays the currently saved draft domain (if any) and a human-readable last-updated time (if any).",
-        "All user-facing text on the page is in English.",
-        "The page uses the existing actor setup (useActor) and React Query conventions for loading/success/error states."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Require Internet Identity login before allowing a domain draft to be saved from the frontend UI, and show a clear message when the user is not logged in.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "SAVE THIS DOMINE AS DRAFT"
-        ]
-      },
-      "acceptanceCriteria": [
-        "When the user is anonymous/not logged in, the Domain Draft page disables the save action and shows an English message indicating login is required to save.",
-        "When logged in, the save action is enabled and successfully calls the backend update method.",
-        "The implementation does not modify any files under frontend/immutablePaths (it composes existing hooks/components instead)."
+        "The Doctors page renders with the chosen uploaded image visible as a background element for each doctor profile card (or an equivalent clearly doctor-profile-related UI region).",
+        "Text over the background remains readable (e.g., via overlay, blur, tint, or layout separation) on mobile and desktop.",
+        "No user-facing text is added in a language other than English."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor in backend/main.mo (no additional backend services).",
-    "Do not edit files in frontend immutablePaths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "No external databases or third-party auth providers; use Internet Identity only."
+    "Do not edit files under frontend/src/components/ui (read-only). Compose these components instead.",
+    "Do not modify immutable hook entrypoints listed in SYSTEM_CONTEXT (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep the backend as a single Motoko actor; no backend changes are required for this request."
   ],
   "nonGoals": [
-    "Publishing the domain (turning the draft into a live/verified domain).",
-    "DNS management, domain verification flows, or adding Google Search Console verification.",
-    "Supporting multiple drafts per user or collaboration features unless explicitly requested later."
+    "Implementing a user account/profile system or Internet Identity-driven profile pages.",
+    "Image uploading from within the app UI (use the provided uploaded files only)."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [
-      "Use English for any user-facing text."
-    ],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

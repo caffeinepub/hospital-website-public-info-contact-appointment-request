@@ -1,73 +1,44 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T07:19:16.107Z",
+  "generatedAt": "2026-02-10T08:28:26.587Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 2,
+    "total": 2,
+    "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Implement backend persistence for a single \"domain draft\" value that can be saved and later retrieved, including metadata needed to understand when it was last saved.",
-        "status": "unknown",
-        "plannedFiles": [],
+        "summary": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/public/assets/Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg",
+          "frontend/public/assets/unnamed.webp"
+        ],
         "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Add a frontend page that allows a user to enter a domain string and save it as a draft, and to view the currently saved draft value and last-updated time.",
+        "summary": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/hooks/useDomainDraft.ts",
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/pages/DoctorsPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/hooks/useDomainDraft.ts",
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Require Internet Identity login before allowing a domain draft to be saved from the frontend UI, and show a clear message when the user is not logged in.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/hooks/useDomainDraft.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/hooks/useDomainDraft.ts"
+          "frontend/src/pages/DoctorsPage.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/authorization/MixinAuthorization.mo",
-    "backend/authorization/access-control.mo",
-    "backend/main.mo",
     "build-request.json",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useDomainDraft.ts",
-    "frontend/src/pages/DomainDraftPage.tsx",
-    "frontend/src/utils/urlParams.ts",
+    "frontend/src/pages/DoctorsPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

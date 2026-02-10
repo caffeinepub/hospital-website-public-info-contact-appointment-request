@@ -3,22 +3,16 @@
   "projectStateVersion": 3,
   "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [],
+  "known_issues": [
+    "Build/configuration error encountered during build; may require Caffeine team assistance"
+  ],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-add-a-frontend-page-that-allows-a-user-to-enter-a-domain-string-and-save-it-as-a-draft-and-to-view-the-currently-saved-draft-value-and-last-updated-time",
-      "title": "Add a frontend page that allows a user to enter a domain string and save it as a draft, and to view the currently saved draft value and last-updated time.",
+      "id": "feature-use-the-uploaded-image-s-as-a-visible-profile-background-in-the-existing-ui-by-applying-one-of-the-uploaded-images-as-the-background-for-the-doctors-page-doctor-profile-cards-e-g-a-banner-area-at-the-top-of-each-doctor-card-or-behind-an-avatar-area-ensuring-it-is-responsive-and-does-not-reduce-text-readability",
+      "title": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
       "reqIds": [
         "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-require-internet-identity-login-before-allowing-a-domain-draft-to-be-saved-from-the-frontend-ui-and-show-a-clear-message-when-the-user-is-not-logged-in",
-      "title": "Require Internet Identity login before allowing a domain draft to be saved from the frontend UI, and show a clear message when the user is not logged in.",
-      "reqIds": [
-        "REQ-3"
       ],
       "version": 1
     }
@@ -26,20 +20,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Allow saving a domain as a draft (domain draft state management)",
+      "summary": "Add the provided image as the profile background",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Implement backend persistence for a single \"domain draft\" value that can be saved and later retrieved, including metadata needed to understand when it was last saved.",
+      "summary": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
       "reqIds": [
         "REQ-1"
       ],
       "status": "pending"
     }
   ],
-  "projectName": "Add domain draft state management (save domain as draft)",
+  "projectName": "Add uploaded image as profile background",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

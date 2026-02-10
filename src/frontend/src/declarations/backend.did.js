@@ -40,13 +40,13 @@ export const DomainDraft = IDL.Record({
 export const idlService = IDL.Service({
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-  'getAllAppointments' : IDL.Func([], [IDL.Vec(AppointmentRequest)], ['query']),
-  'getAllContacts' : IDL.Func([], [IDL.Vec(Contact)], ['query']),
-  'getAppointmentById' : IDL.Func([Time], [AppointmentRequest], ['query']),
+  'getAllAppointments' : IDL.Func([], [IDL.Vec(AppointmentRequest)], []),
+  'getAllContacts' : IDL.Func([], [IDL.Vec(Contact)], []),
+  'getAppointmentById' : IDL.Func([Time], [AppointmentRequest], []),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
-  'getContactById' : IDL.Func([Time], [Contact], ['query']),
-  'getDomainDraft' : IDL.Func([], [IDL.Opt(DomainDraft)], ['query']),
+  'getContactById' : IDL.Func([Time], [Contact], []),
+  'getDomainDraft' : IDL.Func([], [IDL.Opt(DomainDraft)], []),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
@@ -61,6 +61,7 @@ export const idlService = IDL.Service({
       [],
     ),
   'submitContact' : IDL.Func([IDL.Text, IDL.Text, IDL.Text, IDL.Text], [], []),
+  'toggleDecommissionMode' : IDL.Func([], [], []),
 });
 
 export const idlInitArgs = [];
@@ -95,17 +96,13 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
-    'getAllAppointments' : IDL.Func(
-        [],
-        [IDL.Vec(AppointmentRequest)],
-        ['query'],
-      ),
-    'getAllContacts' : IDL.Func([], [IDL.Vec(Contact)], ['query']),
-    'getAppointmentById' : IDL.Func([Time], [AppointmentRequest], ['query']),
+    'getAllAppointments' : IDL.Func([], [IDL.Vec(AppointmentRequest)], []),
+    'getAllContacts' : IDL.Func([], [IDL.Vec(Contact)], []),
+    'getAppointmentById' : IDL.Func([Time], [AppointmentRequest], []),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
-    'getContactById' : IDL.Func([Time], [Contact], ['query']),
-    'getDomainDraft' : IDL.Func([], [IDL.Opt(DomainDraft)], ['query']),
+    'getContactById' : IDL.Func([Time], [Contact], []),
+    'getDomainDraft' : IDL.Func([], [IDL.Opt(DomainDraft)], []),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],
@@ -124,6 +121,7 @@ export const idlFactory = ({ IDL }) => {
         [],
         [],
       ),
+    'toggleDecommissionMode' : IDL.Func([], [], []),
   });
 };
 

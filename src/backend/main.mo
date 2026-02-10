@@ -2,15 +2,20 @@ import Map "mo:core/Map";
 import Text "mo:core/Text";
 import Runtime "mo:core/Runtime";
 import Array "mo:core/Array";
-import Iter "mo:core/Iter";
 import Nat "mo:core/Nat";
 import Time "mo:core/Time";
 import Principal "mo:core/Principal";
 import AccessControl "authorization/access-control";
+import Iter "mo:core/Iter";
+
+
 import MixinAuthorization "authorization/MixinAuthorization";
 
+// Migrate actor in place as everything is persistent and no value has to be changed.
+// Mindmigration in future updates.
+
+
 actor {
-  // Initialize the access control system
   let accessControlState = AccessControl.initState();
   include MixinAuthorization(accessControlState);
 
@@ -75,7 +80,105 @@ actor {
 
   var domainDraft : ?DomainDraft = null;
 
-  // User profile management
+  var isDecommissioned = false;
+
+  public shared ({ caller }) func toggleDecommissionMode() : async () {
+    if (not AccessControl.isAdmin(accessControlState, caller)) {
+      Runtime.trap("Unauthorized: Only admins can toggle decommission mode");
+    };
+    isDecommissioned := not isDecommissioned;
+  };
+
+  func checkNotDecommissioned() : () {
+    if (isDecommissioned) {
+      Runtime.trap("Service is currently being decommissioned");
+    };
+  };
+
+  // Contact and appointment submissions - publicly accessible to guests
+  public shared ({ caller }) func submitContact(name : Text, contactInfo : Text, subject : Text, message : Text) : async () {
+    checkNotDecommissioned();
+    let id = Time.now();
+    let contact = Contact.create(name, contactInfo, subject, message, Time.now(), id);
+    contacts.add(id, contact);
+  };
+
+  public shared ({ caller }) func submitAppointmentRequest(name : Text, contactDetails : Text, preferredDateTime : Text, departmentService : Text, notes : ?Text) : async () {
+    checkNotDecommissioned();
+    let id = Time.now();
+    let appointmentRequest = AppointmentRequest.create(
+      name,
+      contactDetails,
+      preferredDateTime,
+      departmentService,
+      notes,
+      Time.now(),
+      id,
+    );
+    appointmentRequests.add(id, appointmentRequest);
+  };
+
+  // Domain draft operations - admin only
+  public shared ({ caller }) func saveDomainDraft(content : Text) : async () {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can save domain drafts");
+    };
+    let draft = {
+      content;
+      lastSaved = Time.now();
+    };
+    domainDraft := ?draft;
+  };
+
+  public shared ({ caller }) func getDomainDraft() : async ?DomainDraft {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can access domain drafts");
+    };
+    domainDraft;
+  };
+
+  // Contact and appointment retrieval - admin only
+  public shared ({ caller }) func getContactById(id : Time.Time) : async Contact {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view contacts");
+    };
+    switch (contacts.get(id)) {
+      case (null) { Runtime.trap("Contact not found") };
+      case (?contact) { contact };
+    };
+  };
+
+  public shared ({ caller }) func getAppointmentById(id : Time.Time) : async AppointmentRequest {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view appointments");
+    };
+    switch (appointmentRequests.get(id)) {
+      case (null) { Runtime.trap("Appointment not found") };
+      case (?appointment) { appointment };
+    };
+  };
+
+  public shared ({ caller }) func getAllContacts() : async [Contact] {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view all contacts");
+    };
+    contacts.values().toArray();
+  };
+
+  public shared ({ caller }) func getAllAppointments() : async [AppointmentRequest] {
+    checkNotDecommissioned();
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view all appointments");
+    };
+    appointmentRequests.values().toArray();
+  };
+
+  // User profile management - user access with ownership verification
   public query ({ caller }) func getCallerUserProfile() : async ?UserProfile {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
       Runtime.trap("Unauthorized: Only users can access profiles");
@@ -91,84 +194,10 @@ actor {
   };
 
   public shared ({ caller }) func saveCallerUserProfile(profile : UserProfile) : async () {
+    checkNotDecommissioned();
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
       Runtime.trap("Unauthorized: Only users can save profiles");
     };
     userProfiles.add(caller, profile);
-  };
-
-  // Public submissions - accessible to everyone including guests
-  public shared ({ caller }) func submitContact(name : Text, contactInfo : Text, subject : Text, message : Text) : async () {
-    let id = Time.now();
-    let contact = Contact.create(name, contactInfo, subject, message, Time.now(), id);
-    contacts.add(id, contact);
-  };
-
-  public shared ({ caller }) func submitAppointmentRequest(name : Text, contactDetails : Text, preferredDateTime : Text, departmentService : Text, notes : ?Text) : async () {
-    let id = Time.now();
-    let appointmentRequest = AppointmentRequest.create(
-      name,
-      contactDetails,
-      preferredDateTime,
-      departmentService,
-      notes,
-      Time.now(),
-      id,
-    );
-    appointmentRequests.add(id, appointmentRequest);
-  };
-
-  // Domain draft operations - admin only (sensitive configuration)
-  public shared ({ caller }) func saveDomainDraft(content : Text) : async () {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can save domain drafts");
-    };
-    let draft = {
-      content;
-      lastSaved = Time.now();
-    };
-    domainDraft := ?draft;
-  };
-
-  public query ({ caller }) func getDomainDraft() : async ?DomainDraft {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can access domain drafts");
-    };
-    domainDraft;
-  };
-
-  // Contact and appointment retrieval - admin only (private user data)
-  public query ({ caller }) func getContactById(id : Time.Time) : async Contact {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can view contacts");
-    };
-    switch (contacts.get(id)) {
-      case (null) { Runtime.trap("Contact not found") };
-      case (?contact) { contact };
-    };
-  };
-
-  public query ({ caller }) func getAppointmentById(id : Time.Time) : async AppointmentRequest {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can view appointments");
-    };
-    switch (appointmentRequests.get(id)) {
-      case (null) { Runtime.trap("Appointment not found") };
-      case (?appointment) { appointment };
-    };
-  };
-
-  public query ({ caller }) func getAllContacts() : async [Contact] {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can view all contacts");
-    };
-    contacts.values().toArray();
-  };
-
-  public query ({ caller }) func getAllAppointments() : async [AppointmentRequest] {
-    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can view all appointments");
-    };
-    appointmentRequests.values().toArray();
   };
 };

@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Add a save-and-retrieve “domain draft” feature with backend persistence and a frontend UI gated by Internet Identity login.
+**Goal:** Add the user-uploaded images as static assets and use one as a responsive profile-background element on doctor profile cards in the Doctors page.
 
 **Planned changes:**
-- Add stable backend storage for a single domain draft text value plus a last-updated timestamp, with methods to update and to query the current draft (returning null/none when unset).
-- Add a new frontend route (e.g., `/domain-draft`) with a Domain Draft page that lets the user enter a domain and save it as a draft, and shows the currently saved draft and a human-readable last-updated time.
-- Require Internet Identity login to save: when anonymous, disable saving and display an English message indicating login is required; when logged in, enable saving and call the backend update method.
-- Follow existing `useActor` and React Query patterns for loading/success/error states without modifying files under `frontend/immutablePaths`.
+- Add `Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg` and `unnamed.webp` to the frontend public static assets directory with original filenames and stable URL paths.
+- Update the Doctors page UI to display one uploaded image as a visible background (e.g., a top banner or background area) for each doctor profile card.
+- Ensure readability of doctor-card text over the background on mobile and desktop (e.g., overlay/tint/blur or layout separation) without modifying `frontend/src/components/ui`.
 
-**User-visible outcome:** Users can visit a new Domain Draft page to view the currently saved draft domain and last updated time, and (when logged in) save a new draft domain value.
+**User-visible outcome:** On the Doctors page, each doctor profile card shows a clear background image area using the uploaded image, and all text remains easy to read across screen sizes.

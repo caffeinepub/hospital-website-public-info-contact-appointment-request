@@ -135,6 +135,7 @@ export interface backendInterface {
     saveDomainDraft(content: string): Promise<void>;
     submitAppointmentRequest(name: string, contactDetails: string, preferredDateTime: string, departmentService: string, notes: string | null): Promise<void>;
     submitContact(name: string, contactInfo: string, subject: string, message: string): Promise<void>;
+    toggleDecommissionMode(): Promise<void>;
 }
 import type { AppointmentRequest as _AppointmentRequest, DomainDraft as _DomainDraft, Time as _Time, UserProfile as _UserProfile, UserRole as _UserRole } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
@@ -346,6 +347,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.submitContact(arg0, arg1, arg2, arg3);
+            return result;
+        }
+    }
+    async toggleDecommissionMode(): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.toggleDecommissionMode();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.toggleDecommissionMode();
             return result;
         }
     }

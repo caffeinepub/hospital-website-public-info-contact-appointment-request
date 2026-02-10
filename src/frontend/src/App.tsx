@@ -3,9 +3,10 @@ import SiteLayout from './components/layout/SiteLayout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
+import DoctorsPage from './pages/DoctorsPage';
 import ContactPage from './pages/ContactPage';
 import AppointmentRequestPage from './pages/AppointmentRequestPage';
-import DomainDraftPage from './pages/DomainDraftPage';
+import EmergencyPage from './pages/EmergencyPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const rootRoute = createRootRoute({
@@ -34,22 +35,28 @@ const servicesRoute = createRoute({
   component: ServicesPage,
 });
 
+const doctorsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/doctors',
+  component: DoctorsPage,
+});
+
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/contact',
   component: ContactPage,
 });
 
-const appointmentRoute = createRoute({
+const appointmentsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/appointment',
+  path: '/appointments',
   component: AppointmentRequestPage,
 });
 
-const domainDraftRoute = createRoute({
+const emergencyRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/domain-draft',
-  component: DomainDraftPage,
+  path: '/emergency',
+  component: EmergencyPage,
 });
 
 const notFoundRoute = createRoute({
@@ -62,9 +69,10 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   servicesRoute,
+  doctorsRoute,
   contactRoute,
-  appointmentRoute,
-  domainDraftRoute,
+  appointmentsRoute,
+  emergencyRoute,
   notFoundRoute,
 ]);
 

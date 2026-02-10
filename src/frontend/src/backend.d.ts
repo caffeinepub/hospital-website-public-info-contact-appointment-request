@@ -52,4 +52,5 @@ export interface backendInterface {
     saveDomainDraft(content: string): Promise<void>;
     submitAppointmentRequest(name: string, contactDetails: string, preferredDateTime: string, departmentService: string, notes: string | null): Promise<void>;
     submitContact(name: string, contactInfo: string, subject: string, message: string): Promise<void>;
+    toggleDecommissionMode(): Promise<void>;
 }
