@@ -1,0 +1,47 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-frontend-page-that-allows-a-user-to-enter-a-domain-string-and-save-it-as-a-draft-and-to-view-the-currently-saved-draft-value-and-last-updated-time",
+      "featureTitle": "Add a frontend page that allows a user to enter a domain string and save it as a draft, and to view the currently saved draft value and last-updated time.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/hooks/useDomainDraft.ts",
+        "frontend/src/pages/DomainDraftPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-require-internet-identity-login-before-allowing-a-domain-draft-to-be-saved-from-the-frontend-ui-and-show-a-clear-message-when-the-user-is-not-logged-in",
+      "featureTitle": "Require Internet Identity login before allowing a domain draft to be saved from the frontend UI, and show a clear message when the user is not logged in.",
+      "files": [
+        "frontend/src/hooks/useDomainDraft.ts",
+        "frontend/src/pages/DomainDraftPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

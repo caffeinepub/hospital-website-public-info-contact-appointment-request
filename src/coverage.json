@@ -1,0 +1,76 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T07:19:16.107Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Implement backend persistence for a single \"domain draft\" value that can be saved and later retrieved, including metadata needed to understand when it was last saved.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Add a frontend page that allows a user to enter a domain string and save it as a draft, and to view the currently saved draft value and last-updated time.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/hooks/useDomainDraft.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/SiteHeader.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/hooks/useDomainDraft.ts",
+          "frontend/src/App.tsx",
+          "frontend/src/components/layout/SiteHeader.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Require Internet Identity login before allowing a domain draft to be saved from the frontend UI, and show a clear message when the user is not logged in.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/hooks/useDomainDraft.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/hooks/useDomainDraft.ts"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/authorization/MixinAuthorization.mo",
+    "backend/authorization/access-control.mo",
+    "backend/main.mo",
+    "build-request.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/layout/SiteHeader.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useDomainDraft.ts",
+    "frontend/src/pages/DomainDraftPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

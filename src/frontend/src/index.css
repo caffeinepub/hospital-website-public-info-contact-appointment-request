@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        
+        /* Warm, trustworthy hospital palette - avoiding blue/purple */
+        --background: 0.99 0 0;
+        --foreground: 0.20 0 0;
+        
+        --card: 1 0 0;
+        --card-foreground: 0.20 0 0;
+        
+        --popover: 1 0 0;
+        --popover-foreground: 0.20 0 0;
+        
+        /* Teal primary - medical, trustworthy, calming */
+        --primary: 0.55 0.12 195;
+        --primary-foreground: 0.99 0 0;
+        
+        /* Warm neutral secondary */
+        --secondary: 0.96 0.01 80;
+        --secondary-foreground: 0.25 0 0;
+        
+        --muted: 0.96 0.01 80;
+        --muted-foreground: 0.50 0.01 80;
+        
+        --accent: 0.94 0.02 80;
+        --accent-foreground: 0.25 0 0;
+        
+        /* Warm red for emergency/destructive */
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.99 0 0;
+        
+        --border: 0.90 0.01 80;
+        --input: 0.90 0.01 80;
+        --ring: 0.55 0.12 195;
+        
+        --chart-1: 0.60 0.15 195;
+        --chart-2: 0.65 0.18 150;
+        --chart-3: 0.70 0.12 80;
+        --chart-4: 0.55 0.20 25;
+        --chart-5: 0.50 0.10 250;
+    }
+
+    .dark {
+        --background: 0.15 0 0;
+        --foreground: 0.95 0 0;
+        
+        --card: 0.18 0 0;
+        --card-foreground: 0.95 0 0;
+        
+        --popover: 0.18 0 0;
+        --popover-foreground: 0.95 0 0;
+        
+        /* Lighter teal for dark mode */
+        --primary: 0.70 0.12 195;
+        --primary-foreground: 0.15 0 0;
+        
+        --secondary: 0.22 0.01 80;
+        --secondary-foreground: 0.95 0 0;
+        
+        --muted: 0.22 0.01 80;
+        --muted-foreground: 0.60 0.01 80;
+        
+        --accent: 0.25 0.02 80;
+        --accent-foreground: 0.95 0 0;
+        
+        --destructive: 0.60 0.22 25;
+        --destructive-foreground: 0.95 0 0;
+        
+        --border: 0.25 0.01 80;
+        --input: 0.25 0.01 80;
+        --ring: 0.70 0.12 195;
+        
+        --chart-1: 0.65 0.15 195;
+        --chart-2: 0.70 0.18 150;
+        --chart-3: 0.75 0.12 80;
+        --chart-4: 0.60 0.20 25;
+        --chart-5: 0.55 0.10 250;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-bold;
+        letter-spacing: -0.02em;
+    }
+}
+

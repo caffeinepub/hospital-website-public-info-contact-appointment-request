@@ -1,2 +1,3 @@
-# hospital-website-public-info-contact-appointment-request
-Exported from Caffeine project: Add domain draft state management (save domain as draft)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

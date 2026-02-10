@@ -1,0 +1,60 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-10T07:19:16.105Z",
+  "summary": "Diff adds a Domain Draft page + hooks and backend methods, but backend persistence is not shown as upgrade-safe/stable and the frontend modifies an immutable path (useActor.ts). It also introduces admin-token/access-control initialization and makes saving the draft admin-only, which were not requested.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Stable, upgrade-safe backend state to store a domain draft value and last-updated timestamp.",
+      "reason": "The diff shows `var domainDraft : ?DomainDraft = null;` but does not show it being stored in stable variables or any preupgrade/postupgrade logic, so upgrade-safety is not evidenced.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Implementation must not modify any files under frontend/immutablePaths (must compose existing hooks/components instead).",
+      "reason": "A file listed as immutable (`frontend/src/hooks/useActor.ts`) is modified in the diff.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Introduced admin-token based access-control initialization from a URL parameter (caffeineAdminToken) when creating the actor.",
+      "reason": "BuildRequest requires Internet Identity only and does not mention secret admin tokens, URL parameters, or initializing access control with a secret.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/utils/urlParams.ts"
+      ]
+    },
+    {
+      "description": "Domain draft save operation restricted to admins (\"admin only\" / permission check for #admin).",
+      "reason": "REQ-3 only requires Internet Identity login before saving; it does not specify admin-only authorization for saving the draft.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Added broad URL-parameter and sessionStorage utilities (getUrlParameter, storeSessionParameter, persisted parameters, hash param removal, etc.).",
+      "reason": "Not requested by any of REQ-1/2/3 and appears unrelated to domain-draft draft-state management requirements.",
+      "evidence": [
+        "frontend/src/utils/urlParams.ts"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/layout/SiteHeader.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useDomainDraft.ts",
+    "frontend/src/pages/DomainDraftPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "project_state.json"
+  ]
+}
