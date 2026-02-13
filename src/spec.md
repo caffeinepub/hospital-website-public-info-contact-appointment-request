@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Add the user-uploaded images as static assets and use one as a responsive profile-background element on doctor profile cards in the Doctors page.
+**Goal:** Set the uploaded image `download.webp` as the Home page hero section background while keeping existing hero content readable.
 
 **Planned changes:**
-- Add `Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg` and `unnamed.webp` to the frontend public static assets directory with original filenames and stable URL paths.
-- Update the Doctors page UI to display one uploaded image as a visible background (e.g., a top banner or background area) for each doctor profile card.
-- Ensure readability of doctor-card text over the background on mobile and desktop (e.g., overlay/tint/blur or layout separation) without modifying `frontend/src/components/ui`.
+- Add `download.webp` to a frontend public/static assets location so it can be referenced by a stable URL at runtime (no backend calls).
+- Update the `/` Home page hero (first section) to use `download.webp` as its background image.
+- Add minimal overlay/gradient styling to preserve readability of existing hero text and CTA buttons, and ensure responsive cropping/scaling without stretching.
+- Ensure no changes affect other routes/pages.
 
-**User-visible outcome:** On the Doctors page, each doctor profile card shows a clear background image area using the uploaded image, and all text remains easy to read across screen sizes.
+**User-visible outcome:** Visiting `/` shows the Home page hero with the new background image, and the existing heading/text/buttons remain clear and readable on both mobile and desktop.

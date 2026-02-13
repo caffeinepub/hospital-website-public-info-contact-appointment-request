@@ -1,41 +1,37 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add uploaded images as static assets and apply as Doctors profile card backgrounds",
+  "title": "Use uploaded download.webp as Home hero background",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add the two provided uploaded images to frontend public static assets with original filenames for stable UI referencing.",
+      "summary": "Add download.webp as a frontend static asset served directly by the frontend build.",
       "acceptanceCriteria": [
-        "Both files are present in the frontend public static assets directory and are served by the app build without renaming.",
-        "The files can be referenced via a stable URL path in React (no backend involvement)."
+        "The repository includes the image file \"download.webp\" in a public/static assets location that is served by the frontend build.",
+        "The image can be loaded in the browser via a stable URL path (no backend calls required)."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg",
+          "path": "frontend/public/assets/download.webp",
           "operation": "create",
-          "description": "Add the uploaded JPG file as a public static asset, preserving the original filename so it can be referenced by the UI at a stable path."
-        },
-        {
-          "path": "frontend/public/assets/unnamed.webp",
-          "operation": "create",
-          "description": "Add the uploaded WebP file as a public static asset, preserving the original filename so it can be referenced by the UI at a stable path."
+          "description": "Add the provided image file to the frontend public assets so it is served statically at runtime (expected stable URL path: /assets/download.webp)."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Apply one uploaded image as a responsive, readable profile background banner on each Doctors page doctor card.",
+      "summary": "Set download.webp as the Home page hero section background with a readability overlay and responsive cover sizing.",
       "acceptanceCriteria": [
-        "The Doctors page renders with the chosen uploaded image visible as a background element for each doctor profile card (or an equivalent clearly doctor-profile-related UI region).",
-        "Text over the background remains readable (e.g., via overlay, blur, tint, or layout separation) on mobile and desktop.",
-        "No user-facing text is added in a language other than English."
+        "On route \"/\", the hero section renders with \"download.webp\" as its background image.",
+        "Hero heading, paragraph text, and CTA buttons remain readable on top of the background (e.g., via a semi-transparent overlay/gradient).",
+        "The background scales/crops responsively (no obvious stretching) across mobile and desktop viewports.",
+        "No other pages/routes are affected."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/DoctorsPage.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Update the doctor profile cards to include a background/banner region using one of the uploaded static assets (reference via a stable public path such as /assets/Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg or /assets/unnamed.webp). Ensure responsiveness (e.g., fixed/aspect banner area, background-size cover) and preserve text readability via an overlay/tint/blur layer or layout separation, without modifying any files under frontend/src/components/ui."
+          "description": "Update only the Home hero section (the first section in this file) to use the static asset at /assets/download.webp as a CSS background image (cover/center/no-repeat), add a semi-transparent overlay/gradient layer to preserve text/button readability, and ensure content remains above the overlay via stacking context. Keep all other sections and other routes unchanged."
         }
       ]
     }

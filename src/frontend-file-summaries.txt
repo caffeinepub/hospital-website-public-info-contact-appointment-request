@@ -1,9 +1,9 @@
 {
-  "frontend/src/App.tsx": "Main application component with TanStack Router routing to Home, About, Services, Doctors, Emergency, Contact, Appointments, and NotFound pages, all wrapped in SiteLayout.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router routing to Home, About, Services, Emergency, Contact, Appointments, and NotFound pages (Doctors route removed), all wrapped in SiteLayout.",
   "frontend/src/components/layout/SiteLayout.tsx": "Root layout component that wraps all pages with consistent header and footer structure.",
-  "frontend/src/components/layout/SiteHeader.tsx": "Responsive header with Mahalaxmi Health Care branding, desktop and mobile navigation menus including Emergency link, and active route indication using router state.",
-  "frontend/src/components/layout/SiteFooter.tsx": "Footer with Mahalaxmi Health Care branding, contact information with conditional emergency phone display, and dynamic year with UTM-tracked caffeine.ai attribution.",
-  "frontend/src/pages/HomePage.tsx": "Home page with hero section, prominent 24/7 Emergency section with click-to-call and navigation to Emergency page, core services highlight cards, trust signals, and CTA section.",
+  "frontend/src/components/layout/SiteHeader.tsx": "Responsive header with Mahalaxmi Health Care branding, desktop and mobile navigation menus (Doctors link removed), and active route indication using router state.",
+  "frontend/src/components/layout/SiteFooter.tsx": "Footer with Mahalaxmi Health Care branding using the old logo, contact information with conditional emergency phone display, and dynamic year with UTM-tracked caffeine.ai attribution.",
+  "frontend/src/pages/HomePage.tsx": "Home page with hero section featuring download.webp as background image with semi-transparent overlay for text readability, prominent 24/7 Emergency section with click-to-call and navigation to Emergency page, core services highlight cards, trust signals, and CTA section.",
   "frontend/src/pages/AboutPage.tsx": "About page presenting mission, vision, core values (Compassion, Integrity, Collaboration, Quality), key features, and facilities information with structured sections.",
   "frontend/src/pages/ServicesPage.tsx": "Services page displaying comprehensive grid of 15 medical departments and specialties with icons, descriptions, and CTA section using configured emergency and main phone numbers instead of hardcoded values.",
   "frontend/src/pages/DoctorsPage.tsx": "Doctors page showcasing 9 physician profiles with specialties, credentials, availability, and CTA section, now featuring a responsive medical facility background banner on each doctor card with gradient overlay for text readability.",

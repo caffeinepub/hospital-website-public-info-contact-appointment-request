@@ -18,8 +18,14 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="container py-16 md:py-24">
+      <section 
+        className="relative bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/assets/download.webp)' }}
+      >
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/85" />
+        
+        <div className="container py-16 md:py-24 relative z-10">
           <div className="grid gap-8 md:grid-cols-2 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">

@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T08:28:26.587Z",
+  "generatedAt": "2026-02-10T09:17:50.367Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,23 +12,22 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
+        "summary": "Add the uploaded image file \"download.webp\" to the frontend static assets so it can be referenced by URL at runtime (e.g., place it under the public assets path) without going through the backend.",
         "status": "missing",
         "plannedFiles": [
-          "frontend/public/assets/Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg",
-          "frontend/public/assets/unnamed.webp"
+          "frontend/public/assets/download.webp"
         ],
         "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
+        "summary": "Update the Home page to use the uploaded image \"download.webp\" as a background image for the Home page hero section (the first/hero section on \"/\"), while preserving readability of existing hero text and buttons (add an overlay or other styling as needed).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/DoctorsPage.tsx"
+          "frontend/src/pages/HomePage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DoctorsPage.tsx"
+          "frontend/src/pages/HomePage.tsx"
         ]
       }
     ]
@@ -38,7 +37,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/pages/DoctorsPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

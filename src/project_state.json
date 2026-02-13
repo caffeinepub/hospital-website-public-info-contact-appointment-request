@@ -3,14 +3,12 @@
   "projectStateVersion": 3,
   "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [
-    "Build/configuration error encountered during build; may require Caffeine team assistance"
-  ],
+  "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-use-the-uploaded-image-s-as-a-visible-profile-background-in-the-existing-ui-by-applying-one-of-the-uploaded-images-as-the-background-for-the-doctors-page-doctor-profile-cards-e-g-a-banner-area-at-the-top-of-each-doctor-card-or-behind-an-avatar-area-ensuring-it-is-responsive-and-does-not-reduce-text-readability",
-      "title": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
+      "id": "feature-update-the-home-page-to-use-the-uploaded-image-download-webp-as-a-background-image-for-the-home-page-hero-section-the-first-hero-section-on-while-preserving-readability-of-existing-hero-text-and-buttons-add-an-overlay-or-other-styling-as-needed",
+      "title": "Update the Home page to use the uploaded image \"download.webp\" as a background image for the Home page hero section (the first/hero section on \"/\"), while preserving readability of existing hero text and buttons (add an overlay or other styling as needed).",
       "reqIds": [
         "REQ-2"
       ],
@@ -20,20 +18,21 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add the provided image as the profile background",
+      "summary": "Add the provided image as the Home page background",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
+      "summary": "Add the uploaded image file \"download.webp\" to the frontend static assets so it can be referenced by URL at runtime (e.g., place it under the public assets path) without going through the backend.",
       "reqIds": [
         "REQ-1"
       ],
       "status": "pending"
     }
   ],
-  "projectName": "Add uploaded image as profile background",
+  "gameProjectType": "none",
+  "projectName": "Set uploaded image as Home page background",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

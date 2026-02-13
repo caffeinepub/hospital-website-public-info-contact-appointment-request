@@ -14,7 +14,6 @@ export default function SiteHeader() {
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
-    { path: '/doctors', label: 'Doctors' },
     { path: '/emergency', label: 'Emergency' },
     { path: '/contact', label: 'Contact' },
     { path: '/appointments', label: 'Appointments' },

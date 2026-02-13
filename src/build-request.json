@@ -1,59 +1,65 @@
 {
   "kind": "build_request",
-  "title": "Add uploaded image as profile background",
+  "title": "Set uploaded image as Home page background",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add the two user-uploaded images (Screenshot_2026-02-04-17-14-58-73_1c337646f29875672b5a61192b9010f9-1.jpg and unnamed.webp) to the frontend as static assets with their original filenames so they can be referenced by the UI.",
+      "text": "Add the uploaded image file \"download.webp\" to the frontend static assets so it can be referenced by URL at runtime (e.g., place it under the public assets path) without going through the backend.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-8"
+          "msg-4"
         ],
         "quotes": [
-          "ADD PROFILE BACKROUNG THIS IMAGE",
-          "ADD THIS IMAGE"
+          "ADD THIS IMAGE BACKGROUND IN HOME PAGE"
         ]
       },
       "acceptanceCriteria": [
-        "Both files are present in the frontend public static assets directory and are served by the app build without renaming.",
-        "The files can be referenced via a stable URL path in React (no backend involvement)."
+        "The repository includes the image file \"download.webp\" in a public/static assets location that is served by the frontend build.",
+        "The image can be loaded in the browser via a stable URL path (no backend calls required)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Use the uploaded image(s) as a visible \"profile background\" in the existing UI by applying one of the uploaded images as the background for the Doctors page doctor profile cards (e.g., a banner area at the top of each doctor card or behind an avatar area), ensuring it is responsive and does not reduce text readability.",
+      "text": "Update the Home page to use the uploaded image \"download.webp\" as a background image for the Home page hero section (the first/hero section on \"/\"), while preserving readability of existing hero text and buttons (add an overlay or other styling as needed).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4",
-          "msg-8"
+          "msg-4"
         ],
         "quotes": [
-          "ADD PROFILE BACKROUNG THIS IMAGE",
-          "ADD THIS IMAGE"
+          "ADD THIS IMAGE BACKGROUND IN HOME PAGE"
         ]
       },
       "acceptanceCriteria": [
-        "The Doctors page renders with the chosen uploaded image visible as a background element for each doctor profile card (or an equivalent clearly doctor-profile-related UI region).",
-        "Text over the background remains readable (e.g., via overlay, blur, tint, or layout separation) on mobile and desktop.",
-        "No user-facing text is added in a language other than English."
+        "On route \"/\", the hero section renders with \"download.webp\" as its background image.",
+        "Hero heading, paragraph text, and CTA buttons remain readable on top of the background (e.g., via a semi-transparent overlay/gradient).",
+        "The background scales/crops responsively (no obvious stretching) across mobile and desktop viewports.",
+        "No other pages/routes are affected."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only). Compose these components instead.",
-    "Do not modify immutable hook entrypoints listed in SYSTEM_CONTEXT (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
-    "Keep the backend as a single Motoko actor; no backend changes are required for this request."
+    "Do not modify files under frontend/src/components/ui or any other immutablePaths listed in SYSTEM_CONTEXT.",
+    "Do not route static images through the backend; serve them as frontend static assets."
   ],
   "nonGoals": [
-    "Implementing a user account/profile system or Internet Identity-driven profile pages.",
-    "Image uploading from within the app UI (use the provided uploaded files only)."
+    "Changing the site-wide theme/colors/typography beyond what is necessary to ensure hero text readability on the new background.",
+    "Replacing the existing hero foreground image unless required for layout/readability."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

@@ -3,7 +3,6 @@ import SiteLayout from './components/layout/SiteLayout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
-import DoctorsPage from './pages/DoctorsPage';
 import ContactPage from './pages/ContactPage';
 import AppointmentRequestPage from './pages/AppointmentRequestPage';
 import EmergencyPage from './pages/EmergencyPage';
@@ -35,12 +34,6 @@ const servicesRoute = createRoute({
   component: ServicesPage,
 });
 
-const doctorsRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/doctors',
-  component: DoctorsPage,
-});
-
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/contact',
@@ -69,7 +62,6 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
   servicesRoute,
-  doctorsRoute,
   contactRoute,
   appointmentsRoute,
   emergencyRoute,
