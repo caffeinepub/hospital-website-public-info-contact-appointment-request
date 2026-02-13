@@ -6,80 +6,91 @@
     :root {
         --radius: 0.5rem;
         
-        /* Warm, trustworthy hospital palette - coral/salmon primary */
-        --background: 0.99 0 0;
-        --foreground: 0.20 0 0;
+        /* Modern hospital palette - Clean medical blues and teals */
+        /* Crisp white background for clinical feel */
+        --background: 0.99 0.01 240;
+        --foreground: 0.20 0.04 240;
         
-        --card: 1 0 0;
-        --card-foreground: 0.20 0 0;
+        /* Subtle off-white cards */
+        --card: 1.00 0 0;
+        --card-foreground: 0.20 0.04 240;
         
-        --popover: 1 0 0;
-        --popover-foreground: 0.20 0 0;
+        --popover: 1.00 0 0;
+        --popover-foreground: 0.20 0.04 240;
         
-        /* Warm coral primary - friendly, modern, trustworthy */
-        --primary: 0.62 0.18 25;
+        /* Professional medical blue primary */
+        --primary: 0.55 0.18 240;
         --primary-foreground: 0.99 0 0;
         
-        /* Warm neutral secondary */
-        --secondary: 0.96 0.01 80;
-        --secondary-foreground: 0.25 0 0;
+        /* Calming teal secondary */
+        --secondary: 0.70 0.12 200;
+        --secondary-foreground: 0.99 0 0;
         
-        --muted: 0.96 0.01 80;
-        --muted-foreground: 0.50 0.01 80;
+        /* Light gray muted areas */
+        --muted: 0.96 0.01 240;
+        --muted-foreground: 0.50 0.02 240;
         
-        --accent: 0.94 0.02 80;
-        --accent-foreground: 0.25 0 0;
+        /* Soft teal accent */
+        --accent: 0.75 0.10 190;
+        --accent-foreground: 0.20 0.04 240;
         
-        /* Deep red for emergency/destructive */
-        --destructive: 0.50 0.24 20;
+        /* Medical red for emergency/destructive */
+        --destructive: 0.55 0.22 20;
         --destructive-foreground: 0.99 0 0;
         
-        --border: 0.90 0.01 80;
-        --input: 0.90 0.01 80;
-        --ring: 0.62 0.18 25;
+        /* Subtle borders */
+        --border: 0.90 0.01 240;
+        --input: 0.94 0.01 240;
+        --ring: 0.55 0.18 240;
         
-        --chart-1: 0.65 0.18 25;
-        --chart-2: 0.60 0.20 40;
-        --chart-3: 0.70 0.12 80;
-        --chart-4: 0.55 0.22 15;
-        --chart-5: 0.50 0.15 350;
+        --chart-1: 0.55 0.18 240;
+        --chart-2: 0.70 0.12 200;
+        --chart-3: 0.75 0.10 190;
+        --chart-4: 0.60 0.15 220;
+        --chart-5: 0.65 0.14 180;
     }
 
     .dark {
-        --background: 0.15 0 0;
-        --foreground: 0.95 0 0;
+        /* Professional dark mode with medical blue undertones */
+        --background: 0.15 0.02 240;
+        --foreground: 0.95 0.02 240;
         
-        --card: 0.18 0 0;
-        --card-foreground: 0.95 0 0;
+        /* Slightly lighter cards */
+        --card: 0.18 0.02 240;
+        --card-foreground: 0.95 0.02 240;
         
-        --popover: 0.18 0 0;
-        --popover-foreground: 0.95 0 0;
+        --popover: 0.18 0.02 240;
+        --popover-foreground: 0.95 0.02 240;
         
-        /* Lighter coral for dark mode with good contrast */
-        --primary: 0.72 0.16 30;
-        --primary-foreground: 0.15 0 0;
+        /* Bright medical blue for dark mode */
+        --primary: 0.65 0.16 240;
+        --primary-foreground: 0.10 0 0;
         
-        --secondary: 0.22 0.01 80;
-        --secondary-foreground: 0.95 0 0;
+        /* Lighter teal */
+        --secondary: 0.75 0.12 200;
+        --secondary-foreground: 0.10 0 0;
         
-        --muted: 0.22 0.01 80;
-        --muted-foreground: 0.60 0.01 80;
+        /* Muted dark areas */
+        --muted: 0.22 0.02 240;
+        --muted-foreground: 0.65 0.02 240;
         
-        --accent: 0.25 0.02 80;
-        --accent-foreground: 0.95 0 0;
+        /* Soft teal accent */
+        --accent: 0.70 0.10 190;
+        --accent-foreground: 0.95 0.02 240;
         
-        --destructive: 0.60 0.22 20;
+        --destructive: 0.60 0.20 20;
         --destructive-foreground: 0.95 0 0;
         
-        --border: 0.25 0.01 80;
-        --input: 0.25 0.01 80;
-        --ring: 0.72 0.16 30;
+        /* Subtle borders in dark */
+        --border: 0.25 0.02 240;
+        --input: 0.22 0.02 240;
+        --ring: 0.65 0.16 240;
         
-        --chart-1: 0.70 0.18 25;
-        --chart-2: 0.65 0.20 40;
-        --chart-3: 0.75 0.12 80;
-        --chart-4: 0.60 0.22 15;
-        --chart-5: 0.55 0.15 350;
+        --chart-1: 0.65 0.16 240;
+        --chart-2: 0.75 0.12 200;
+        --chart-3: 0.70 0.10 190;
+        --chart-4: 0.68 0.14 220;
+        --chart-5: 0.72 0.12 180;
     }
 
     * {

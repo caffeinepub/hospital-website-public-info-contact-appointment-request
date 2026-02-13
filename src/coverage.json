@@ -1,33 +1,65 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T09:17:50.367Z",
+  "generatedAt": "2026-02-13T13:41:53.788Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 1,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Add the uploaded image file \"download.webp\" to the frontend static assets so it can be referenced by URL at runtime (e.g., place it under the public assets path) without going through the backend.",
-        "status": "missing",
+        "id": "REQ-5",
+        "summary": "Restyle the overall site visual theme (colors, typography, spacing, and component styling) to resemble a modern hospital website similar to the Kavurey Hospital website, while keeping the existing pages and content structure intact.",
+        "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/download.webp"
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/SiteLayout.tsx"
         ],
-        "matchedFiles": []
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/layout/SiteLayout.tsx"
+        ]
       },
       {
-        "id": "REQ-2",
-        "summary": "Update the Home page to use the uploaded image \"download.webp\" as a background image for the Home page hero section (the first/hero section on \"/\"), while preserving readability of existing hero text and buttons (add an overlay or other styling as needed).",
+        "id": "REQ-6",
+        "summary": "Update the global header and footer presentation to match the Kavurey Hospital-like styling (e.g., cleaner navigation styling, improved spacing, and more prominent primary call-to-action), while preserving existing navigation items and links.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/layout/SiteHeader.tsx",
+          "frontend/src/components/layout/SiteFooter.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Redesign the Home page layout and section styling to look closer to the Kavurey Hospital website style (hero section, emergency highlight, service highlights, trust signals, and CTA), without removing existing sections or changing their meaning.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/HomePage.tsx"
         ],
         "matchedFiles": [
           "frontend/src/pages/HomePage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Adjust Tailwind theme tokens and global styles (e.g., in the CSS variables theme) as needed to support the new Kavurey Hospital-like palette and typography, ensuring consistent styling across light and dark modes (if dark mode remains enabled).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
         ]
       }
     ]
@@ -37,7 +69,12 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/src/components/layout/SiteFooter.tsx",
+    "frontend/src/components/layout/SiteHeader.tsx",
+    "frontend/src/components/layout/SiteLayout.tsx",
+    "frontend/src/index.css",
     "frontend/src/pages/HomePage.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

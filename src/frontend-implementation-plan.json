@@ -1,37 +1,89 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Use uploaded download.webp as Home hero background",
+  "title": "Kavurey Hospital-like visual restyle (theme, header/footer, homepage)",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Add download.webp as a frontend static asset served directly by the frontend build.",
+      "id": "REQ-5",
+      "summary": "Apply a cohesive modern hospital-style theme (colors, typography, spacing, component styling) across all existing pages without changing content structure.",
       "acceptanceCriteria": [
-        "The repository includes the image file \"download.webp\" in a public/static assets location that is served by the frontend build.",
-        "The image can be loaded in the browser via a stable URL path (no backend calls required)."
+        "The site uses a cohesive hospital-style theme consistently across header, footer, and all pages (Home, About, Services, Emergency, Contact, Appointments).",
+        "No new user-facing features are added; this change is purely visual/theme/layout styling.",
+        "All pages remain readable with accessible contrast and consistent heading/body typography."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/download.webp",
-          "operation": "create",
-          "description": "Add the provided image file to the frontend public assets so it is served statically at runtime (expected stable URL path: /assets/download.webp)."
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update CSS theme variables (primary/secondary/muted/accent/background/foreground, borders/ring) and global base styles (typography, spacing defaults) to a modern hospital palette and typographic rhythm; keep light/dark mode variables consistent and accessible contrast."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extension tokens to support the new hospital theme (e.g., container sizing/padding, fontFamily stack, shadows/radii where needed) while continuing to map colors to CSS variables for consistent theming."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Refine layout-level styling (page background treatment, main content spacing) to make the theme feel consistent across all pages without changing routing or page content."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Set download.webp as the Home page hero section background with a readability overlay and responsive cover sizing.",
+      "id": "REQ-6",
+      "summary": "Restyle the global header and footer to match Kavurey Hospital-like presentation while preserving existing navigation items/links and responsiveness.",
       "acceptanceCriteria": [
-        "On route \"/\", the hero section renders with \"download.webp\" as its background image.",
-        "Hero heading, paragraph text, and CTA buttons remain readable on top of the background (e.g., via a semi-transparent overlay/gradient).",
-        "The background scales/crops responsively (no obvious stretching) across mobile and desktop viewports.",
-        "No other pages/routes are affected."
+        "Navigation links remain: Home, About, Services, Emergency, Contact, Appointments, and the existing 'Search on Google' link remains available on desktop and mobile.",
+        "Header remains sticky and responsive; mobile menu remains usable and visually aligned with the new theme.",
+        "Footer continues to show the current branding, contact details, and caffeine.ai attribution link."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Restyle header to a cleaner hospital look (logo/brand lockup, spacing, subtle shadow/border, refined nav link styling) and make the primary call-to-action more prominent while preserving existing nav items and the 'Search on Google' link on both desktop and mobile. Use the shadcn-ui Button component for consistent CTA and nav styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "Update footer layout/visual hierarchy (spacing, background, borders, typography) to match the new theme while keeping existing branding, contact details, and caffeine.ai attribution link unchanged in meaning and availability."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Redesign the Home page section layout/styling (hero, emergency highlight, service highlights, trust signals, CTA) to resemble the reference hospital style without changing section meaning or CTA destinations.",
+      "acceptanceCriteria": [
+        "Home page keeps the same major sections currently present (Hero, Emergency, Core Services, Trust Signals, CTA) but with updated layout/styling to match the requested reference style.",
+        "Existing CTAs still navigate to the same routes (/appointments, /services, /emergency, /contact) and the Google search opens in a new tab.",
+        "The hero image (/assets/generated/mahalaxmi-health-care-hero.dim_1600x700.png) remains displayed and looks integrated with the new design."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Update only the Home hero section (the first section in this file) to use the static asset at /assets/download.webp as a CSS background image (cover/center/no-repeat), add a semi-transparent overlay/gradient layer to preserve text/button readability, and ensure content remains above the overlay via stacking context. Keep all other sections and other routes unchanged."
+          "description": "Refactor Home page visual layout to a modern hospital landing style: stronger hero composition with integrated image treatment, clearer section headers, improved grid spacing, refined emergency highlight, service cards, trust signals, and CTA band—without removing or reinterpreting existing sections. Ensure the hero image at frontend/public/assets/generated/mahalaxmi-health-care-hero.dim_1600x700.png remains displayed. Use shadcn-ui Card and Button components to keep styling consistent across sections. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Adjust Tailwind theme tokens and global styles to support the new hospital palette/typography consistently across light and dark modes without editing read-only UI component sources.",
+      "acceptanceCriteria": [
+        "Color tokens (primary/secondary/muted/accent/background) support the new theme consistently across pages and components.",
+        "No regressions in readability (text remains legible on backgrounds; buttons/links have clear states).",
+        "No changes are made to read-only/immutable UI component sources; styling is achieved via theme tokens, composition, and page/layout-level classes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Rework theme token values for both :root and .dark to align with a hospital-style palette (clean whites, medical blues/teals, calm neutrals; destructive remains clearly distinct) and tune base typography rules for consistent headings/body styling without modifying any files under frontend/src/components/ui."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Ensure Tailwind token mappings (colors via CSS variables, ring/alpha handling, typography defaults) support the updated palette and maintain consistent component states (hover/focus/active) across light/dark modes without editing read-only UI component sources."
         }
       ]
     }

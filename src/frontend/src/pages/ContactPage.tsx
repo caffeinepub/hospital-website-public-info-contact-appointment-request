@@ -1,110 +1,104 @@
-import { useEffect } from 'react';
-import { getPageTitle } from '@/config/branding';
-import { CONTACT_DETAILS } from '@/config/contactDetails';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import ContactForm from '@/components/forms/ContactForm';
+import { CONTACT_DETAILS, getEmergencyPhone } from '@/config/contactDetails';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default function ContactPage() {
-  useEffect(() => {
-    document.title = getPageTitle('Contact Us');
-  }, []);
+  const emergencyPhone = getEmergencyPhone();
+  const showEmergencyPhone = CONTACT_DETAILS.emergency !== '';
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/10 via-background to-background">
-        <div className="container py-16 md:py-24">
+      <section className="bg-gradient-to-br from-primary/5 via-background to-muted/30 py-16 md:py-24">
+        <div className="container">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Contact Us</h1>
             <p className="text-lg text-muted-foreground">
-              Get in touch with our team. We're here to help with your healthcare needs.
+              Get in touch with us for appointments, inquiries, or any assistance you need
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Information and Form */}
+      {/* Contact Information */}
       <section className="container py-16 md:py-24">
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Contact Details */}
-          <div className="space-y-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-muted-foreground mb-8">
-                Have questions or need assistance? Reach out to us through any of the following channels.
-              </p>
-            </div>
-
-            <div className="grid gap-4">
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-lg">Phone</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">General: <a href={`tel:${CONTACT_DETAILS.phone}`} className="text-foreground hover:text-primary">{CONTACT_DETAILS.phone}</a></p>
-                  {CONTACT_DETAILS.emergency && (
-                    <p className="text-sm text-muted-foreground">Emergency: <a href={`tel:${CONTACT_DETAILS.emergency}`} className="text-foreground hover:text-primary">{CONTACT_DETAILS.emergency}</a></p>
-                  )}
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-lg">Email</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <a href={`mailto:${CONTACT_DETAILS.email}`} className="text-sm text-muted-foreground hover:text-primary">
-                    {CONTACT_DETAILS.email}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
+          <Card>
+            <CardHeader>
+              <Phone className="h-8 w-8 text-primary mb-2" />
+              <CardTitle className="text-lg">Phone</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <a href={`tel:${CONTACT_DETAILS.phone}`} className="text-muted-foreground hover:text-primary">
+                {CONTACT_DETAILS.phone}
+              </a>
+              {showEmergencyPhone && (
+                <>
+                  <div className="text-sm text-muted-foreground mt-2">Emergency:</div>
+                  <a href={`tel:${emergencyPhone}`} className="text-destructive hover:text-destructive/80">
+                    {emergencyPhone}
                   </a>
-                </CardContent>
-              </Card>
+                </>
+              )}
+            </CardContent>
+          </Card>
 
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-lg">Address</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{CONTACT_DETAILS.address}</p>
-                </CardContent>
-              </Card>
+          <Card>
+            <CardHeader>
+              <Mail className="h-8 w-8 text-primary mb-2" />
+              <CardTitle className="text-lg">Email</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <a
+                href={`mailto:${CONTACT_DETAILS.email}`}
+                className="text-muted-foreground hover:text-primary break-all"
+              >
+                {CONTACT_DETAILS.email}
+              </a>
+            </CardContent>
+          </Card>
 
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <Clock className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-lg">Hours</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-1">
-                  <p className="text-sm text-muted-foreground">Emergency: {CONTACT_DETAILS.hours.emergency}</p>
-                  <p className="text-sm text-muted-foreground">Outpatient: {CONTACT_DETAILS.hours.outpatient}</p>
-                  <p className="text-sm text-muted-foreground">Urgent Care: {CONTACT_DETAILS.hours.urgentCare}</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+          <Card>
+            <CardHeader>
+              <MapPin className="h-8 w-8 text-primary mb-2" />
+              <CardTitle className="text-lg">Address</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">{CONTACT_DETAILS.address}</p>
+            </CardContent>
+          </Card>
 
-          {/* Contact Form */}
-          <div>
-            <Card>
-              <CardHeader>
-                <CardTitle>Send Us a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ContactForm />
-              </CardContent>
-            </Card>
-          </div>
+          <Card>
+            <CardHeader>
+              <Clock className="h-8 w-8 text-primary mb-2" />
+              <CardTitle className="text-lg">Hours</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-1 text-sm">
+                <div>
+                  <div className="font-medium">Emergency</div>
+                  <div className="text-muted-foreground">{CONTACT_DETAILS.hours.emergency}</div>
+                </div>
+                <div>
+                  <div className="font-medium">Outpatient</div>
+                  <div className="text-muted-foreground">{CONTACT_DETAILS.hours.outpatient}</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Contact Form */}
+        <div className="max-w-2xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ContactForm />
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>

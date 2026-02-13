@@ -74,6 +74,7 @@ export default {
             },
             fontFamily: {
                 sans: [
+                    'Inter',
                     'system-ui',
                     '-apple-system',
                     'BlinkMacSystemFont',
@@ -85,7 +86,9 @@ export default {
                 ]
             },
             boxShadow: {
-                xs: '0 1px 2px 0 rgba(0,0,0,0.05)'
+                xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
+                'soft': '0 2px 8px -2px rgba(0,0,0,0.08)',
+                'medium': '0 4px 16px -4px rgba(0,0,0,0.12)'
             },
             keyframes: {
                 'accordion-down': {
@@ -105,4 +108,3 @@ export default {
     },
     plugins: [typography, containerQueries, animate]
 };
-

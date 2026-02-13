@@ -1,52 +1,91 @@
 {
   "kind": "build_request",
-  "title": "Set uploaded image as Home page background",
+  "title": "Restyle the homepage to match a Kavurey Hospital-like website design",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Add the uploaded image file \"download.webp\" to the frontend static assets so it can be referenced by URL at runtime (e.g., place it under the public assets path) without going through the backend.",
+      "id": "REQ-5",
+      "text": "Restyle the overall site visual theme (colors, typography, spacing, and component styling) to resemble a modern hospital website similar to the Kavurey Hospital website, while keeping the existing pages and content structure intact.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-5"
         ],
         "quotes": [
-          "ADD THIS IMAGE BACKGROUND IN HOME PAGE"
+          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
         ]
       },
       "acceptanceCriteria": [
-        "The repository includes the image file \"download.webp\" in a public/static assets location that is served by the frontend build.",
-        "The image can be loaded in the browser via a stable URL path (no backend calls required)."
+        "The site uses a cohesive hospital-style theme consistently across header, footer, and all pages (Home, About, Services, Emergency, Contact, Appointments).",
+        "No new user-facing features are added; this change is purely visual/theme/layout styling.",
+        "All pages remain readable with accessible contrast and consistent heading/body typography."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Update the Home page to use the uploaded image \"download.webp\" as a background image for the Home page hero section (the first/hero section on \"/\"), while preserving readability of existing hero text and buttons (add an overlay or other styling as needed).",
+      "id": "REQ-6",
+      "text": "Update the global header and footer presentation to match the Kavurey Hospital-like styling (e.g., cleaner navigation styling, improved spacing, and more prominent primary call-to-action), while preserving existing navigation items and links.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-5"
         ],
         "quotes": [
-          "ADD THIS IMAGE BACKGROUND IN HOME PAGE"
+          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
         ]
       },
       "acceptanceCriteria": [
-        "On route \"/\", the hero section renders with \"download.webp\" as its background image.",
-        "Hero heading, paragraph text, and CTA buttons remain readable on top of the background (e.g., via a semi-transparent overlay/gradient).",
-        "The background scales/crops responsively (no obvious stretching) across mobile and desktop viewports.",
-        "No other pages/routes are affected."
+        "Navigation links remain: Home, About, Services, Emergency, Contact, Appointments, and the existing 'Search on Google' link remains available on desktop and mobile.",
+        "Header remains sticky and responsive; mobile menu remains usable and visually aligned with the new theme.",
+        "Footer continues to show the current branding, contact details, and caffeine.ai attribution link."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Redesign the Home page layout and section styling to look closer to the Kavurey Hospital website style (hero section, emergency highlight, service highlights, trust signals, and CTA), without removing existing sections or changing their meaning.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home page keeps the same major sections currently present (Hero, Emergency, Core Services, Trust Signals, CTA) but with updated layout/styling to match the requested reference style.",
+        "Existing CTAs still navigate to the same routes (/appointments, /services, /emergency, /contact) and the Google search opens in a new tab.",
+        "The hero image (/assets/generated/mahalaxmi-health-care-hero.dim_1600x700.png) remains displayed and looks integrated with the new design."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Adjust Tailwind theme tokens and global styles (e.g., in the CSS variables theme) as needed to support the new Kavurey Hospital-like palette and typography, ensuring consistent styling across light and dark modes (if dark mode remains enabled).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color tokens (primary/secondary/muted/accent/background) support the new theme consistently across pages and components.",
+        "No regressions in readability (text remains legible on backgrounds; buttons/links have clear states).",
+        "No changes are made to read-only/immutable UI component sources; styling is achieved via theme tokens, composition, and page/layout-level classes."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/components/ui or any other immutablePaths listed in SYSTEM_CONTEXT.",
-    "Do not route static images through the backend; serve them as frontend static assets."
+    "Do not modify files under frontend/src/components/ui (read-only UI components must be composed, not edited).",
+    "Do not modify immutable hook/bootstrap paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep the backend canister behavior unchanged (no new backend requirements for this request).",
+    "Use English for all user-facing text."
   ],
   "nonGoals": [
-    "Changing the site-wide theme/colors/typography beyond what is necessary to ensure hero text readability on the new background.",
-    "Replacing the existing hero foreground image unless required for layout/readability."
+    "Do not add new pages (e.g., Doctors) or new business features (e.g., payments, chat, maps).",
+    "Do not change existing form submission behavior for Contact or Appointment requests.",
+    "Do not change SEO logic, sitemap.xml, or robots.txt behavior as part of this styling request."
   ],
   "imageRequirements": {
     "required": [],

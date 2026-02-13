@@ -32,6 +32,9 @@ export default function AppointmentRequestForm() {
     'Emergency Care',
     'Diabetes Care',
     'Physiotherapy',
+    'CT Scan',
+    'Laboratory (Lab Facilities)',
+    'X-Ray',
   ];
 
   const validateForm = (): boolean => {
