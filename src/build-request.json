@@ -1,100 +1,106 @@
 {
   "kind": "build_request",
-  "title": "Restyle the homepage to match a Kavurey Hospital-like website design",
+  "title": "Improve hospital website quality and visual polish",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-5",
-      "text": "Restyle the overall site visual theme (colors, typography, spacing, and component styling) to resemble a modern hospital website similar to the Kavurey Hospital website, while keeping the existing pages and content structure intact.",
+      "id": "REQ-1",
+      "text": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-9"
         ],
         "quotes": [
-          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+          "I WANT HIG QUALITY WEB SITE"
         ]
       },
       "acceptanceCriteria": [
-        "The site uses a cohesive hospital-style theme consistently across header, footer, and all pages (Home, About, Services, Emergency, Contact, Appointments).",
-        "No new user-facing features are added; this change is purely visual/theme/layout styling.",
-        "All pages remain readable with accessible contrast and consistent heading/body typography."
+        "All pages share a consistent visual system (typography, spacing, shadows, borders, radii) with no obvious mismatched styles between sections/components.",
+        "Buttons, cards, and form elements have consistent hover/active/focus states and alignment across pages.",
+        "No content is removed; only presentation/layout/styling changes are made."
       ]
     },
     {
-      "id": "REQ-6",
-      "text": "Update the global header and footer presentation to match the Kavurey Hospital-like styling (e.g., cleaner navigation styling, improved spacing, and more prominent primary call-to-action), while preserving existing navigation items and links.",
+      "id": "REQ-2",
+      "text": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-9"
         ],
         "quotes": [
-          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+          "I WANT HIG QUALITY WEB SITE"
         ]
       },
       "acceptanceCriteria": [
-        "Navigation links remain: Home, About, Services, Emergency, Contact, Appointments, and the existing 'Search on Google' link remains available on desktop and mobile.",
-        "Header remains sticky and responsive; mobile menu remains usable and visually aligned with the new theme.",
-        "Footer continues to show the current branding, contact details, and caffeine.ai attribution link."
+        "No horizontal scrolling on common viewport widths (mobile through desktop).",
+        "Key grids (services, trust signals, cards) reflow cleanly with sensible spacing and readable text sizes.",
+        "Header navigation and CTAs remain usable and visually balanced on mobile."
       ]
     },
     {
-      "id": "REQ-7",
-      "text": "Redesign the Home page layout and section styling to look closer to the Kavurey Hospital website style (hero section, emergency highlight, service highlights, trust signals, and CTA), without removing existing sections or changing their meaning.",
+      "id": "REQ-3",
+      "text": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-9"
         ],
         "quotes": [
-          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+          "I WANT HIG QUALITY WEB SITE"
         ]
       },
       "acceptanceCriteria": [
-        "Home page keeps the same major sections currently present (Hero, Emergency, Core Services, Trust Signals, CTA) but with updated layout/styling to match the requested reference style.",
-        "Existing CTAs still navigate to the same routes (/appointments, /services, /emergency, /contact) and the Google search opens in a new tab.",
-        "The hero image (/assets/generated/mahalaxmi-health-care-hero.dim_1600x700.png) remains displayed and looks integrated with the new design."
+        "Keyboard navigation works across header navigation and page CTAs with clear focus indication.",
+        "Forms have proper labels and validation messaging remains readable and accessible.",
+        "Headings follow a logical hierarchy (e.g., one H1 per page area, H2/H3 used consistently in sections)."
       ]
     },
     {
-      "id": "REQ-8",
-      "text": "Adjust Tailwind theme tokens and global styles (e.g., in the CSS variables theme) as needed to support the new Kavurey Hospital-like palette and typography, ensuring consistent styling across light and dark modes (if dark mode remains enabled).",
+      "id": "REQ-4",
+      "text": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-5"
+          "msg-9"
         ],
         "quotes": [
-          "CREATE THIS PAGE LOOK LIKE KAVUREY HOSPITAL WEBSITE LIKE"
+          "I WANT HIG QUALITY WEB SITE"
         ]
       },
       "acceptanceCriteria": [
-        "Color tokens (primary/secondary/muted/accent/background) support the new theme consistently across pages and components.",
-        "No regressions in readability (text remains legible on backgrounds; buttons/links have clear states).",
-        "No changes are made to read-only/immutable UI component sources; styling is achieved via theme tokens, composition, and page/layout-level classes."
+        "New generated images are saved under frontend/public/assets/generated and referenced directly via static paths (no backend image routing).",
+        "Images are used with proper aspect ratios, include descriptive alt text, and do not cause layout shift.",
+        "Visual style of images matches the site’s hospital theme and feels cohesive with the existing hero image."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/components/ui (read-only UI components must be composed, not edited).",
-    "Do not modify immutable hook/bootstrap paths (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
-    "Keep the backend canister behavior unchanged (no new backend requirements for this request).",
+    "Do not edit files under frontend/src/components/ui (compose existing shadcn components instead).",
+    "Do not edit immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services or external databases.",
     "Use English for all user-facing text."
   ],
   "nonGoals": [
-    "Do not add new pages (e.g., Doctors) or new business features (e.g., payments, chat, maps).",
-    "Do not change existing form submission behavior for Contact or Appointment requests.",
-    "Do not change SEO logic, sitemap.xml, or robots.txt behavior as part of this styling request."
+    "Adding new backend features (e.g., new data models, new admin panels, new authentication methods beyond Internet Identity).",
+    "Adding real-time features (websockets/live chat) or third-party integrations not already present.",
+    "Changing hospital name/branding content semantics (copy changes beyond minor readability tweaks are out of scope)."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Wide hospital reception/modern facility banner illustration/photo style (facility-banner.dim_1600x600.png)",
+      "Medical team/doctor consultation hero-style image (doctors-hero.dim_1600x700.png)",
+      "Abstract medical pattern/texture background suitable for subtle section backdrops (medical-pattern.dim_1800x1200.png)"
+    ],
     "edits": []
   },
   "userProfileUpdate": {
     "goalsToAdd": [],
     "goalsToRemove": [],
-    "preferencesToAdd": [],
+    "preferencesToAdd": [
+      "User wants a high-quality, polished hospital website."
+    ],
     "preferencesToRemove": [],
     "miscToAdd": [],
     "miscToRemove": [],

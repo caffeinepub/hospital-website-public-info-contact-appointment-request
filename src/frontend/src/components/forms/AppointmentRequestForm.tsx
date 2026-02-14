@@ -100,9 +100,9 @@ export default function AppointmentRequestForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {showSuccess && (
         <Alert className="bg-primary/10 border-primary/20">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
+          <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden="true" />
           <AlertDescription className="text-primary">
-            Appointment request submitted successfully! We'll contact you soon to confirm.
+            Your appointment request has been submitted successfully! We'll contact you soon to confirm.
           </AlertDescription>
         </Alert>
       )}
@@ -116,7 +116,9 @@ export default function AppointmentRequestForm() {
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="name">Full Name *</Label>
+        <Label htmlFor="name">
+          Name <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="name"
           value={formData.name}
@@ -124,12 +126,21 @@ export default function AppointmentRequestForm() {
           placeholder="John Doe"
           disabled={isPending}
           className={errors.name ? 'border-destructive' : ''}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+          required
         />
-        {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+        {errors.name && (
+          <p id="name-error" className="text-sm text-destructive" role="alert">
+            {errors.name}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="contactDetails">Contact Details *</Label>
+        <Label htmlFor="contactDetails">
+          Contact Details <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="contactDetails"
           value={formData.contactDetails}
@@ -137,31 +148,55 @@ export default function AppointmentRequestForm() {
           placeholder="Phone number or email"
           disabled={isPending}
           className={errors.contactDetails ? 'border-destructive' : ''}
+          aria-invalid={!!errors.contactDetails}
+          aria-describedby={errors.contactDetails ? 'contactDetails-error' : undefined}
+          required
         />
-        {errors.contactDetails && <p className="text-sm text-destructive">{errors.contactDetails}</p>}
+        {errors.contactDetails && (
+          <p id="contactDetails-error" className="text-sm text-destructive" role="alert">
+            {errors.contactDetails}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="preferredDateTime">Preferred Date & Time *</Label>
+        <Label htmlFor="preferredDateTime">
+          Preferred Date & Time <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="preferredDateTime"
           value={formData.preferredDateTime}
           onChange={(e) => handleChange('preferredDateTime', e.target.value)}
-          placeholder="e.g., Monday, Feb 12, 10:00 AM"
+          placeholder="e.g., Tomorrow 10 AM or Feb 15, 2026 at 2 PM"
           disabled={isPending}
           className={errors.preferredDateTime ? 'border-destructive' : ''}
+          aria-invalid={!!errors.preferredDateTime}
+          aria-describedby={errors.preferredDateTime ? 'preferredDateTime-error' : undefined}
+          required
         />
-        {errors.preferredDateTime && <p className="text-sm text-destructive">{errors.preferredDateTime}</p>}
+        {errors.preferredDateTime && (
+          <p id="preferredDateTime-error" className="text-sm text-destructive" role="alert">
+            {errors.preferredDateTime}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="departmentService">Department / Service *</Label>
+        <Label htmlFor="departmentService">
+          Department / Service <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Select
           value={formData.departmentService}
           onValueChange={(value) => handleChange('departmentService', value)}
           disabled={isPending}
+          required
         >
-          <SelectTrigger id="departmentService" className={errors.departmentService ? 'border-destructive' : ''}>
+          <SelectTrigger
+            id="departmentService"
+            className={errors.departmentService ? 'border-destructive' : ''}
+            aria-invalid={!!errors.departmentService}
+            aria-describedby={errors.departmentService ? 'departmentService-error' : undefined}
+          >
             <SelectValue placeholder="Select a department" />
           </SelectTrigger>
           <SelectContent>
@@ -172,7 +207,11 @@ export default function AppointmentRequestForm() {
             ))}
           </SelectContent>
         </Select>
-        {errors.departmentService && <p className="text-sm text-destructive">{errors.departmentService}</p>}
+        {errors.departmentService && (
+          <p id="departmentService-error" className="text-sm text-destructive" role="alert">
+            {errors.departmentService}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
@@ -190,7 +229,7 @@ export default function AppointmentRequestForm() {
       <Button type="submit" disabled={isPending} className="w-full">
         {isPending ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
             Submitting...
           </>
         ) : (

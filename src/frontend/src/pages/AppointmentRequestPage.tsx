@@ -1,44 +1,57 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import AppointmentRequestForm from '@/components/forms/AppointmentRequestForm';
 import { Calendar, Clock, FileText, CheckCircle } from 'lucide-react';
+import PageHero from '@/components/layout/PageHero';
+import Section from '@/components/layout/Section';
 
 export default function AppointmentRequestPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/5 via-background to-muted/30 py-16 md:py-24">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Book an Appointment</h1>
-            <p className="text-lg text-muted-foreground">
-              Schedule your visit with our experienced medical professionals. We're here to help you.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Book an Appointment"
+        subtitle="Schedule your visit with our medical professionals. We're here to help you."
+        variant="pattern"
+      />
 
       {/* Process Steps */}
-      <section className="container py-16 md:py-24">
+      <Section>
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">How It Works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Simple steps to book your appointment
           </p>
         </div>
-        <div className="grid gap-6 md:grid-cols-4 mb-12">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12 max-w-6xl mx-auto">
           {[
-            { title: 'Fill Form', desc: 'Complete the appointment request form', icon: FileText },
-            { title: 'Choose Date', desc: 'Select your preferred date and time', icon: Calendar },
-            { title: 'Confirmation', desc: 'Receive confirmation from our team', icon: CheckCircle },
-            { title: 'Visit', desc: 'Visit us at the scheduled time', icon: Clock },
+            {
+              title: 'Fill the Form',
+              desc: 'Provide your details and preferred time',
+              icon: FileText,
+            },
+            {
+              title: 'Choose Department',
+              desc: 'Select the medical service you need',
+              icon: Calendar,
+            },
+            {
+              title: 'We Review',
+              desc: 'Our team reviews your request',
+              icon: Clock,
+            },
+            {
+              title: 'Confirmation',
+              desc: 'Receive appointment confirmation',
+              icon: CheckCircle,
+            },
           ].map((step, index) => (
-            <Card key={step.title} className="text-center">
+            <Card key={step.title} className="text-center hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="mx-auto mb-2 relative">
-                  <step.icon className="h-10 w-10 text-primary" />
-                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
+                  <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                     {index + 1}
                   </div>
+                  <step.icon className="h-10 w-10 text-primary" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-lg">{step.title}</CardTitle>
               </CardHeader>
@@ -51,7 +64,7 @@ export default function AppointmentRequestPage() {
 
         {/* Appointment Form */}
         <div className="max-w-2xl mx-auto">
-          <Card>
+          <Card className="shadow-medium">
             <CardHeader>
               <CardTitle className="text-2xl">Request an Appointment</CardTitle>
             </CardHeader>
@@ -60,7 +73,7 @@ export default function AppointmentRequestPage() {
             </CardContent>
           </Card>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

@@ -4,7 +4,7 @@
 
 @layer base {
     :root {
-        --radius: 0.5rem;
+        --radius: 0.75rem;
         
         /* Modern hospital palette - Clean medical blues and teals */
         /* Crisp white background for clinical feel */
@@ -100,10 +100,57 @@
     body {
         @apply bg-background text-foreground;
         font-feature-settings: "rlig" 1, "calt" 1;
+        overflow-x: hidden;
     }
     
     h1, h2, h3, h4, h5, h6 {
         @apply font-bold;
         letter-spacing: -0.02em;
+        word-wrap: break-word;
+    }
+
+    /* Enhanced focus visibility for accessibility */
+    *:focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    }
+
+    /* Ensure images don't overflow */
+    img {
+        @apply max-w-full h-auto;
+    }
+
+    /* Better link focus states */
+    a:focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background rounded-sm;
+    }
+
+    /* Skip to content link for accessibility */
+    .skip-to-content {
+        @apply absolute left-0 top-0 -translate-y-full bg-primary text-primary-foreground px-4 py-2 z-[100] transition-transform;
+    }
+
+    .skip-to-content:focus {
+        @apply translate-y-0;
+    }
+
+    /* Prevent layout shift from long words */
+    p, li, span {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@layer utilities {
+    /* Section spacing utilities */
+    .section-spacing {
+        @apply py-16 md:py-24;
+    }
+
+    .section-spacing-sm {
+        @apply py-12 md:py-16;
+    }
+
+    .section-spacing-lg {
+        @apply py-20 md:py-32;
     }
 }

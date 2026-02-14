@@ -1,40 +1,41 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Build a web page styled to resemble the Kavurey Hospital website.",
+  "summary": "Build a high-quality hospital website.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Wide hospital reception/modern facility banner illustration/photo style (facility-banner.dim_1600x600.png)\n- Medical team/doctor consultation hero-style image (doctors-hero.dim_1600x700.png)\n- Abstract medical pattern/texture background suitable for subtle section backdrops (medical-pattern.dim_1800x1200.png)",
   "existing_features": [
     {
-      "id": "feature-restyle-the-overall-site-visual-theme-colors-typography-spacing-and-component-styling-to-resemble-a-modern-hospital-website-similar-to-the-kavurey-hospital-website-while-keeping-the-existing-pages-and-content-structure-intact",
-      "title": "Restyle the overall site visual theme (colors, typography, spacing, and component styling) to resemble a modern hospital website similar to the Kavurey Hospital website, while keeping the existing pages and content structure intact.",
+      "id": "feature-improve-overall-ui-quality-across-all-public-pages-home-about-services-emergency-contact-appointments-and-404-by-applying-consistent-spacing-typography-scale-section-layout-and-component-styling-cards-buttons-icons-to-achieve-a-polished-modern-hospital-website-look-and-feel-without-changing-the-meaning-of-existing-content",
+      "title": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
       "reqIds": [
-        "REQ-5"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-global-header-and-footer-presentation-to-match-the-kavurey-hospital-like-styling-e-g-cleaner-navigation-styling-improved-spacing-and-more-prominent-primary-call-to-action-while-preserving-existing-navigation-items-and-links",
-      "title": "Update the global header and footer presentation to match the Kavurey Hospital-like styling (e.g., cleaner navigation styling, improved spacing, and more prominent primary call-to-action), while preserving existing navigation items and links.",
+      "id": "feature-perform-a-responsive-design-pass-to-ensure-the-site-looks-high-quality-on-mobile-tablet-and-desktop-including-navigation-header-hero-sections-multi-column-grids-and-forms-preventing-overflow-cramped-layouts-and-inconsistent-section-padding",
+      "title": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
       "reqIds": [
-        "REQ-6"
+        "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-redesign-the-home-page-layout-and-section-styling-to-look-closer-to-the-kavurey-hospital-website-style-hero-section-emergency-highlight-service-highlights-trust-signals-and-cta-without-removing-existing-sections-or-changing-their-meaning",
-      "title": "Redesign the Home page layout and section styling to look closer to the Kavurey Hospital website style (hero section, emergency highlight, service highlights, trust signals, and CTA), without removing existing sections or changing their meaning.",
+      "id": "feature-improve-accessibility-and-perceived-quality-by-ensuring-interactive-elements-have-visible-focus-styles-sufficient-contrast-and-appropriate-semantic-structure-headings-hierarchy-labels-button-anchor-usage-across-the-site",
+      "title": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
       "reqIds": [
-        "REQ-7"
+        "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-adjust-tailwind-theme-tokens-and-global-styles-e-g-in-the-css-variables-theme-as-needed-to-support-the-new-kavurey-hospital-like-palette-and-typography-ensuring-consistent-styling-across-light-and-dark-modes-if-dark-mode-remains-enabled",
-      "title": "Adjust Tailwind theme tokens and global styles (e.g., in the CSS variables theme) as needed to support the new Kavurey Hospital-like palette and typography, ensuring consistent styling across light and dark modes (if dark mode remains enabled).",
+      "id": "feature-add-high-quality-consistent-medical-themed-imagery-as-static-assets-and-integrate-them-into-the-existing-layout-where-appropriate-without-adding-new-product-features-ensuring-images-are-optimized-and-look-sharp-on-high-dpi-displays",
+      "title": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
       "reqIds": [
-        "REQ-8"
+        "REQ-4"
       ],
       "version": 1
     }
@@ -42,12 +43,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Restyle the current page to look like the Kavurey Hospital website (layout, colors, typography, overall design).",
+      "summary": "Create a high-quality hospital website (design and overall polish).",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Restyle the homepage to match a Kavurey Hospital-like website design",
+  "projectName": "Improve hospital website quality and visual polish",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -9,7 +9,13 @@ export default {
     theme: {
         container: {
             center: true,
-            padding: '2rem',
+            padding: {
+                DEFAULT: '1rem',
+                sm: '1.5rem',
+                lg: '2rem',
+                xl: '2.5rem',
+                '2xl': '3rem',
+            },
             screens: {
                 '2xl': '1400px'
             }
@@ -88,7 +94,15 @@ export default {
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
                 'soft': '0 2px 8px -2px rgba(0,0,0,0.08)',
-                'medium': '0 4px 16px -4px rgba(0,0,0,0.12)'
+                'medium': '0 4px 16px -4px rgba(0,0,0,0.12)',
+                'strong': '0 8px 24px -6px rgba(0,0,0,0.16)',
+            },
+            spacing: {
+                '18': '4.5rem',
+                '88': '22rem',
+                '100': '25rem',
+                '112': '28rem',
+                '128': '32rem',
             },
             keyframes: {
                 'accordion-down': {

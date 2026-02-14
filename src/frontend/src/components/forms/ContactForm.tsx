@@ -75,7 +75,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {showSuccess && (
         <Alert className="bg-primary/10 border-primary/20">
-          <CheckCircle2 className="h-4 w-4 text-primary" />
+          <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden="true" />
           <AlertDescription className="text-primary">
             Thank you for contacting us! We'll get back to you soon.
           </AlertDescription>
@@ -91,7 +91,9 @@ export default function ContactForm() {
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="name">Name *</Label>
+        <Label htmlFor="name">
+          Name <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="name"
           value={formData.name}
@@ -99,12 +101,21 @@ export default function ContactForm() {
           placeholder="John Doe"
           disabled={isPending}
           className={errors.name ? 'border-destructive' : ''}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? 'name-error' : undefined}
+          required
         />
-        {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
+        {errors.name && (
+          <p id="name-error" className="text-sm text-destructive" role="alert">
+            {errors.name}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="contactInfo">Contact Information *</Label>
+        <Label htmlFor="contactInfo">
+          Contact Information <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="contactInfo"
           value={formData.contactInfo}
@@ -112,12 +123,21 @@ export default function ContactForm() {
           placeholder="email@example.com or phone number"
           disabled={isPending}
           className={errors.contactInfo ? 'border-destructive' : ''}
+          aria-invalid={!!errors.contactInfo}
+          aria-describedby={errors.contactInfo ? 'contactInfo-error' : undefined}
+          required
         />
-        {errors.contactInfo && <p className="text-sm text-destructive">{errors.contactInfo}</p>}
+        {errors.contactInfo && (
+          <p id="contactInfo-error" className="text-sm text-destructive" role="alert">
+            {errors.contactInfo}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="subject">Subject *</Label>
+        <Label htmlFor="subject">
+          Subject <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Input
           id="subject"
           value={formData.subject}
@@ -125,12 +145,21 @@ export default function ContactForm() {
           placeholder="General inquiry"
           disabled={isPending}
           className={errors.subject ? 'border-destructive' : ''}
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? 'subject-error' : undefined}
+          required
         />
-        {errors.subject && <p className="text-sm text-destructive">{errors.subject}</p>}
+        {errors.subject && (
+          <p id="subject-error" className="text-sm text-destructive" role="alert">
+            {errors.subject}
+          </p>
+        )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">Message *</Label>
+        <Label htmlFor="message">
+          Message <span className="text-destructive" aria-label="required">*</span>
+        </Label>
         <Textarea
           id="message"
           value={formData.message}
@@ -139,14 +168,21 @@ export default function ContactForm() {
           rows={5}
           disabled={isPending}
           className={errors.message ? 'border-destructive' : ''}
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+          required
         />
-        {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
+        {errors.message && (
+          <p id="message-error" className="text-sm text-destructive" role="alert">
+            {errors.message}
+          </p>
+        )}
       </div>
 
       <Button type="submit" disabled={isPending} className="w-full">
         {isPending ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
             Sending...
           </>
         ) : (

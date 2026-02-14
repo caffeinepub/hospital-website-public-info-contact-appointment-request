@@ -22,6 +22,8 @@ import {
   Waves,
   Phone,
 } from 'lucide-react';
+import PageHero from '@/components/layout/PageHero';
+import Section from '@/components/layout/Section';
 
 export default function ServicesPage() {
   const navigate = useNavigate();
@@ -124,58 +126,51 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/5 via-background to-muted/30 py-16 md:py-24">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Our Medical Services</h1>
-            <p className="text-lg text-muted-foreground">
-              Comprehensive healthcare services delivered by experienced professionals with state-of-the-art facilities
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Our Medical Services"
+        subtitle="Comprehensive healthcare services delivered by experienced professionals with state-of-the-art facilities"
+        variant="pattern"
+      />
 
       {/* Services Grid */}
-      <section className="container py-16 md:py-24">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Section>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {services.map((service) => (
             <Card key={service.title} className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <service.icon className="h-10 w-10 text-primary mb-2" />
+                <service.icon className="h-10 w-10 text-primary mb-2" aria-hidden="true" />
                 <CardTitle>{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">{service.desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
               </CardContent>
             </Card>
           ))}
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="bg-muted/30 py-16 md:py-24">
-        <div className="container">
-          <Card className="bg-gradient-to-br from-primary/10 to-background border-primary/20">
-            <CardContent className="p-8 md:p-12 text-center space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Need Medical Assistance?</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our team is ready to help you. Book an appointment or call us for immediate assistance.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button size="lg" onClick={() => navigate({ to: '/appointments' })}>
-                  Book Appointment
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href={mainPhoneTel}>
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call: {emergencyPhone}
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      <Section variant="muted">
+        <Card className="bg-gradient-to-br from-primary/10 to-background border-primary/20 shadow-medium max-w-4xl mx-auto">
+          <CardContent className="p-8 md:p-12 text-center space-y-6">
+            <h2 className="text-3xl md:text-4xl font-bold">Need Medical Assistance?</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Our team is ready to help you. Book an appointment or call us for immediate assistance.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" onClick={() => navigate({ to: '/appointments' })}>
+                Book Appointment
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href={mainPhoneTel}>
+                  <Phone className="mr-2 h-5 w-5" aria-hidden="true" />
+                  Call: {emergencyPhone}
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </Section>
     </div>
   );
 }

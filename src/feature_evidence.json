@@ -2,12 +2,79 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-restyle-the-overall-site-visual-theme-colors-typography-spacing-and-component-styling-to-resemble-a-modern-hospital-website-similar-to-the-kavurey-hospital-website-while-keeping-the-existing-pages-and-content-structure-intact",
-      "featureTitle": "Restyle the overall site visual theme (colors, typography, spacing, and component styling) to resemble a modern hospital website similar to the Kavurey Hospital website, while keeping the existing pages and content structure intact.",
+      "featureId": "feature-improve-overall-ui-quality-across-all-public-pages-home-about-services-emergency-contact-appointments-and-404-by-applying-consistent-spacing-typography-scale-section-layout-and-component-styling-cards-buttons-icons-to-achieve-a-polished-modern-hospital-website-look-and-feel-without-changing-the-meaning-of-existing-content",
+      "featureTitle": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
       "files": [
+        "frontend/src/components/forms/AppointmentRequestForm.tsx",
+        "frontend/src/components/forms/ContactForm.tsx",
+        "frontend/src/components/layout/PageHero.tsx",
+        "frontend/src/components/layout/Section.tsx",
+        "frontend/src/components/layout/SiteFooter.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/AppointmentRequestPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/EmergencyPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/NotFoundPage.tsx",
+        "frontend/src/pages/ServicesPage.tsx",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-perform-a-responsive-design-pass-to-ensure-the-site-looks-high-quality-on-mobile-tablet-and-desktop-including-navigation-header-hero-sections-multi-column-grids-and-forms-preventing-overflow-cramped-layouts-and-inconsistent-section-padding",
+      "featureTitle": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
+      "files": [
+        "frontend/src/components/forms/AppointmentRequestForm.tsx",
+        "frontend/src/components/forms/ContactForm.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/AppointmentRequestPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-accessibility-and-perceived-quality-by-ensuring-interactive-elements-have-visible-focus-styles-sufficient-contrast-and-appropriate-semantic-structure-headings-hierarchy-labels-button-anchor-usage-across-the-site",
+      "featureTitle": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
+      "files": [
+        "frontend/src/components/forms/AppointmentRequestForm.tsx",
+        "frontend/src/components/forms/ContactForm.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx",
         "frontend/src/components/layout/SiteLayout.tsx",
         "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/EmergencyPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -18,16 +85,18 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-3"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-global-header-and-footer-presentation-to-match-the-kavurey-hospital-like-styling-e-g-cleaner-navigation-styling-improved-spacing-and-more-prominent-primary-call-to-action-while-preserving-existing-navigation-items-and-links",
-      "featureTitle": "Update the global header and footer presentation to match the Kavurey Hospital-like styling (e.g., cleaner navigation styling, improved spacing, and more prominent primary call-to-action), while preserving existing navigation items and links.",
+      "featureId": "feature-add-high-quality-consistent-medical-themed-imagery-as-static-assets-and-integrate-them-into-the-existing-layout-where-appropriate-without-adding-new-product-features-ensuring-images-are-optimized-and-look-sharp-on-high-dpi-displays",
+      "featureTitle": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
       "files": [
-        "frontend/src/components/layout/SiteFooter.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx"
+        "frontend/src/components/layout/PageHero.tsx",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -38,46 +107,7 @@
         "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-redesign-the-home-page-layout-and-section-styling-to-look-closer-to-the-kavurey-hospital-website-style-hero-section-emergency-highlight-service-highlights-trust-signals-and-cta-without-removing-existing-sections-or-changing-their-meaning",
-      "featureTitle": "Redesign the Home page layout and section styling to look closer to the Kavurey Hospital website style (hero section, emergency highlight, service highlights, trust signals, and CTA), without removing existing sections or changing their meaning.",
-      "files": [
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-adjust-tailwind-theme-tokens-and-global-styles-e-g-in-the-css-variables-theme-as-needed-to-support-the-new-kavurey-hospital-like-palette-and-typography-ensuring-consistent-styling-across-light-and-dark-modes-if-dark-mode-remains-enabled",
-      "featureTitle": "Adjust Tailwind theme tokens and global styles (e.g., in the CSS variables theme) as needed to support the new Kavurey Hospital-like palette and typography, ensuring consistent styling across light and dark modes (if dark mode remains enabled).",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
+        "REQ-4"
       ],
       "confidence": "high"
     }
