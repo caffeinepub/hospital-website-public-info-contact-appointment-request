@@ -1,65 +1,193 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Doctor Suites page, navigation, and SEO updates",
+  "title": "Add additional generated photos to every routed page",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Implement a polished, responsive Doctor Suites page with structured suite details and internal CTAs.",
+      "summary": "Add at least one additional generated image to every routed page using existing PageHeroImage styling and cache-busting behavior.",
       "acceptanceCriteria": [
-        "`frontend/src/pages/DoctorsPage.tsx` is no longer empty and renders a complete \"Doctor Suites\" page.",
-        "All user-facing text on the page is in English.",
-        "The page uses existing design patterns/components (e.g., `PageHero`, `Section`, `Card`, `Button`) to match the site’s current look and feel.",
-        "The page includes at least one CTA that routes to an existing internal page (e.g., /appointments or /contact).",
-        "Layout is responsive (mobile/tablet/desktop) and does not overflow horizontally."
+        "Each route in frontend/src/App.tsx (/, /about, /services, /contact, /appointments, /emergency, /doctor-suites, /domain-draft, /decommissioned, and the * not-found route) renders at least one additional <img>/<PageHeroImage> compared to the current implementation.",
+        "All newly-added images load from /assets/generated/... and use the existing cache-busting approach (directly via PageHeroImage or via withCacheBust for non-PageHero images).",
+        "All new images include meaningful English alt text.",
+        "Pages remain responsive on mobile and desktop; images do not overflow their containers and maintain rounded/shadow styling consistent with existing hero imagery."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Add an additional photo section (e.g., a small supporting image block) using PageHeroImage and the generated asset frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png; ensure meaningful English alt text and responsive rounded/shadow styling."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png; keep layout responsive and consistent with existing hero imagery styling."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png; include meaningful English alt text and maintain existing rounded/shadow styling."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/contact-reception.dim_1600x900.png (e.g., near the contact info or above the form); ensure responsive sizing and meaningful English alt text."
+        },
+        {
+          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
+          "operation": "modify",
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png; ensure cache-busting via PageHeroImage and use meaningful English alt text."
+        },
+        {
+          "path": "frontend/src/pages/EmergencyPage.tsx",
+          "operation": "modify",
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png; ensure responsive layout and consistent rounded/shadow styling."
+        },
+        {
           "path": "frontend/src/pages/DoctorsPage.tsx",
           "operation": "modify",
-          "description": "Implement the full \"Doctor Suites\" page UI using existing layout components `PageHero` and `Section`, and shadcn-ui components (via `shadcn-ui`) such as `Card` and `Button` to present suites/department name, brief description, hours/availability, and clear CTAs that navigate internally to /appointments and/or /contact (e.g., using TanStack Router navigation). Keep all user-facing text in English and ensure a responsive grid/stack layout without horizontal overflow. Verify the component's usage instructions before implementing."
+          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png; keep spacing consistent with existing sections and include meaningful English alt text."
+        },
+        {
+          "path": "frontend/src/pages/DomainDraftPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the authenticated Domain Draft view includes at least one additional supporting image beyond the existing hero (use PageHeroImage with frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png or another generated asset) while maintaining existing behavior."
+        },
+        {
+          "path": "frontend/src/pages/DecommissionedPage.tsx",
+          "operation": "modify",
+          "description": "Add a second illustration/photo block (in addition to the current PageHeroImage) using PageHeroImage with frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png; keep centered layout responsive and consistent."
+        },
+        {
+          "path": "frontend/src/pages/NotFoundPage.tsx",
+          "operation": "modify",
+          "description": "Add a second illustration/photo block (in addition to the current PageHeroImage) using PageHeroImage with frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png; ensure meaningful English alt text and responsive sizing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add router registration and header navigation link for the Doctor Suites page with consistent active styling.",
+      "summary": "Add a generated image to the Domain Draft unauthenticated view so it matches other pages’ photo presence.",
       "acceptanceCriteria": [
-        "A new route is added in `frontend/src/App.tsx` for the Doctor Suites page (path and label are consistent across the app).",
-        "`frontend/src/components/layout/SiteHeader.tsx` includes a new navigation link labeled \"Doctor Suites\" that navigates to the new route.",
-        "The active route styling works consistently with other nav links on both desktop and mobile menus."
+        "When not authenticated, /domain-draft includes an image component (e.g., PageHeroImage) using a generated asset and English alt text.",
+        "When authenticated, the existing hero image remains and the page also satisfies the “additional photo content” requirement."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/DomainDraftPage.tsx",
           "operation": "modify",
-          "description": "Register the Doctor Suites page route (e.g., path `/doctor-suites`) using the existing TanStack Router pattern: import `DoctorsPage`, create the route, and add it to the `routeTree` so it is reachable like other main pages."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteHeader.tsx",
-          "operation": "modify",
-          "description": "Add a new main navigation item `{ path: '/doctor-suites', label: 'Doctor Suites' }` in the existing `navLinks` list so it appears in both desktop and mobile menus, and relies on the existing active-route variant logic for consistent styling. Uses the existing shadcn-ui `Button` composition (via `shadcn-ui`). Verify the component's usage instructions before implementing."
+          "description": "Update the unauthenticated (not logged in) rendering branch to include a PageHeroImage (or equivalent) using frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png with meaningful English alt text; keep the existing alert/text content and ensure the view remains responsive."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Include Doctor Suites route in SEO metadata config and sitemap so title/description update correctly and crawlers can discover the page.",
+      "summary": "Add newly generated images as static assets under frontend/public/assets/generated and reference each in the UI.",
       "acceptanceCriteria": [
-        "`frontend/src/config/seo.ts` includes a new `ROUTE_SEO` entry for the Doctor Suites path with an appropriate English title and description.",
-        "`frontend/public/sitemap.xml` includes the Doctor Suites URL under the existing `https://mahalaxmi-health-care.icp.page` domain.",
-        "After the change, navigating to the Doctor Suites page updates the document title and meta description consistently with other routes (via the existing SEO manager)."
+        "All image filenames listed in imageRequirements.required exist under frontend/public/assets/generated.",
+        "Each listed new image is referenced by at least one page component.",
+        "No backend endpoints are added/changed to serve images."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/config/seo.ts",
-          "operation": "modify",
-          "description": "Add a new `ROUTE_SEO` entry keyed by the Doctor Suites route path (matching `App.tsx`, e.g., `/doctor-suites`) with an English title (e.g., \"Doctor Suites\") and a concise, hospital-quality meta description. This will be picked up automatically by the existing `SeoManager` on navigation."
+          "path": "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Hospital facilities photo collage' at frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png."
         },
         {
-          "path": "frontend/public/sitemap.xml",
+          "path": "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Doctors with patient in consultation room' at frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Reception/front-desk staff helping a visitor' at frontend/public/assets/generated/contact-reception.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Ambulance arriving at emergency entrance' at frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Medical services equipment close-up collage' at frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Group portrait of doctors in corridor' at frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Administrative office desk with laptop and documents' at frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Maintenance tools and caution signage illustration' at frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Map/compass style illustration for navigation help' at frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated static asset file 'Hospital ward corridor wide shot' at frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Add a new `<url>` entry for `https://mahalaxmi-health-care.icp.page/doctor-suites` (path must match routing) with appropriate `changefreq` and `priority`, consistent with existing sitemap entries."
+          "description": "Reference frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png in the UI (via PageHeroImage or withCacheBust for a plain <img>) to ensure it is actually used."
+        },
+        {
+          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/contact-reception.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/EmergencyPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/ServicesPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/DoctorsPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/DomainDraftPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png in both unauthenticated and authenticated views as applicable so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/DecommissionedPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/NotFoundPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
         }
       ]
     }

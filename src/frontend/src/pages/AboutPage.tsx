@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Heart, Users, Award, Target } from 'lucide-react';
 import PageHero from '@/components/layout/PageHero';
+import PageHeroImage from '@/components/layout/PageHeroImage';
 import Section from '@/components/layout/Section';
 
 export default function AboutPage() {
@@ -12,16 +13,14 @@ export default function AboutPage() {
         subtitle="Committed to providing exceptional healthcare services with compassion, integrity, and excellence"
         variant="pattern"
       >
-        <div className="mt-8 relative rounded-2xl overflow-hidden shadow-strong max-w-4xl mx-auto">
-          <img
-            src="/assets/generated/facility-banner.dim_1600x600.png"
-            alt="Mahalaxmi Health Care modern medical facility"
-            className="w-full h-auto"
-            width="1600"
-            height="600"
-            loading="eager"
-          />
-        </div>
+        <PageHeroImage
+          src="/assets/generated/hospital-lobby.dim_1600x900.png"
+          alt="Modern hospital lobby at Mahalaxmi Health Care"
+          width={1600}
+          height={900}
+          loading="eager"
+          className="mt-8 max-w-4xl mx-auto"
+        />
       </PageHero>
 
       {/* Mission & Vision */}
@@ -55,8 +54,26 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* Core Values */}
+      {/* Facilities Corridor Photo */}
       <Section variant="muted">
+        <div className="text-center space-y-4 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold">Our Hospital Facilities</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Clean, modern, and welcoming environment for all our patients
+          </p>
+        </div>
+        <PageHeroImage
+          src="/assets/generated/about-facilities-corridor.dim_1600x900.png"
+          alt="Hospital ward corridor at Mahalaxmi Health Care"
+          width={1600}
+          height={900}
+          loading="lazy"
+          className="max-w-5xl mx-auto"
+        />
+      </Section>
+
+      {/* Core Values */}
+      <Section>
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">Our Core Values</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -102,38 +119,38 @@ export default function AboutPage() {
       </Section>
 
       {/* Key Features */}
-      <Section>
+      <Section variant="muted">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">Why Choose Us</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             What sets us apart in healthcare delivery
           </p>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
           {[
             {
-              title: 'Experienced Professionals',
-              desc: 'Our team of skilled doctors and healthcare professionals bring years of expertise',
+              title: 'Experienced Medical Team',
+              desc: 'Our doctors and nurses bring years of expertise and dedication to patient care',
             },
             {
-              title: 'Modern Facilities',
-              desc: 'State-of-the-art medical equipment and comfortable patient care environments',
-            },
-            {
-              title: '24/7 Emergency Care',
-              desc: 'Round-the-clock emergency services with rapid response capabilities',
-            },
-            {
-              title: 'Comprehensive Services',
-              desc: 'Full range of medical services from preventive care to specialized treatments',
+              title: 'Advanced Technology',
+              desc: 'We invest in the latest medical equipment and diagnostic tools',
             },
             {
               title: 'Patient-Centered Approach',
-              desc: 'We put patients first, ensuring personalized care and attention',
+              desc: 'Every treatment plan is tailored to individual patient needs',
+            },
+            {
+              title: 'Comprehensive Services',
+              desc: 'From routine checkups to specialized treatments under one roof',
             },
             {
               title: 'Affordable Healthcare',
-              desc: 'Quality medical services at competitive prices with transparent billing',
+              desc: 'Quality medical care at transparent and reasonable prices',
+            },
+            {
+              title: '24/7 Emergency Care',
+              desc: 'Round-the-clock emergency services with rapid response',
             },
           ].map((feature) => (
             <Card key={feature.title} className="hover:shadow-lg transition-shadow">
@@ -141,46 +158,7 @@ export default function AboutPage() {
                 <CardTitle className="text-lg">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* Facilities */}
-      <Section variant="muted">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Our Facilities</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Modern infrastructure designed for optimal patient care
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 max-w-5xl mx-auto">
-          {[
-            {
-              title: 'Emergency Department',
-              desc: 'Fully equipped 24/7 emergency department with advanced life support systems and rapid triage capabilities',
-            },
-            {
-              title: 'Diagnostic Center',
-              desc: 'Complete diagnostic services including CT scan, X-ray, laboratory facilities, and advanced imaging technologies',
-            },
-            {
-              title: 'Outpatient Clinics',
-              desc: 'Specialized outpatient departments for various medical specialties with comfortable waiting areas',
-            },
-            {
-              title: 'Patient Care Units',
-              desc: 'Well-maintained patient rooms with modern amenities ensuring comfort during recovery',
-            },
-          ].map((facility) => (
-            <Card key={facility.title} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>{facility.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">{facility.desc}</p>
+                <p className="text-sm text-muted-foreground">{feature.desc}</p>
               </CardContent>
             </Card>
           ))}

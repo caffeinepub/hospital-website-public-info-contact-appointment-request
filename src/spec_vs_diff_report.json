@@ -1,43 +1,76 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T04:45:25.157Z",
-  "summary": "All three requested Doctor Suites deliverables appear implemented: a new dedicated DoctorsPage content, a /doctor-suites route plus header navigation link with active styling logic, and SEO + sitemap updates for the new route. The diff also includes several unrelated global styling/theme changes and header enhancements that were not requested.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-14T05:38:23.761Z",
+  "summary": "The diff adds additional PageHeroImage sections across most pages and updates DomainDraft unauthenticated view to include an image, but it does not add the required static image files under frontend/public/assets/generated (no new assets added). The diff also includes several unrelated UI/layout/form/style enhancements and references to additional generated images that were not part of the requested required image set.",
+  "missing_requirements": [
     {
-      "description": "Global theme/palette overhaul including new OKLCH color tokens and orange token scale, plus forcing horizontal overflow hidden on body.",
-      "reason": "BuildRequest only asked to update the Doctor Suites page, routing/nav, and SEO/sitemap. Global design token changes were not requested and may affect the entire site.",
+      "id": "REQ-3",
+      "requirement": "Add the newly generated image files as static assets under frontend/public/assets/generated (all required filenames) and reference them from pages.",
+      "reason": "No files were added in the diff (Added: 0). The required static assets themselves are therefore not present/verified under frontend/public/assets/generated based on this diff summary.",
       "evidence": [
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
-      ]
-    },
-    {
-      "description": "Tailwind configuration extensions beyond what is necessary for the Doctor Suites page (e.g., container padding/screens changes, shadows, spacing, font family, orange color mapping).",
-      "reason": "Not requested; may change styling across the whole application beyond the Doctor Suites page.",
-      "evidence": [
-        "frontend/tailwind.config.js"
-      ]
-    },
-    {
-      "description": "Header redesign/enhancements including an emergency contact top bar, additional accessibility/focus styles, and a Google search URL variable.",
-      "reason": "REQ-2 only requires adding a new 'Doctor Suites' navigation link and consistent active-route styling; broader header feature additions are outside scope.",
-      "evidence": [
-        "frontend/src/components/layout/SiteHeader.tsx"
+        "File diff summary header shows: \"Added: 0\"",
+        "ADDED FILES: none"
       ]
     }
   ],
-  "confidence": 0.76,
+  "hallucinated_features": [
+    {
+      "description": "Broader layout/site shell changes (SiteLayout/SiteHeader/SiteFooter) and navigation/accessibility enhancements beyond adding photos to pages.",
+      "reason": "BuildRequest is specifically about adding more photos and adding specific generated assets; it does not request header/footer/layout refactors or navigation changes.",
+      "evidence": [
+        "frontend-file-summaries.txt: \"frontend/src/components/layout/SiteLayout.tsx\"",
+        "frontend-file-summaries.txt: \"frontend/src/components/layout/SiteHeader.tsx\"",
+        "frontend-file-summaries.txt: \"frontend/src/components/layout/SiteFooter.tsx\""
+      ]
+    },
+    {
+      "description": "ContactForm and AppointmentRequestForm validation/accessibility improvements and new submit hooks.",
+      "reason": "BuildRequest does not ask for form validation/accessibility refactors or new submit hooks; scope is adding photos/static assets.",
+      "evidence": [
+        "frontend-file-summaries.txt: \"frontend/src/components/forms/ContactForm.tsx\"",
+        "frontend-file-summaries.txt: \"frontend/src/components/forms/AppointmentRequestForm.tsx\"",
+        "frontend-file-summaries.txt: \"frontend/src/hooks/useSubmitContact.ts\"",
+        "frontend-file-summaries.txt: \"frontend/src/hooks/useSubmitAppointmentRequest.ts\""
+      ]
+    },
+    {
+      "description": "Global CSS and Tailwind theme/token changes (including new orange color tokens and overflow prevention).",
+      "reason": "Not requested; requirements focus on adding images and keeping responsiveness, not revising the design system/tokens.",
+      "evidence": [
+        "frontend-file-summaries.txt: \"frontend/src/index.css\"",
+        "frontend-file-summaries.txt: \"frontend/tailwind.config.js\""
+      ]
+    },
+    {
+      "description": "Use of additional generated image filenames beyond the provided required image list (e.g., hospital-lobby.dim_1600x900.png, hospital-exterior.dim_1600x900.png, emergency-room.dim_1600x900.png, doctor-consultation.dim_1600x900.png, doctors-team.dim_1600x900.png, medical-404-illustration.dim_1200x600.png, medical-decommissioned-illustration.dim_1200x600.png).",
+      "reason": "REQ-3 specifies a required set of new images to add/reference. The diff references several other generated assets not listed in the BuildRequest’s required images.",
+      "evidence": [
+        "frontend/src/pages/AboutPage.tsx (references /assets/generated/hospital-lobby.dim_1600x900.png)",
+        "frontend/src/pages/ContactPage.tsx (references /assets/generated/hospital-exterior.dim_1600x900.png)",
+        "frontend/src/pages/EmergencyPage.tsx (references /assets/generated/emergency-room.dim_1600x900.png)",
+        "frontend/src/pages/ServicesPage.tsx (references /assets/generated/doctor-consultation.dim_1600x900.png)",
+        "frontend/src/pages/AppointmentRequestPage.tsx (references /assets/generated/doctor-consultation.dim_1600x900.png)",
+        "frontend/src/pages/DoctorsPage.tsx (references /assets/generated/doctors-team.dim_1600x900.png)",
+        "frontend/src/pages/NotFoundPage.tsx (references /assets/generated/medical-404-illustration.dim_1200x600.png)",
+        "frontend/src/pages/DecommissionedPage.tsx (references /assets/generated/medical-decommissioned-illustration.dim_1200x600.png)",
+        "frontend/src/pages/HomePage.tsx (references /assets/generated/medical-pattern.dim_1800x1200.png and /assets/generated/doctors-team.dim_1600x900.png)"
+      ]
+    }
+  ],
+  "confidence": 0.78,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/public/sitemap.xml",
-    "frontend/src/App.tsx",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/config/seo.ts",
-    "frontend/src/index.css",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/AppointmentRequestPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/DecommissionedPage.tsx",
     "frontend/src/pages/DoctorsPage.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/pages/DomainDraftPage.tsx",
+    "frontend/src/pages/EmergencyPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/NotFoundPage.tsx",
+    "frontend/src/pages/ServicesPage.tsx",
     "project_state.json"
   ]
 }

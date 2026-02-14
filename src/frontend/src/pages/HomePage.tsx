@@ -1,15 +1,23 @@
+import { useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { getEmergencyPhone, getEmergencyPhoneTel } from '@/config/contactDetails';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Heart, Users, Clock, Phone, Ambulance, Search, Shield, Award, Stethoscope, Activity } from 'lucide-react';
+import { Heart, Users, Clock, Phone, Ambulance, Search, Shield, Award, Stethoscope, Activity, AlertCircle, RefreshCw } from 'lucide-react';
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd';
+import { withCacheBust } from '@/utils/generatedAssets';
+import PageHeroImage from '@/components/layout/PageHeroImage';
 
 export default function HomePage() {
   const navigate = useNavigate();
   const emergencyPhone = getEmergencyPhone();
   const emergencyPhoneTel = getEmergencyPhoneTel();
   const googleSearchUrl = 'https://www.google.com/search?q=Mahalakshmi+Health+Care';
+  const [heroImageError, setHeroImageError] = useState(false);
+
+  // Apply cache-busting to all generated assets
+  const patternUrl = withCacheBust('/assets/generated/medical-pattern.dim_1800x1200.png');
+  const heroImageUrl = withCacheBust('/assets/generated/doctors-team.dim_1600x900.png');
 
   return (
     <div className="flex flex-col">
@@ -20,7 +28,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 opacity-[0.03] bg-repeat"
           style={{
-            backgroundImage: 'url(/assets/generated/medical-pattern.dim_1800x1200.png)',
+            backgroundImage: `url(${patternUrl})`,
             backgroundSize: '600px 400px',
           }}
           aria-hidden="true"
@@ -57,16 +65,38 @@ export default function HomePage() {
 
             {/* Hero Image with Stats Card */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-strong">
-                <img
-                  src="/assets/generated/doctors-hero.dim_1600x700.png"
-                  alt="Professional medical team at Mahalaxmi Health Care"
-                  className="w-full h-auto"
-                  width="1600"
-                  height="700"
-                  loading="eager"
-                />
-              </div>
+              {heroImageError ? (
+                <div className="relative rounded-2xl overflow-hidden shadow-strong bg-muted/30 border border-border">
+                  <div className="flex flex-col items-center justify-center p-8 md:p-12 text-center space-y-4" style={{ minHeight: '400px' }}>
+                    <AlertCircle className="h-12 w-12 text-muted-foreground/50" aria-hidden="true" />
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-muted-foreground">Image not available</p>
+                      <p className="text-xs text-muted-foreground/70 max-w-md">
+                        Try refreshing the page (Ctrl+F5 / Cmd+Shift+R) or open in a private/incognito window to see the latest images.
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="inline-flex items-center gap-2 text-xs text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm px-2 py-1"
+                    >
+                      <RefreshCw className="h-3 w-3" aria-hidden="true" />
+                      Refresh Page
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative rounded-2xl overflow-hidden shadow-strong">
+                  <img
+                    src={heroImageUrl}
+                    alt="Professional medical team at Mahalaxmi Health Care"
+                    className="w-full h-auto"
+                    width="1600"
+                    height="900"
+                    loading="eager"
+                    onError={() => setHeroImageError(true)}
+                  />
+                </div>
+              )}
               
               {/* Floating Stats Card */}
               <Card className="absolute -bottom-6 -left-4 sm:left-4 right-4 sm:right-auto sm:w-80 shadow-strong bg-card/95 backdrop-blur-sm">
@@ -92,8 +122,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Facilities Photo Section */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Modern Facilities</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              State-of-the-art medical equipment and comfortable patient areas
+            </p>
+          </div>
+          <PageHeroImage
+            src="/assets/generated/home-facilities-collage.dim_1600x900.png"
+            alt="Modern hospital facilities and equipment at Mahalaxmi Health Care"
+            width={1600}
+            height={900}
+            loading="lazy"
+            className="max-w-5xl mx-auto"
+          />
+        </div>
+      </section>
+
       {/* Emergency Services Highlight */}
-      <section className="bg-muted/30 py-16 md:py-24 mt-8 lg:mt-0">
+      <section className="bg-muted/30 py-16 md:py-24">
         <div className="container">
           <div className="text-center space-y-4 mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-destructive/10 mb-2">
@@ -259,20 +309,20 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <Card className="bg-gradient-to-br from-primary/10 to-background border-primary/20 shadow-medium">
-            <CardContent className="p-8 md:p-12 text-center space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Ready to Get Started?</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Book an appointment today and experience quality healthcare with compassion
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" onClick={() => navigate({ to: '/appointments' })}>
-                  Book Appointment
-                </Button>
-                <Button size="lg" variant="outline" onClick={() => navigate({ to: '/contact' })}>
-                  Contact Us
-                </Button>
-              </div>
+          <Card className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-primary/20">
+            <CardHeader className="text-center space-y-4 pb-8">
+              <CardTitle className="text-3xl md:text-4xl">Ready to Get Started?</CardTitle>
+              <CardDescription className="text-lg">
+                Book your appointment today and experience quality healthcare
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col sm:flex-row gap-4 justify-center pb-8">
+              <Button size="lg" onClick={() => navigate({ to: '/appointments' })}>
+                Book Appointment
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/contact' })}>
+                Contact Us
+              </Button>
             </CardContent>
           </Card>
         </div>

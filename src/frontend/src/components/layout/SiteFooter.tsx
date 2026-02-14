@@ -1,11 +1,18 @@
-import { Heart, Phone, MapPin, Clock } from 'lucide-react';
+import { useState } from 'react';
+import { Heart, Phone, MapPin, Clock, AlertCircle, RefreshCw } from 'lucide-react';
 import { HOSPITAL_NAME } from '@/config/branding';
 import { CONTACT_DETAILS } from '@/config/contactDetails';
+import { getBuildVersion } from '@/config/buildInfo';
+import { withCacheBust } from '@/utils/generatedAssets';
 
 export default function SiteFooter() {
   const appIdentifier = typeof window !== 'undefined' 
     ? encodeURIComponent(window.location.hostname)
     : 'unknown-app';
+  
+  const buildVersion = getBuildVersion();
+  const [logoError, setLogoError] = useState(false);
+  const logoUrl = withCacheBust('/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png');
 
   return (
     <footer className="bg-muted/30 border-t border-border/40">
@@ -14,14 +21,21 @@ export default function SiteFooter() {
           {/* Brand Section */}
           <div className="space-y-4 lg:col-span-2">
             <div className="flex items-center gap-3">
-              <img
-                src="/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png"
-                alt=""
-                className="h-12 w-12"
-                width="48"
-                height="48"
-                aria-hidden="true"
-              />
+              {logoError ? (
+                <div className="h-12 w-12 rounded-lg bg-muted/50 border border-border flex items-center justify-center">
+                  <AlertCircle className="h-6 w-6 text-muted-foreground/50" aria-hidden="true" />
+                </div>
+              ) : (
+                <img
+                  src={logoUrl}
+                  alt=""
+                  className="h-12 w-12"
+                  width="48"
+                  height="48"
+                  aria-hidden="true"
+                  onError={() => setLogoError(true)}
+                />
+              )}
               <div className="flex flex-col">
                 <span className="text-lg font-bold">{HOSPITAL_NAME}</span>
                 <span className="text-xs text-muted-foreground">Excellence in Healthcare</span>
@@ -78,7 +92,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t border-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p className="flex items-center justify-center gap-1 flex-wrap">
             © {new Date().getFullYear()} {HOSPITAL_NAME}. Built with <Heart className="h-4 w-4 text-destructive fill-destructive" aria-label="love" /> using{' '}
             <a
@@ -89,6 +103,9 @@ export default function SiteFooter() {
             >
               caffeine.ai
             </a>
+          </p>
+          <p className="text-xs text-muted-foreground/70">
+            Version {buildVersion}
           </p>
         </div>
       </div>

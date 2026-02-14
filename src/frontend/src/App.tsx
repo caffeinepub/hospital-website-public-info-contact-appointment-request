@@ -7,6 +7,8 @@ import ContactPage from './pages/ContactPage';
 import AppointmentRequestPage from './pages/AppointmentRequestPage';
 import EmergencyPage from './pages/EmergencyPage';
 import DoctorsPage from './pages/DoctorsPage';
+import DomainDraftPage from './pages/DomainDraftPage';
+import DecommissionedPage from './pages/DecommissionedPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const rootRoute = createRootRoute({
@@ -59,6 +61,18 @@ const doctorSuitesRoute = createRoute({
   component: DoctorsPage,
 });
 
+const domainDraftRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/domain-draft',
+  component: DomainDraftPage,
+});
+
+const decommissionedRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/decommissioned',
+  component: DecommissionedPage,
+});
+
 const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '*',
@@ -73,6 +87,8 @@ const routeTree = rootRoute.addChildren([
   appointmentsRoute,
   emergencyRoute,
   doctorSuitesRoute,
+  domainDraftRoute,
+  decommissionedRoute,
   notFoundRoute,
 ]);
 

@@ -2,10 +2,19 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-implement-a-dedicated-doctor-suites-page-using-the-existing-frontend-src-pages-doctorspage-tsx-with-polished-hospital-quality-layout-and-english-user-facing-text-the-page-must-clearly-present-doctor-suites-information-in-a-structured-way-e-g-suite-department-name-brief-description-hours-availability-and-a-clear-call-to-action-to-book-an-appointment-or-contact-the-clinic",
-      "featureTitle": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
+      "featureId": "feature-add-additional-photo-content-to-every-routed-page-so-that-each-page-contains-at-least-one-extra-image-beyond-what-it-currently-shows-e-g-a-secondary-banner-image-a-small-photo-grid-or-a-supporting-image-section-using-the-app-s-existing-pageheroimage-styling-and-generated-asset-cache-busting-behavior",
+      "featureTitle": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
       "files": [
-        "frontend/src/pages/DoctorsPage.tsx"
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/AppointmentRequestPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/DecommissionedPage.tsx",
+        "frontend/src/pages/DoctorsPage.tsx",
+        "frontend/src/pages/DomainDraftPage.tsx",
+        "frontend/src/pages/EmergencyPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/NotFoundPage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -21,11 +30,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-routing-and-navigation-for-the-doctor-suites-page-so-users-can-reach-it-from-the-main-header-navigation",
-      "featureTitle": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
+      "featureId": "feature-update-the-domain-draft-page-so-that-the-unauthenticated-view-when-login-is-required-also-includes-a-photo-illustration-similar-to-other-pages-rather-than-showing-only-text-alerts",
+      "featureTitle": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx"
+        "frontend/src/pages/DomainDraftPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -41,11 +49,19 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-seo-metadata-and-sitemap-to-include-the-doctor-suites-route",
-      "featureTitle": "Update SEO metadata and sitemap to include the Doctor Suites route.",
+      "featureId": "feature-add-the-newly-generated-image-files-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-appropriate-pages-to-increase-photo-presence-site-wide",
+      "featureTitle": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
       "files": [
-        "frontend/public/sitemap.xml",
-        "frontend/src/config/seo.ts"
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/AppointmentRequestPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/DecommissionedPage.tsx",
+        "frontend/src/pages/DoctorsPage.tsx",
+        "frontend/src/pages/DomainDraftPage.tsx",
+        "frontend/src/pages/EmergencyPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/NotFoundPage.tsx",
+        "frontend/src/pages/ServicesPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",

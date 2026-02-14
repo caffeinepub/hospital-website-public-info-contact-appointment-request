@@ -1,77 +1,86 @@
 {
   "kind": "build_request",
-  "title": "Update the Doctor Suites section/page",
+  "title": "Add more photos on every page",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
+      "text": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-1"
         ],
         "quotes": [
-          "CHANGE THE DOCTORS SUITES"
+          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
         ]
       },
       "acceptanceCriteria": [
-        "`frontend/src/pages/DoctorsPage.tsx` is no longer empty and renders a complete \"Doctor Suites\" page.",
-        "All user-facing text on the page is in English.",
-        "The page uses existing design patterns/components (e.g., `PageHero`, `Section`, `Card`, `Button`) to match the site’s current look and feel.",
-        "The page includes at least one CTA that routes to an existing internal page (e.g., /appointments or /contact).",
-        "Layout is responsive (mobile/tablet/desktop) and does not overflow horizontally."
+        "Each route in frontend/src/App.tsx (/, /about, /services, /contact, /appointments, /emergency, /doctor-suites, /domain-draft, /decommissioned, and the * not-found route) renders at least one additional <img>/<PageHeroImage> compared to the current implementation.",
+        "All newly-added images load from /assets/generated/... and use the existing cache-busting approach (directly via PageHeroImage or via withCacheBust for non-PageHero images).",
+        "All new images include meaningful English alt text.",
+        "Pages remain responsive on mobile and desktop; images do not overflow their containers and maintain rounded/shadow styling consistent with existing hero imagery."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
+      "text": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-1"
         ],
         "quotes": [
-          "CHANGE THE DOCTORS SUITES"
+          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
         ]
       },
       "acceptanceCriteria": [
-        "A new route is added in `frontend/src/App.tsx` for the Doctor Suites page (path and label are consistent across the app).",
-        "`frontend/src/components/layout/SiteHeader.tsx` includes a new navigation link labeled \"Doctor Suites\" that navigates to the new route.",
-        "The active route styling works consistently with other nav links on both desktop and mobile menus."
+        "When not authenticated, /domain-draft includes an image component (e.g., PageHeroImage) using a generated asset and English alt text.",
+        "When authenticated, the existing hero image remains and the page also satisfies the “additional photo content” requirement."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Update SEO metadata and sitemap to include the Doctor Suites route.",
+      "text": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-1"
         ],
         "quotes": [
-          "CHANGE THE DOCTORS SUITES"
+          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
         ]
       },
       "acceptanceCriteria": [
-        "`frontend/src/config/seo.ts` includes a new `ROUTE_SEO` entry for the Doctor Suites path with an appropriate English title and description.",
-        "`frontend/public/sitemap.xml` includes the Doctor Suites URL under the existing `https://mahalaxmi-health-care.icp.page` domain.",
-        "After the change, navigating to the Doctor Suites page updates the document title and meta description consistently with other routes (via the existing SEO manager)."
+        "All image filenames listed in imageRequirements.required exist under frontend/public/assets/generated.",
+        "Each listed new image is referenced by at least one page component.",
+        "No backend endpoints are added/changed to serve images."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under `frontend/src/components/ui` (compose existing shadcn components instead).",
-    "Do not modify any files listed as immutable in SYSTEM_CONTEXT (e.g., `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
-    "Keep all backend logic in a single Motoko actor; no backend changes are required for this request unless strictly necessary."
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or anything in frontend/src/components/ui (compose these components instead).",
+    "Keep the backend as a single Motoko actor (no additional backend services).",
+    "Store and serve images as frontend static assets (do not route images through the backend)."
   ],
   "nonGoals": [
-    "Do not implement Google indexing/Search Console verification as part of this change.",
-    "Do not add third-party integrations or external databases.",
-    "Do not change the meaning of existing site content outside of the new/updated Doctor Suites page."
+    "Implementing user-uploaded photos or an admin photo management CMS.",
+    "Adding third-party image hosting/CDN integrations.",
+    "Changing routing structure or adding new routes beyond adding images to existing routes."
   ],
   "imageRequirements": {
-    "required": [],
+    "required": [
+      "Hospital facilities photo collage (home-facilities-collage.dim_1600x900.png)",
+      "Doctors with patient in consultation room (appointments-consult-room.dim_1600x900.png)",
+      "Reception/front-desk staff helping a visitor (contact-reception.dim_1600x900.png)",
+      "Ambulance arriving at emergency entrance (emergency-ambulance.dim_1600x900.png)",
+      "Medical services equipment close-up collage (services-equipment-collage.dim_1600x900.png)",
+      "Group portrait of doctors in corridor (doctors-portraits-collage.dim_1600x900.png)",
+      "Administrative office desk with laptop and documents (domain-admin-desk.dim_1600x900.png)",
+      "Maintenance tools and caution signage illustration (decommissioned-tools-illustration.dim_1200x600.png)",
+      "Map/compass style illustration for navigation help (notfound-navigation-illustration.dim_1200x600.png)",
+      "Hospital ward corridor wide shot (about-facilities-corridor.dim_1600x900.png)"
+    ],
     "edits": []
   }
 }

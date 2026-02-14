@@ -46,7 +46,7 @@ export default function SiteHeader() {
             </a>
           </div>
           <div className="hidden md:flex items-center gap-4">
-            <span className="text-primary-foreground/90">24/7 Emergency Services Available</span>
+            <span className="text-primary-foreground/90 font-bold">24/7 Emergency Services Available</span>
           </div>
         </div>
       </div>

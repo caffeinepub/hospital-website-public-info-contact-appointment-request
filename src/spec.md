@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Add a complete, polished “Doctor Suites” page and make it accessible via site navigation, with proper SEO/sitemap updates.
+**Goal:** Increase photo presence site-wide by adding at least one additional image to every routed page, using existing hero-image styling and cache-busting behavior.
 
 **Planned changes:**
-- Implement the “Doctor Suites” page content and layout in `frontend/src/pages/DoctorsPage.tsx` using existing site components/patterns, with all user-facing text in English and a clear CTA (e.g., to /appointments or /contact).
-- Add a new route for “Doctor Suites” in `frontend/src/App.tsx` and add a “Doctor Suites” link to the main header navigation in `frontend/src/components/layout/SiteHeader.tsx`, including consistent active-link styling on desktop and mobile.
-- Add SEO metadata for the Doctor Suites route in `frontend/src/config/seo.ts` and include the route in `frontend/public/sitemap.xml` under the existing domain.
+- Add one additional image section (e.g., secondary banner, supporting image block, or small grid) to each route in `frontend/src/App.tsx`: `/`, `/about`, `/services`, `/contact`, `/appointments`, `/emergency`, `/doctor-suites`, `/domain-draft`, `/decommissioned`, and the `*` not-found route.
+- Ensure all newly added images are loaded from `/assets/generated/...` and use the existing cache-busting approach (via `PageHeroImage` or `withCacheBust` for non-hero images).
+- Update `/domain-draft` so the unauthenticated (login-required) view also displays a generated image with meaningful English alt text.
+- Add the newly generated image files as static assets under `frontend/public/assets/generated` and reference each at least once across the pages.
 
-**User-visible outcome:** Users can navigate to a new “Doctor Suites” page from the header, read structured information about suites/services, and use a CTA to book an appointment or contact the clinic; the page has correct title/description metadata and is included in the sitemap.
+**User-visible outcome:** Every page across the site displays more photos/illustrations (including the domain draft login-required view), with responsive styling consistent with the existing hero imagery.

@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T04:45:25.160Z",
+  "generatedAt": "2026-02-14T05:38:23.765Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,39 +12,91 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
+        "summary": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/DoctorsPage.tsx"
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/AboutPage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/AppointmentRequestPage.tsx",
+          "frontend/src/pages/EmergencyPage.tsx",
+          "frontend/src/pages/DoctorsPage.tsx",
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/pages/DecommissionedPage.tsx",
+          "frontend/src/pages/NotFoundPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DoctorsPage.tsx"
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/AboutPage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/AppointmentRequestPage.tsx",
+          "frontend/src/pages/EmergencyPage.tsx",
+          "frontend/src/pages/DoctorsPage.tsx",
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/pages/DecommissionedPage.tsx",
+          "frontend/src/pages/NotFoundPage.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
+        "summary": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/pages/DomainDraftPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/SiteHeader.tsx"
+          "frontend/src/pages/DomainDraftPage.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Update SEO metadata and sitemap to include the Doctor Suites route.",
+        "summary": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/config/seo.ts",
-          "frontend/public/sitemap.xml"
+          "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
+          "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
+          "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
+          "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
+          "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
+          "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
+          "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/AppointmentRequestPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/EmergencyPage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/DoctorsPage.tsx",
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/pages/DecommissionedPage.tsx",
+          "frontend/src/pages/NotFoundPage.tsx",
+          "frontend/src/pages/AboutPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/config/seo.ts",
-          "frontend/public/sitemap.xml"
+          "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
+          "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
+          "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
+          "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
+          "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
+          "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
+          "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
+          "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/AppointmentRequestPage.tsx",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/EmergencyPage.tsx",
+          "frontend/src/pages/ServicesPage.tsx",
+          "frontend/src/pages/DoctorsPage.tsx",
+          "frontend/src/pages/DomainDraftPage.tsx",
+          "frontend/src/pages/DecommissionedPage.tsx",
+          "frontend/src/pages/NotFoundPage.tsx",
+          "frontend/src/pages/AboutPage.tsx"
         ]
       }
     ]
@@ -54,13 +106,26 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/sitemap.xml",
-    "frontend/src/App.tsx",
-    "frontend/src/components/layout/SiteHeader.tsx",
-    "frontend/src/config/seo.ts",
-    "frontend/src/index.css",
+    "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
+    "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
+    "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
+    "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
+    "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
+    "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
+    "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
+    "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
+    "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
+    "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/AppointmentRequestPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/DecommissionedPage.tsx",
     "frontend/src/pages/DoctorsPage.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/pages/DomainDraftPage.tsx",
+    "frontend/src/pages/EmergencyPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/NotFoundPage.tsx",
+    "frontend/src/pages/ServicesPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
