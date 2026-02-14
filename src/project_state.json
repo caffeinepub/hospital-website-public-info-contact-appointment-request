@@ -1,35 +1,25 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website project: user wants more photos across all pages (starting with Doctors page hero image already present).",
-  "architectural_notes": [
-    "Doctors page currently uses hero image at /assets/generated/doctors-team.dim_1600x900.png."
-  ],
+  "summary": "Project includes a request to create a new logo.",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Hospital facilities photo collage (home-facilities-collage.dim_1600x900.png)\n- Doctors with patient in consultation room (appointments-consult-room.dim_1600x900.png)\n- Reception/front-desk staff helping a visitor (contact-reception.dim_1600x900.png)\n- Ambulance arriving at emergency entrance (emergency-ambulance.dim_1600x900.png)\n- Medical services equipment close-up collage (services-equipment-collage.dim_1600x900.png)\n- Group portrait of doctors in corridor (doctors-portraits-collage.dim_1600x900.png)\n- Administrative office desk with laptop and documents (domain-admin-desk.dim_1600x900.png)\n- Maintenance tools and caution signage illustration (decommissioned-tools-illustration.dim_1200x600.png)\n- Map/compass style illustration for navigation help (notfound-navigation-illustration.dim_1200x600.png)\n- Hospital ward corridor wide shot (about-facilities-corridor.dim_1600x900.png)",
+  "imageRequirements": "## Edit Images\n- Redesign the logo with a fresh look while keeping a clean, healthcare-appropriate style (mahalaxmi-health-care-logo.dim_512x512.png > mahalaxmi-health-care-logo.dim_512x512.png)\n- Update the 32x32 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_32x32.png > mahalaxmi-health-care-favicon.dim_32x32.png)\n- Update the 192x192 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_192x192.png > mahalaxmi-health-care-favicon.dim_192x192.png)\n- Update the 180x180 Apple touch icon to match the new logo (mahalaxmi-health-care-apple-touch-icon.dim_180x180.png > mahalaxmi-health-care-apple-touch-icon.dim_180x180.png)",
   "existing_features": [
     {
-      "id": "feature-add-additional-photo-content-to-every-routed-page-so-that-each-page-contains-at-least-one-extra-image-beyond-what-it-currently-shows-e-g-a-secondary-banner-image-a-small-photo-grid-or-a-supporting-image-section-using-the-app-s-existing-pageheroimage-styling-and-generated-asset-cache-busting-behavior",
-      "title": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
+      "id": "feature-create-a-new-brand-logo-for-mahalaxmi-health-care-and-update-the-app-s-existing-logo-assets-so-the-new-logo-appears-in-the-site-header-and-footer",
+      "title": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-domain-draft-page-so-that-the-unauthenticated-view-when-login-is-required-also-includes-a-photo-illustration-similar-to-other-pages-rather-than-showing-only-text-alerts",
-      "title": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
+      "id": "feature-update-the-site-favicon-and-apple-touch-icon-assets-to-match-the-new-logo-keeping-the-filenames-referenced-by-the-html-head-so-browsers-pick-up-the-new-branding-without-code-changes",
+      "title": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
       "reqIds": [
         "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-newly-generated-image-files-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-appropriate-pages-to-increase-photo-presence-site-wide",
-      "title": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
-      "reqIds": [
-        "REQ-3"
       ],
       "version": 1
     }
@@ -37,12 +27,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add photos/images to every page (increase visual content site-wide)",
+      "summary": "Create a new logo for the project",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Add more photos on every page",
+  "projectName": "Create and apply a new logo set (header/footer + favicons)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

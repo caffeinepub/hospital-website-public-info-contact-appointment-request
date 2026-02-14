@@ -1,102 +1,39 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T05:38:23.765Z",
+  "generatedAt": "2026-02-14T06:44:17.724Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
+        "summary": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/AboutPage.tsx",
-          "frontend/src/pages/ServicesPage.tsx",
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/AppointmentRequestPage.tsx",
-          "frontend/src/pages/EmergencyPage.tsx",
-          "frontend/src/pages/DoctorsPage.tsx",
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/pages/DecommissionedPage.tsx",
-          "frontend/src/pages/NotFoundPage.tsx"
+          "frontend/public/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/AboutPage.tsx",
-          "frontend/src/pages/ServicesPage.tsx",
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/AppointmentRequestPage.tsx",
-          "frontend/src/pages/EmergencyPage.tsx",
-          "frontend/src/pages/DoctorsPage.tsx",
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/pages/DecommissionedPage.tsx",
-          "frontend/src/pages/NotFoundPage.tsx"
+          "frontend/public/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
+        "summary": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx"
+          "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_32x32.png",
+          "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_192x192.png",
+          "frontend/public/assets/generated/mahalaxmi-health-care-apple-touch-icon.dim_180x180.png"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DomainDraftPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
-          "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
-          "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
-          "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
-          "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
-          "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
-          "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/AppointmentRequestPage.tsx",
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/EmergencyPage.tsx",
-          "frontend/src/pages/ServicesPage.tsx",
-          "frontend/src/pages/DoctorsPage.tsx",
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/pages/DecommissionedPage.tsx",
-          "frontend/src/pages/NotFoundPage.tsx",
-          "frontend/src/pages/AboutPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
-          "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
-          "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
-          "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
-          "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
-          "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
-          "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
-          "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/AppointmentRequestPage.tsx",
-          "frontend/src/pages/ContactPage.tsx",
-          "frontend/src/pages/EmergencyPage.tsx",
-          "frontend/src/pages/ServicesPage.tsx",
-          "frontend/src/pages/DoctorsPage.tsx",
-          "frontend/src/pages/DomainDraftPage.tsx",
-          "frontend/src/pages/DecommissionedPage.tsx",
-          "frontend/src/pages/NotFoundPage.tsx",
-          "frontend/src/pages/AboutPage.tsx"
+          "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_32x32.png",
+          "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_192x192.png",
+          "frontend/public/assets/generated/mahalaxmi-health-care-apple-touch-icon.dim_180x180.png"
         ]
       }
     ]
@@ -104,28 +41,11 @@
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
-    "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
-    "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
-    "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
-    "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
-    "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
-    "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
-    "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
-    "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
-    "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
-    "frontend/src/pages/AboutPage.tsx",
-    "frontend/src/pages/AppointmentRequestPage.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/DecommissionedPage.tsx",
-    "frontend/src/pages/DoctorsPage.tsx",
-    "frontend/src/pages/DomainDraftPage.tsx",
-    "frontend/src/pages/EmergencyPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/NotFoundPage.tsx",
-    "frontend/src/pages/ServicesPage.tsx",
+    "frontend/public/assets/generated/mahalaxmi-health-care-apple-touch-icon.dim_180x180.png",
+    "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_192x192.png",
+    "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_32x32.png",
+    "frontend/public/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

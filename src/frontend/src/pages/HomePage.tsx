@@ -43,8 +43,8 @@ export default function HomePage() {
                     Trusted Healthcare Provider
                   </span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-                  Your Health,<br />Our Priority
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
+                  Your Health,<br />Our Priority<br />24/7
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   Mahalaxmi Health Care provides comprehensive medical services with compassion, expertise, and state-of-the-art facilities.

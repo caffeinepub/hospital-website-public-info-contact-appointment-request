@@ -1,86 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Add more photos on every page",
+  "title": "Create and apply a new logo set (header/footer + favicons)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
+      "text": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
+          "CREAT A NEW LOGO"
         ]
       },
       "acceptanceCriteria": [
-        "Each route in frontend/src/App.tsx (/, /about, /services, /contact, /appointments, /emergency, /doctor-suites, /domain-draft, /decommissioned, and the * not-found route) renders at least one additional <img>/<PageHeroImage> compared to the current implementation.",
-        "All newly-added images load from /assets/generated/... and use the existing cache-busting approach (directly via PageHeroImage or via withCacheBust for non-PageHero images).",
-        "All new images include meaningful English alt text.",
-        "Pages remain responsive on mobile and desktop; images do not overflow their containers and maintain rounded/shadow styling consistent with existing hero imagery."
+        "A new logo design is produced and saved as a generated static asset in frontend/public/assets/generated.",
+        "The Site Header uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png for the brand mark (as in frontend/src/components/layout/SiteHeader.tsx).",
+        "The Site Footer uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png (with cache-busting) and renders without triggering the logo error state (as in frontend/src/components/layout/SiteFooter.tsx)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
+      "text": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
+          "CREAT A NEW LOGO"
         ]
       },
       "acceptanceCriteria": [
-        "When not authenticated, /domain-draft includes an image component (e.g., PageHeroImage) using a generated asset and English alt text.",
-        "When authenticated, the existing hero image remains and the page also satisfies the “additional photo content” requirement."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "YES I WNT MORE PHOTO IN EVERY SINGEL PAGE"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All image filenames listed in imageRequirements.required exist under frontend/public/assets/generated.",
-        "Each listed new image is referenced by at least one page component.",
-        "No backend endpoints are added/changed to serve images."
+        "The following icon files exist in frontend/public/assets/generated and visually match the new logo: mahalaxmi-health-care-favicon.dim_32x32.png, mahalaxmi-health-care-favicon.dim_192x192.png, mahalaxmi-health-care-apple-touch-icon.dim_180x180.png.",
+        "frontend/index.html continues to reference these exact filenames, and the icons display correctly in the browser tab and on mobile home screen shortcuts (where supported)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or anything in frontend/src/components/ui (compose these components instead).",
-    "Keep the backend as a single Motoko actor (no additional backend services).",
-    "Store and serve images as frontend static assets (do not route images through the backend)."
+    "Do not edit files under frontend/src/components/ui (read-only).",
+    "Do not modify immutable hook files (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Do not add new backend services or external dependencies; this change should be implemented via static assets and existing frontend references."
   ],
   "nonGoals": [
-    "Implementing user-uploaded photos or an admin photo management CMS.",
-    "Adding third-party image hosting/CDN integrations.",
-    "Changing routing structure or adding new routes beyond adding images to existing routes."
+    "No changes to backend (Motoko) logic or data models.",
+    "No changes to site navigation, page content, or SEO text beyond swapping the logo/icon images."
   ],
   "imageRequirements": {
-    "required": [
-      "Hospital facilities photo collage (home-facilities-collage.dim_1600x900.png)",
-      "Doctors with patient in consultation room (appointments-consult-room.dim_1600x900.png)",
-      "Reception/front-desk staff helping a visitor (contact-reception.dim_1600x900.png)",
-      "Ambulance arriving at emergency entrance (emergency-ambulance.dim_1600x900.png)",
-      "Medical services equipment close-up collage (services-equipment-collage.dim_1600x900.png)",
-      "Group portrait of doctors in corridor (doctors-portraits-collage.dim_1600x900.png)",
-      "Administrative office desk with laptop and documents (domain-admin-desk.dim_1600x900.png)",
-      "Maintenance tools and caution signage illustration (decommissioned-tools-illustration.dim_1200x600.png)",
-      "Map/compass style illustration for navigation help (notfound-navigation-illustration.dim_1200x600.png)",
-      "Hospital ward corridor wide shot (about-facilities-corridor.dim_1600x900.png)"
-    ],
-    "edits": []
+    "required": [],
+    "edits": [
+      "Redesign the logo with a fresh look while keeping a clean, healthcare-appropriate style (mahalaxmi-health-care-logo.dim_512x512.png > mahalaxmi-health-care-logo.dim_512x512.png)",
+      "Update the 32x32 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_32x32.png > mahalaxmi-health-care-favicon.dim_32x32.png)",
+      "Update the 192x192 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_192x192.png > mahalaxmi-health-care-favicon.dim_192x192.png)",
+      "Update the 180x180 Apple touch icon to match the new logo (mahalaxmi-health-care-apple-touch-icon.dim_180x180.png > mahalaxmi-health-care-apple-touch-icon.dim_180x180.png)"
+    ]
   }
 }

@@ -1,193 +1,46 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add additional generated photos to every routed page",
+  "title": "Apply refreshed Mahalaxmi Health Care logo across header/footer and icons",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add at least one additional generated image to every routed page using existing PageHeroImage styling and cache-busting behavior.",
+      "summary": "Refresh the Mahalaxmi Health Care brand logo and ensure the header/footer render it from the existing generated asset path.",
       "acceptanceCriteria": [
-        "Each route in frontend/src/App.tsx (/, /about, /services, /contact, /appointments, /emergency, /doctor-suites, /domain-draft, /decommissioned, and the * not-found route) renders at least one additional <img>/<PageHeroImage> compared to the current implementation.",
-        "All newly-added images load from /assets/generated/... and use the existing cache-busting approach (directly via PageHeroImage or via withCacheBust for non-PageHero images).",
-        "All new images include meaningful English alt text.",
-        "Pages remain responsive on mobile and desktop; images do not overflow their containers and maintain rounded/shadow styling consistent with existing hero imagery."
+        "A new logo design is produced and saved as a generated static asset in frontend/public/assets/generated.",
+        "The Site Header uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png for the brand mark (as in frontend/src/components/layout/SiteHeader.tsx).",
+        "The Site Footer uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png (with cache-busting) and renders without triggering the logo error state (as in frontend/src/components/layout/SiteFooter.tsx)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HomePage.tsx",
+          "path": "frontend/public/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png",
           "operation": "modify",
-          "description": "Add an additional photo section (e.g., a small supporting image block) using PageHeroImage and the generated asset frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png; ensure meaningful English alt text and responsive rounded/shadow styling."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png; keep layout responsive and consistent with existing hero imagery styling."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png; include meaningful English alt text and maintain existing rounded/shadow styling."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/contact-reception.dim_1600x900.png (e.g., near the contact info or above the form); ensure responsive sizing and meaningful English alt text."
-        },
-        {
-          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png; ensure cache-busting via PageHeroImage and use meaningful English alt text."
-        },
-        {
-          "path": "frontend/src/pages/EmergencyPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png; ensure responsive layout and consistent rounded/shadow styling."
-        },
-        {
-          "path": "frontend/src/pages/DoctorsPage.tsx",
-          "operation": "modify",
-          "description": "Add an additional supporting image section using PageHeroImage with frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png; keep spacing consistent with existing sections and include meaningful English alt text."
-        },
-        {
-          "path": "frontend/src/pages/DomainDraftPage.tsx",
-          "operation": "modify",
-          "description": "Ensure the authenticated Domain Draft view includes at least one additional supporting image beyond the existing hero (use PageHeroImage with frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png or another generated asset) while maintaining existing behavior."
-        },
-        {
-          "path": "frontend/src/pages/DecommissionedPage.tsx",
-          "operation": "modify",
-          "description": "Add a second illustration/photo block (in addition to the current PageHeroImage) using PageHeroImage with frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png; keep centered layout responsive and consistent."
-        },
-        {
-          "path": "frontend/src/pages/NotFoundPage.tsx",
-          "operation": "modify",
-          "description": "Add a second illustration/photo block (in addition to the current PageHeroImage) using PageHeroImage with frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png; ensure meaningful English alt text and responsive sizing."
+          "description": "Replace the existing generated logo asset with the redesigned, clean healthcare-appropriate logo while keeping the exact filename and 512x512 dimensions so existing header/footer references continue to work."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add a generated image to the Domain Draft unauthenticated view so it matches other pages’ photo presence.",
+      "summary": "Update favicon and Apple touch icons to match the new logo while preserving the exact filenames referenced by the HTML head.",
       "acceptanceCriteria": [
-        "When not authenticated, /domain-draft includes an image component (e.g., PageHeroImage) using a generated asset and English alt text.",
-        "When authenticated, the existing hero image remains and the page also satisfies the “additional photo content” requirement."
+        "The following icon files exist in frontend/public/assets/generated and visually match the new logo: mahalaxmi-health-care-favicon.dim_32x32.png, mahalaxmi-health-care-favicon.dim_192x192.png, mahalaxmi-health-care-apple-touch-icon.dim_180x180.png.",
+        "frontend/index.html continues to reference these exact filenames, and the icons display correctly in the browser tab and on mobile home screen shortcuts (where supported)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/DomainDraftPage.tsx",
+          "path": "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_32x32.png",
           "operation": "modify",
-          "description": "Update the unauthenticated (not logged in) rendering branch to include a PageHeroImage (or equivalent) using frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png with meaningful English alt text; keep the existing alert/text content and ensure the view remains responsive."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Add newly generated images as static assets under frontend/public/assets/generated and reference each in the UI.",
-      "acceptanceCriteria": [
-        "All image filenames listed in imageRequirements.required exist under frontend/public/assets/generated.",
-        "Each listed new image is referenced by at least one page component.",
-        "No backend endpoints are added/changed to serve images."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Hospital facilities photo collage' at frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png."
+          "description": "Replace the 32x32 favicon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
         },
         {
-          "path": "frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Doctors with patient in consultation room' at frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/contact-reception.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Reception/front-desk staff helping a visitor' at frontend/public/assets/generated/contact-reception.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Ambulance arriving at emergency entrance' at frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Medical services equipment close-up collage' at frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Group portrait of doctors in corridor' at frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Administrative office desk with laptop and documents' at frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Maintenance tools and caution signage illustration' at frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Map/compass style illustration for navigation help' at frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png",
-          "operation": "create",
-          "description": "Add the generated static asset file 'Hospital ward corridor wide shot' at frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
+          "path": "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_192x192.png",
           "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/home-facilities-collage.dim_1600x900.png in the UI (via PageHeroImage or withCacheBust for a plain <img>) to ensure it is actually used."
+          "description": "Replace the 192x192 favicon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
         },
         {
-          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
+          "path": "frontend/public/assets/generated/mahalaxmi-health-care-apple-touch-icon.dim_180x180.png",
           "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/appointments-consult-room.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/contact-reception.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/EmergencyPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/emergency-ambulance.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/services-equipment-collage.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/DoctorsPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/DomainDraftPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/domain-admin-desk.dim_1600x900.png in both unauthenticated and authenticated views as applicable so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/DecommissionedPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/decommissioned-tools-illustration.dim_1200x600.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/NotFoundPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/notfound-navigation-illustration.dim_1200x600.png in the UI so the new asset is used and cache-busted via PageHeroImage."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Reference frontend/public/assets/generated/about-facilities-corridor.dim_1600x900.png in the UI so the new asset is used and cache-busted via PageHeroImage."
+          "description": "Replace the 180x180 Apple touch icon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
         }
       ]
     }

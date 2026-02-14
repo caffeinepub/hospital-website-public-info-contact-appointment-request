@@ -2,20 +2,9 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-additional-photo-content-to-every-routed-page-so-that-each-page-contains-at-least-one-extra-image-beyond-what-it-currently-shows-e-g-a-secondary-banner-image-a-small-photo-grid-or-a-supporting-image-section-using-the-app-s-existing-pageheroimage-styling-and-generated-asset-cache-busting-behavior",
-      "featureTitle": "Add additional photo content to every routed page so that each page contains at least one extra image beyond what it currently shows (e.g., a secondary banner image, a small photo grid, or a supporting image section), using the app’s existing PageHeroImage styling and generated-asset cache-busting behavior.",
-      "files": [
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/AppointmentRequestPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/DecommissionedPage.tsx",
-        "frontend/src/pages/DoctorsPage.tsx",
-        "frontend/src/pages/DomainDraftPage.tsx",
-        "frontend/src/pages/EmergencyPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/NotFoundPage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
-      ],
+      "featureId": "feature-create-a-new-brand-logo-for-mahalaxmi-health-care-and-update-the-app-s-existing-logo-assets-so-the-new-logo-appears-in-the-site-header-and-footer",
+      "featureTitle": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
+      "files": [],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -30,11 +19,9 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-domain-draft-page-so-that-the-unauthenticated-view-when-login-is-required-also-includes-a-photo-illustration-similar-to-other-pages-rather-than-showing-only-text-alerts",
-      "featureTitle": "Update the Domain Draft page so that the unauthenticated view (when login is required) also includes a photo/illustration (similar to other pages), rather than showing only text/alerts.",
-      "files": [
-        "frontend/src/pages/DomainDraftPage.tsx"
-      ],
+      "featureId": "feature-update-the-site-favicon-and-apple-touch-icon-assets-to-match-the-new-logo-keeping-the-filenames-referenced-by-the-html-head-so-browsers-pick-up-the-new-branding-without-code-changes",
+      "featureTitle": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
+      "files": [],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -45,34 +32,6 @@
       ],
       "testIds": [
         "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-the-newly-generated-image-files-as-static-assets-under-frontend-public-assets-generated-and-render-them-in-the-appropriate-pages-to-increase-photo-presence-site-wide",
-      "featureTitle": "Add the newly generated image files as static assets under frontend/public/assets/generated and render them in the appropriate pages to increase photo presence site-wide.",
-      "files": [
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/AppointmentRequestPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/DecommissionedPage.tsx",
-        "frontend/src/pages/DoctorsPage.tsx",
-        "frontend/src/pages/DomainDraftPage.tsx",
-        "frontend/src/pages/EmergencyPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/NotFoundPage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
       ],
       "confidence": "high"
     }

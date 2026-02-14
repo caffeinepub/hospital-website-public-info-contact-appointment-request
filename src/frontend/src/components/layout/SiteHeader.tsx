@@ -34,19 +34,19 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 w-full bg-card shadow-sm">
       {/* Top bar with emergency contact */}
       <div className="bg-primary text-primary-foreground">
-        <div className="container flex h-10 items-center justify-between text-sm">
+        <div className="container flex flex-wrap h-auto min-h-10 items-center justify-between py-2 gap-2">
           <div className="flex items-center gap-4">
             <a 
               href={emergencyPhoneTel}
               className="flex items-center gap-2 hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-sm px-1"
               aria-label={`Call emergency number ${emergencyPhone}`}
             >
-              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              <span className="font-medium">Emergency: {emergencyPhone}</span>
+              <Phone className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
+              <span className="font-medium text-sm">Emergency: {emergencyPhone}</span>
             </a>
           </div>
-          <div className="hidden md:flex items-center gap-4">
-            <span className="text-primary-foreground/90 font-bold">24/7 Emergency Services Available</span>
+          <div className="flex items-center gap-4">
+            <span className="text-primary-foreground/90 font-bold text-base md:text-2xl">24/7 Emergency Services Available</span>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function SiteHeader() {
                 key={link.path}
                 variant={currentPath === link.path ? 'default' : 'ghost'}
                 onClick={() => handleNavigation(link.path)}
-                className="font-medium"
+                className="text-sm font-medium"
                 aria-current={currentPath === link.path ? 'page' : undefined}
               >
                 {link.label}
@@ -90,18 +90,13 @@ export default function SiteHeader() {
             ))}
             <Button
               variant="outline"
+              size="sm"
               asChild
               className="ml-2"
             >
-              <a
-                href={googleSearchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Search className="h-4 w-4" aria-hidden="true" />
-                <span className="hidden xl:inline">Search on Google</span>
-                <span className="xl:hidden">Search</span>
+              <a href={googleSearchUrl} target="_blank" rel="noopener noreferrer">
+                <Search className="h-4 w-4 mr-2" aria-hidden="true" />
+                Find Us
               </a>
             </Button>
           </nav>
@@ -110,13 +105,17 @@ export default function SiteHeader() {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden flex-shrink-0"
+            className="lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-navigation"
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" aria-hidden="true" />
+            ) : (
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            )}
           </Button>
         </div>
       </div>
@@ -124,8 +123,8 @@ export default function SiteHeader() {
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div
-          id="mobile-navigation"
-          className="lg:hidden border-t border-border/40 bg-card shadow-medium"
+          id="mobile-menu"
+          className="lg:hidden border-b border-border/40 bg-card"
         >
           <nav className="container py-4 flex flex-col gap-2" aria-label="Mobile navigation">
             {navLinks.map((link) => (
@@ -133,7 +132,7 @@ export default function SiteHeader() {
                 key={link.path}
                 variant={currentPath === link.path ? 'default' : 'ghost'}
                 onClick={() => handleNavigation(link.path)}
-                className="justify-start font-medium w-full"
+                className="justify-start text-base font-medium"
                 aria-current={currentPath === link.path ? 'page' : undefined}
               >
                 {link.label}
@@ -142,16 +141,11 @@ export default function SiteHeader() {
             <Button
               variant="outline"
               asChild
-              className="justify-start w-full"
+              className="justify-start mt-2"
             >
-              <a
-                href={googleSearchUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Search className="h-4 w-4" aria-hidden="true" />
-                Search on Google
+              <a href={googleSearchUrl} target="_blank" rel="noopener noreferrer">
+                <Search className="h-4 w-4 mr-2" aria-hidden="true" />
+                Find Us on Google
               </a>
             </Button>
           </nav>

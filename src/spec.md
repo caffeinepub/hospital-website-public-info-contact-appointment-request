@@ -1,12 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Increase photo presence site-wide by adding at least one additional image to every routed page, using existing hero-image styling and cache-busting behavior.
+**Goal:** Refresh the “Mahalaxmi Health Care” branding by applying a newly redesigned logo across the site header/footer and updating the favicon + Apple touch icons to match.
 
 **Planned changes:**
-- Add one additional image section (e.g., secondary banner, supporting image block, or small grid) to each route in `frontend/src/App.tsx`: `/`, `/about`, `/services`, `/contact`, `/appointments`, `/emergency`, `/doctor-suites`, `/domain-draft`, `/decommissioned`, and the `*` not-found route.
-- Ensure all newly added images are loaded from `/assets/generated/...` and use the existing cache-busting approach (via `PageHeroImage` or `withCacheBust` for non-hero images).
-- Update `/domain-draft` so the unauthenticated (login-required) view also displays a generated image with meaningful English alt text.
-- Add the newly generated image files as static assets under `frontend/public/assets/generated` and reference each at least once across the pages.
+- Update the existing generated logo asset so the Site Header and Site Footer display the new “Mahalaxmi Health Care” logo.
+- Update the existing generated favicon (32x32, 192x192) and Apple touch icon (180x180) files so they visually match the new logo while keeping the same filenames referenced by the HTML.
 
-**User-visible outcome:** Every page across the site displays more photos/illustrations (including the domain draft login-required view), with responsive styling consistent with the existing hero imagery.
+**User-visible outcome:** The site shows the new “Mahalaxmi Health Care” logo in the header and footer, and the browser tab/mobile shortcut icons reflect the updated branding.
