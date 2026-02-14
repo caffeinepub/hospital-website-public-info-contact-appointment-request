@@ -2,24 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-improve-overall-ui-quality-across-all-public-pages-home-about-services-emergency-contact-appointments-and-404-by-applying-consistent-spacing-typography-scale-section-layout-and-component-styling-cards-buttons-icons-to-achieve-a-polished-modern-hospital-website-look-and-feel-without-changing-the-meaning-of-existing-content",
-      "featureTitle": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
+      "featureId": "feature-implement-a-dedicated-doctor-suites-page-using-the-existing-frontend-src-pages-doctorspage-tsx-with-polished-hospital-quality-layout-and-english-user-facing-text-the-page-must-clearly-present-doctor-suites-information-in-a-structured-way-e-g-suite-department-name-brief-description-hours-availability-and-a-clear-call-to-action-to-book-an-appointment-or-contact-the-clinic",
+      "featureTitle": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
       "files": [
-        "frontend/src/components/forms/AppointmentRequestForm.tsx",
-        "frontend/src/components/forms/ContactForm.tsx",
-        "frontend/src/components/layout/PageHero.tsx",
-        "frontend/src/components/layout/Section.tsx",
-        "frontend/src/components/layout/SiteFooter.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/AppointmentRequestPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/EmergencyPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/NotFoundPage.tsx",
-        "frontend/src/pages/ServicesPage.tsx",
-        "frontend/tailwind.config.js"
+        "frontend/src/pages/DoctorsPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -35,18 +21,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-perform-a-responsive-design-pass-to-ensure-the-site-looks-high-quality-on-mobile-tablet-and-desktop-including-navigation-header-hero-sections-multi-column-grids-and-forms-preventing-overflow-cramped-layouts-and-inconsistent-section-padding",
-      "featureTitle": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
+      "featureId": "feature-add-routing-and-navigation-for-the-doctor-suites-page-so-users-can-reach-it-from-the-main-header-navigation",
+      "featureTitle": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
       "files": [
-        "frontend/src/components/forms/AppointmentRequestForm.tsx",
-        "frontend/src/components/forms/ContactForm.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/AppointmentRequestPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/SiteHeader.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -62,19 +41,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-improve-accessibility-and-perceived-quality-by-ensuring-interactive-elements-have-visible-focus-styles-sufficient-contrast-and-appropriate-semantic-structure-headings-hierarchy-labels-button-anchor-usage-across-the-site",
-      "featureTitle": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
+      "featureId": "feature-update-seo-metadata-and-sitemap-to-include-the-doctor-suites-route",
+      "featureTitle": "Update SEO metadata and sitemap to include the Doctor Suites route.",
       "files": [
-        "frontend/src/components/forms/AppointmentRequestForm.tsx",
-        "frontend/src/components/forms/ContactForm.tsx",
-        "frontend/src/components/layout/SiteHeader.tsx",
-        "frontend/src/components/layout/SiteLayout.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/EmergencyPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
+        "frontend/public/sitemap.xml",
+        "frontend/src/config/seo.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -86,28 +57,6 @@
       ],
       "testIds": [
         "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-high-quality-consistent-medical-themed-imagery-as-static-assets-and-integrate-them-into-the-existing-layout-where-appropriate-without-adding-new-product-features-ensuring-images-are-optimized-and-look-sharp-on-high-dpi-displays",
-      "featureTitle": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
-      "files": [
-        "frontend/src/components/layout/PageHero.tsx",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ServicesPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
       ],
       "confidence": "high"
     }

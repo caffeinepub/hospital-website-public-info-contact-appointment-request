@@ -1,41 +1,37 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Build a high-quality hospital website.",
-  "architectural_notes": [],
-  "known_issues": [],
+  "summary": "Hospital/clinic website project deployed on Internet Computer (icp0.io) with requests to adjust page content/design (e.g., doctor suites).",
+  "architectural_notes": [
+    "Site is deployed to the Internet Computer and accessible via an icp0.io canister URL (https://<canister-id>.icp0.io)."
+  ],
+  "known_issues": [
+    "Users may see 'Error 400: Canister ID Not Resolved' if they open an incorrect/missing canister URL.",
+    "Draft deployments can expire and require rebuilding/redeploying."
+  ],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Wide hospital reception/modern facility banner illustration/photo style (facility-banner.dim_1600x600.png)\n- Medical team/doctor consultation hero-style image (doctors-hero.dim_1600x700.png)\n- Abstract medical pattern/texture background suitable for subtle section backdrops (medical-pattern.dim_1800x1200.png)",
   "existing_features": [
     {
-      "id": "feature-improve-overall-ui-quality-across-all-public-pages-home-about-services-emergency-contact-appointments-and-404-by-applying-consistent-spacing-typography-scale-section-layout-and-component-styling-cards-buttons-icons-to-achieve-a-polished-modern-hospital-website-look-and-feel-without-changing-the-meaning-of-existing-content",
-      "title": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
+      "id": "feature-implement-a-dedicated-doctor-suites-page-using-the-existing-frontend-src-pages-doctorspage-tsx-with-polished-hospital-quality-layout-and-english-user-facing-text-the-page-must-clearly-present-doctor-suites-information-in-a-structured-way-e-g-suite-department-name-brief-description-hours-availability-and-a-clear-call-to-action-to-book-an-appointment-or-contact-the-clinic",
+      "title": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-perform-a-responsive-design-pass-to-ensure-the-site-looks-high-quality-on-mobile-tablet-and-desktop-including-navigation-header-hero-sections-multi-column-grids-and-forms-preventing-overflow-cramped-layouts-and-inconsistent-section-padding",
-      "title": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
+      "id": "feature-add-routing-and-navigation-for-the-doctor-suites-page-so-users-can-reach-it-from-the-main-header-navigation",
+      "title": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-improve-accessibility-and-perceived-quality-by-ensuring-interactive-elements-have-visible-focus-styles-sufficient-contrast-and-appropriate-semantic-structure-headings-hierarchy-labels-button-anchor-usage-across-the-site",
-      "title": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
+      "id": "feature-update-seo-metadata-and-sitemap-to-include-the-doctor-suites-route",
+      "title": "Update SEO metadata and sitemap to include the Doctor Suites route.",
       "reqIds": [
         "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-high-quality-consistent-medical-themed-imagery-as-static-assets-and-integrate-them-into-the-existing-layout-where-appropriate-without-adding-new-product-features-ensuring-images-are-optimized-and-look-sharp-on-high-dpi-displays",
-      "title": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
-      "reqIds": [
-        "REQ-4"
       ],
       "version": 1
     }
@@ -43,12 +39,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create a high-quality hospital website (design and overall polish).",
+      "summary": "Update/modify the 'Doctor Suites' section/content on the website",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Improve hospital website quality and visual polish",
+  "projectName": "Update the Doctor Suites section/page",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

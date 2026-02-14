@@ -1,254 +1,65 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Polish and modernize hospital website UI, responsiveness, accessibility, and imagery",
+  "title": "Doctor Suites page, navigation, and SEO updates",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Unify visual system and component styling across all public pages without changing content meaning.",
+      "summary": "Implement a polished, responsive Doctor Suites page with structured suite details and internal CTAs.",
       "acceptanceCriteria": [
-        "All pages share a consistent visual system (typography, spacing, shadows, borders, radii) with no obvious mismatched styles between sections/components.",
-        "Buttons, cards, and form elements have consistent hover/active/focus states and alignment across pages.",
-        "No content is removed; only presentation/layout/styling changes are made."
+        "`frontend/src/pages/DoctorsPage.tsx` is no longer empty and renders a complete \"Doctor Suites\" page.",
+        "All user-facing text on the page is in English.",
+        "The page uses existing design patterns/components (e.g., `PageHero`, `Section`, `Card`, `Button`) to match the site’s current look and feel.",
+        "The page includes at least one CTA that routes to an existing internal page (e.g., /appointments or /contact).",
+        "Layout is responsive (mobile/tablet/desktop) and does not overflow horizontally."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/layout/PageHero.tsx",
-          "operation": "create",
-          "description": "Create a reusable PageHero layout component to standardize page hero sections (title, subtitle, optional image, consistent spacing/typography). Use existing shadcn-ui components where applicable (e.g., Card, Button) to ensure consistent styling; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/layout/Section.tsx",
-          "operation": "create",
-          "description": "Create a small reusable Section wrapper (container + consistent vertical spacing + optional muted background variants) to reduce one-off spacing differences between pages."
-        },
-        {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/DoctorsPage.tsx",
           "operation": "modify",
-          "description": "Refine global typography scale, base element spacing, and shared component affordances (consistent shadows, radii, borders) to elevate overall polish site-wide. Ensure global styles do not change meaning of existing content."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Adjust/extend Tailwind theme tokens used by pages (e.g., container padding defaults, shadow scale, typographic sizes) to support consistent layout and modern visual rhythm across the site."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteHeader.tsx",
-          "operation": "modify",
-          "description": "Align header spacing, button variants, and nav item styling with the global visual system; keep behavior unchanged. Continue composing existing shadcn-ui Button component (do not edit files under frontend/src/components/ui); verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Tune footer typography/spacing and link/button focus/hover styling to match the unified design system; keep text meaning intact."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Refactor sections to use the shared PageHero/Section patterns and consistent Card/Button styling (compose existing shadcn-ui Card/Button components; verify the component's usage instructions before implementing). Preserve all existing content meaning while improving layout consistency."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Standardize hero + section spacing and card styling via PageHero/Section while keeping all copy and structure meaning unchanged. Continue composing shadcn-ui Card components; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Normalize hero + grid + CTA section styling to match the site-wide system (consistent card headers, icon sizing, and spacing). Continue composing shadcn-ui components (Card/Button); verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/EmergencyPage.tsx",
-          "operation": "modify",
-          "description": "Bring emergency page cards/CTA styling in line with the unified system (consistent spacing, card hover, typographic hierarchy), keeping emergency emphasis and content meaning intact. Continue composing shadcn-ui components; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Standardize hero and contact-info card grid styling, ensuring consistent card padding, icon sizing, and typography. Continue composing shadcn-ui Card components; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
-          "operation": "modify",
-          "description": "Standardize hero and step cards to match other pages; keep the appointment flow and content intact. Continue composing shadcn-ui Card components; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/NotFoundPage.tsx",
-          "operation": "modify",
-          "description": "Polish 404 layout and align typography/spacing with global design system while preserving the same message and navigation action. Continue composing shadcn-ui Button; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/forms/AppointmentRequestForm.tsx",
-          "operation": "modify",
-          "description": "Align form field spacing, error message presentation, and submit button sizing with the unified UI system while keeping validation and submission behavior unchanged. Continue composing shadcn-ui Input/Select/Textarea/Button/Alert components; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/forms/ContactForm.tsx",
-          "operation": "modify",
-          "description": "Align field spacing, helper/error text, and success/error alerts with the unified UI system without changing form semantics. Continue composing shadcn-ui Input/Textarea/Button/Alert components; verify the component's usage instructions before implementing."
+          "description": "Implement the full \"Doctor Suites\" page UI using existing layout components `PageHero` and `Section`, and shadcn-ui components (via `shadcn-ui`) such as `Card` and `Button` to present suites/department name, brief description, hours/availability, and clear CTAs that navigate internally to /appointments and/or /contact (e.g., using TanStack Router navigation). Keep all user-facing text in English and ensure a responsive grid/stack layout without horizontal overflow. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Ensure responsive, high-quality layouts across mobile/tablet/desktop for navigation, grids, heroes, and forms.",
+      "summary": "Add router registration and header navigation link for the Doctor Suites page with consistent active styling.",
       "acceptanceCriteria": [
-        "No horizontal scrolling on common viewport widths (mobile through desktop).",
-        "Key grids (services, trust signals, cards) reflow cleanly with sensible spacing and readable text sizes.",
-        "Header navigation and CTAs remain usable and visually balanced on mobile."
+        "A new route is added in `frontend/src/App.tsx` for the Doctor Suites page (path and label are consistent across the app).",
+        "`frontend/src/components/layout/SiteHeader.tsx` includes a new navigation link labeled \"Doctor Suites\" that navigates to the new route.",
+        "The active route styling works consistently with other nav links on both desktop and mobile menus."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register the Doctor Suites page route (e.g., path `/doctor-suites`) using the existing TanStack Router pattern: import `DoctorsPage`, create the route, and add it to the `routeTree` so it is reachable like other main pages."
+        },
+        {
           "path": "frontend/src/components/layout/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Improve mobile navigation layout and spacing so it remains visually balanced on small screens (menu button, stacked links, CTA button sizing) and avoids overflow. Continue composing shadcn-ui Button; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Review and adjust responsive behavior for hero grid, stat card positioning, and section padding to prevent cramped layouts and overflow on mobile/tablet."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Ensure services grid breakpoints and card content spacing reflow cleanly (no overflow, readable line lengths) across mobile/tablet/desktop."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Ensure multi-column sections (mission/vision, values grid, features grid, facilities) reflow cleanly with consistent section padding on smaller devices."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Ensure contact info cards grid and the form container scale well on mobile/tablet (no squished cards, proper padding, no horizontal scroll)."
-        },
-        {
-          "path": "frontend/src/pages/AppointmentRequestPage.tsx",
-          "operation": "modify",
-          "description": "Improve responsiveness of step cards grid and form container (sensible stacking and spacing on mobile/tablet)."
-        },
-        {
-          "path": "frontend/src/components/forms/AppointmentRequestForm.tsx",
-          "operation": "modify",
-          "description": "Ensure form inputs/selects/textareas remain full-width, labels wrap correctly, and error messages do not cause overflow on small screens. Continue composing shadcn-ui form controls; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/forms/ContactForm.tsx",
-          "operation": "modify",
-          "description": "Ensure form controls and validation messages remain readable and do not overflow on small screens. Continue composing shadcn-ui form controls; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Add/adjust global responsive defaults (e.g., consistent section padding utilities, image max-width behavior, long word wrapping) to eliminate horizontal scrolling and improve readability across breakpoints."
+          "description": "Add a new main navigation item `{ path: '/doctor-suites', label: 'Doctor Suites' }` in the existing `navLinks` list so it appears in both desktop and mobile menus, and relies on the existing active-route variant logic for consistent styling. Uses the existing shadcn-ui `Button` composition (via `shadcn-ui`). Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Improve accessibility via focus visibility, contrast, and semantic structure (headings, labels, button/anchor usage).",
+      "summary": "Include Doctor Suites route in SEO metadata config and sitemap so title/description update correctly and crawlers can discover the page.",
       "acceptanceCriteria": [
-        "Keyboard navigation works across header navigation and page CTAs with clear focus indication.",
-        "Forms have proper labels and validation messaging remains readable and accessible.",
-        "Headings follow a logical hierarchy (e.g., one H1 per page area, H2/H3 used consistently in sections)."
+        "`frontend/src/config/seo.ts` includes a new `ROUTE_SEO` entry for the Doctor Suites path with an appropriate English title and description.",
+        "`frontend/public/sitemap.xml` includes the Doctor Suites URL under the existing `https://mahalaxmi-health-care.icp.page` domain.",
+        "After the change, navigating to the Doctor Suites page updates the document title and meta description consistently with other routes (via the existing SEO manager)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/config/seo.ts",
           "operation": "modify",
-          "description": "Strengthen visible focus styles across interactive elements (links, buttons, form controls) and ensure adequate contrast for text on muted/gradient backgrounds."
+          "description": "Add a new `ROUTE_SEO` entry keyed by the Doctor Suites route path (matching `App.tsx`, e.g., `/doctor-suites`) with an English title (e.g., \"Doctor Suites\") and a concise, hospital-quality meta description. This will be picked up automatically by the existing `SeoManager` on navigation."
         },
         {
-          "path": "frontend/src/components/layout/SiteLayout.tsx",
+          "path": "frontend/public/sitemap.xml",
           "operation": "modify",
-          "description": "Add a skip-to-content link and ensure the main content area can be targeted (id/anchor) to improve keyboard navigation and perceived accessibility."
-        },
-        {
-          "path": "frontend/src/components/layout/SiteHeader.tsx",
-          "operation": "modify",
-          "description": "Improve header semantics and accessibility for keyboard and screen readers (e.g., aria-expanded/aria-controls for mobile menu, clearer focus order, ensure nav is identified as navigation). Continue composing shadcn-ui Button; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Validate heading hierarchy (single primary H1, consistent H2/H3 for sections/cards) and ensure CTA buttons/links use the correct semantic elements."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Ensure headings are structured logically (one H1, then H2 section headings, then H3 within cards as needed) without changing copy meaning."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Ensure the services page uses consistent heading semantics for the hero and section titles; ensure icons are decorative where appropriate and do not create redundant accessible names."
-        },
-        {
-          "path": "frontend/src/pages/EmergencyPage.tsx",
-          "operation": "modify",
-          "description": "Ensure emergency CTAs have clear focus states and accessible names; confirm list semantics and headings are properly structured."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Ensure contact links (tel/mailto) have clear focus indication and the contact info cards use consistent, accessible headings."
-        },
-        {
-          "path": "frontend/src/components/forms/AppointmentRequestForm.tsx",
-          "operation": "modify",
-          "description": "Ensure form accessibility: labels remain properly associated, required fields are indicated accessibly, and validation messages are announced/readable. Continue composing shadcn-ui form controls; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/forms/ContactForm.tsx",
-          "operation": "modify",
-          "description": "Ensure form accessibility: labels association, required indicators, and readable validation messaging. Continue composing shadcn-ui form controls; verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Add cohesive medical-themed static imagery and integrate it into existing layouts with optimized, sharp, non-shifting rendering.",
-      "acceptanceCriteria": [
-        "New generated images are saved under frontend/public/assets/generated and referenced directly via static paths (no backend image routing).",
-        "Images are used with proper aspect ratios, include descriptive alt text, and do not cause layout shift.",
-        "Visual style of images matches the site’s hospital theme and feels cohesive with the existing hero image."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/facility-banner.dim_1600x600.png",
-          "operation": "create",
-          "description": "Add the generated wide facility banner image as a static asset at frontend/public/assets/generated/facility-banner.dim_1600x600.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/doctors-hero.dim_1600x700.png",
-          "operation": "create",
-          "description": "Add the generated doctors consultation hero image as a static asset at frontend/public/assets/generated/doctors-hero.dim_1600x700.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/medical-pattern.dim_1800x1200.png",
-          "operation": "create",
-          "description": "Add the generated subtle medical pattern background image as a static asset at frontend/public/assets/generated/medical-pattern.dim_1800x1200.png."
-        },
-        {
-          "path": "frontend/src/components/layout/PageHero.tsx",
-          "operation": "modify",
-          "description": "Enhance PageHero to support an optional decorative background using frontend/public/assets/generated/medical-pattern.dim_1800x1200.png and an optional hero image (with fixed aspect ratio and explicit dimensions) to prevent layout shift."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Integrate frontend/public/assets/generated/doctors-hero.dim_1600x700.png into the existing hero area (replace or supplement current hero image) with appropriate aspect ratio handling and descriptive alt text; keep the meaning of existing content unchanged."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Integrate frontend/public/assets/generated/facility-banner.dim_1600x600.png into the existing About hero (or a top-of-page section) using consistent styling and non-shifting rendering; ensure descriptive alt text."
-        },
-        {
-          "path": "frontend/src/pages/ServicesPage.tsx",
-          "operation": "modify",
-          "description": "Use frontend/public/assets/generated/medical-pattern.dim_1800x1200.png subtly in an existing section background (e.g., hero/CTA section) to improve perceived quality without adding new features; ensure it remains decorative and does not reduce contrast."
+          "description": "Add a new `<url>` entry for `https://mahalaxmi-health-care.icp.page/doctor-suites` (path must match routing) with appropriate `changefreq` and `priority`, consistent with existing sitemap entries."
         }
       ]
     }

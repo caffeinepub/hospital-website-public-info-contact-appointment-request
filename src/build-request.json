@@ -1,110 +1,77 @@
 {
   "kind": "build_request",
-  "title": "Improve hospital website quality and visual polish",
+  "title": "Update the Doctor Suites section/page",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Improve overall UI quality across all public pages (Home, About, Services, Emergency, Contact, Appointments, and 404) by applying consistent spacing, typography scale, section layout, and component styling (cards, buttons, icons) to achieve a polished, modern hospital website look and feel, without changing the meaning of existing content.",
+      "text": "Implement a dedicated \"Doctor Suites\" page (using the existing `frontend/src/pages/DoctorsPage.tsx`) with polished, hospital-quality layout and English user-facing text. The page must clearly present doctor suites information in a structured way (e.g., suite/department name, brief description, hours/availability, and a clear call-to-action to book an appointment or contact the clinic).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-9"
+          "msg-user-1"
         ],
         "quotes": [
-          "I WANT HIG QUALITY WEB SITE"
+          "CHANGE THE DOCTORS SUITES"
         ]
       },
       "acceptanceCriteria": [
-        "All pages share a consistent visual system (typography, spacing, shadows, borders, radii) with no obvious mismatched styles between sections/components.",
-        "Buttons, cards, and form elements have consistent hover/active/focus states and alignment across pages.",
-        "No content is removed; only presentation/layout/styling changes are made."
+        "`frontend/src/pages/DoctorsPage.tsx` is no longer empty and renders a complete \"Doctor Suites\" page.",
+        "All user-facing text on the page is in English.",
+        "The page uses existing design patterns/components (e.g., `PageHero`, `Section`, `Card`, `Button`) to match the site’s current look and feel.",
+        "The page includes at least one CTA that routes to an existing internal page (e.g., /appointments or /contact).",
+        "Layout is responsive (mobile/tablet/desktop) and does not overflow horizontally."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Perform a responsive design pass to ensure the site looks high-quality on mobile, tablet, and desktop (including navigation/header, hero sections, multi-column grids, and forms), preventing overflow, cramped layouts, and inconsistent section padding.",
+      "text": "Add routing and navigation for the \"Doctor Suites\" page so users can reach it from the main header navigation.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-9"
+          "msg-user-1"
         ],
         "quotes": [
-          "I WANT HIG QUALITY WEB SITE"
+          "CHANGE THE DOCTORS SUITES"
         ]
       },
       "acceptanceCriteria": [
-        "No horizontal scrolling on common viewport widths (mobile through desktop).",
-        "Key grids (services, trust signals, cards) reflow cleanly with sensible spacing and readable text sizes.",
-        "Header navigation and CTAs remain usable and visually balanced on mobile."
+        "A new route is added in `frontend/src/App.tsx` for the Doctor Suites page (path and label are consistent across the app).",
+        "`frontend/src/components/layout/SiteHeader.tsx` includes a new navigation link labeled \"Doctor Suites\" that navigates to the new route.",
+        "The active route styling works consistently with other nav links on both desktop and mobile menus."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Improve accessibility and perceived quality by ensuring interactive elements have visible focus styles, sufficient contrast, and appropriate semantic structure (headings hierarchy, labels, button/anchor usage) across the site.",
+      "text": "Update SEO metadata and sitemap to include the Doctor Suites route.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-9"
+          "msg-user-1"
         ],
         "quotes": [
-          "I WANT HIG QUALITY WEB SITE"
+          "CHANGE THE DOCTORS SUITES"
         ]
       },
       "acceptanceCriteria": [
-        "Keyboard navigation works across header navigation and page CTAs with clear focus indication.",
-        "Forms have proper labels and validation messaging remains readable and accessible.",
-        "Headings follow a logical hierarchy (e.g., one H1 per page area, H2/H3 used consistently in sections)."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Add high-quality, consistent medical-themed imagery as static assets and integrate them into the existing layout where appropriate (without adding new product features), ensuring images are optimized and look sharp on high-DPI displays.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-9"
-        ],
-        "quotes": [
-          "I WANT HIG QUALITY WEB SITE"
-        ]
-      },
-      "acceptanceCriteria": [
-        "New generated images are saved under frontend/public/assets/generated and referenced directly via static paths (no backend image routing).",
-        "Images are used with proper aspect ratios, include descriptive alt text, and do not cause layout shift.",
-        "Visual style of images matches the site’s hospital theme and feels cohesive with the existing hero image."
+        "`frontend/src/config/seo.ts` includes a new `ROUTE_SEO` entry for the Doctor Suites path with an appropriate English title and description.",
+        "`frontend/public/sitemap.xml` includes the Doctor Suites URL under the existing `https://mahalaxmi-health-care.icp.page` domain.",
+        "After the change, navigating to the Doctor Suites page updates the document title and meta description consistently with other routes (via the existing SEO manager)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (compose existing shadcn components instead).",
-    "Do not edit immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
-    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services or external databases.",
-    "Use English for all user-facing text."
+    "Do not edit files under `frontend/src/components/ui` (compose existing shadcn components instead).",
+    "Do not modify any files listed as immutable in SYSTEM_CONTEXT (e.g., `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
+    "Keep all backend logic in a single Motoko actor; no backend changes are required for this request unless strictly necessary."
   ],
   "nonGoals": [
-    "Adding new backend features (e.g., new data models, new admin panels, new authentication methods beyond Internet Identity).",
-    "Adding real-time features (websockets/live chat) or third-party integrations not already present.",
-    "Changing hospital name/branding content semantics (copy changes beyond minor readability tweaks are out of scope)."
+    "Do not implement Google indexing/Search Console verification as part of this change.",
+    "Do not add third-party integrations or external databases.",
+    "Do not change the meaning of existing site content outside of the new/updated Doctor Suites page."
   ],
   "imageRequirements": {
-    "required": [
-      "Wide hospital reception/modern facility banner illustration/photo style (facility-banner.dim_1600x600.png)",
-      "Medical team/doctor consultation hero-style image (doctors-hero.dim_1600x700.png)",
-      "Abstract medical pattern/texture background suitable for subtle section backdrops (medical-pattern.dim_1800x1200.png)"
-    ],
+    "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [
-      "User wants a high-quality, polished hospital website."
-    ],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

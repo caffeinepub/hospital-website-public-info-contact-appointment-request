@@ -51,6 +51,10 @@ export const ROUTE_SEO: Record<string, { title: string; description: string }> =
     title: 'Appointments',
     description: 'Book an appointment at Mahalaxmi Health Care. Schedule your visit with our experienced medical professionals for quality healthcare services.',
   },
+  '/doctor-suites': {
+    title: 'Doctor Suites',
+    description: 'Explore our specialized medical departments and doctor suites at Mahalaxmi Health Care. Expert physicians across cardiology, orthopedics, pediatrics, neurology, and more.',
+  },
 };
 
 /**
