@@ -13,6 +13,7 @@ export default function DoctorsPage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <PageHero
+        title="Doctor Suites"
         subtitle="Meet our team of experienced medical professionals dedicated to your health and wellbeing"
         variant="pattern"
       >

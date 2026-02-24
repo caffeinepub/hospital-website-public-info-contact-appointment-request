@@ -1,21 +1,39 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove 'Doctor Suites' title from doctors page",
+  "title": "Keep Doctor Suites section and add comprehensive About content",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving all other page content",
+      "summary": "Preserve the 'Doctor Suites' title and section in the DoctorsPage component, ensuring it remains visible as part of the page structure",
       "acceptanceCriteria": [
-        "The 'Doctor Suites' title text is no longer visible on the doctors page",
-        "All other page elements (hero image, doctor portraits collage, CTA buttons) remain intact and functional",
-        "Page layout adjusts naturally without the title"
+        "The 'Doctor Suites' title is visible on the Doctors page",
+        "The section displays correctly with existing hero images and doctor portraits",
+        "CTA buttons for appointments and contact remain functional"
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/DoctorsPage.tsx",
           "operation": "modify",
-          "description": "Remove the 'Doctor Suites' title/heading element from the DoctorsPage component. Locate and delete the heading text while keeping the hero section with the image at frontend/public/assets/generated/doctors-hero.dim_1600x700.png, the doctor portraits collage using frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png, and all CTA buttons (Book Appointment, Contact Us) intact. Ensure the remaining layout flows naturally without the removed title."
+          "description": "Review the current DoctorsPage component structure and ensure the 'Doctor Suites' title and section are present and visible. If the title was previously removed or hidden, restore it. Verify that hero images (frontend/public/assets/generated/doctors-hero.dim_1600x700.png, frontend/public/assets/generated/doctors-team.dim_1600x900.png, frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png) are properly displayed. Ensure CTA buttons for appointments and contact are functional with proper routing to /appointments and /contact pages."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add comprehensive About section content to the AboutPage describing Mahalaxmi Health Care as an occupational health care and wellness service provider",
+      "acceptanceCriteria": [
+        "AboutPage displays the new content prominently in a dedicated section",
+        "Content is well-formatted and easy to read with proper spacing and typography",
+        "All services mentioned are listed clearly (OHC setup, staffing, LAB, Pharmacy, examinations, health programs, screening camps)",
+        "The division relationship to Mahalaxmi Multi Specialty Hospital is clearly stated",
+        "Content maintains professional tone consistent with existing page design"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Add a new dedicated section to the AboutPage component that presents the comprehensive occupational health care information. Create a professionally formatted section that describes Mahalaxmi Health Care as a division of Mahalaxmi Multi Specialty Hospital, highlighting that it is the first of its kind in the Healthcare Industry. Include content explaining the division's expertise in managing health centres and onsite health check-ups, and describe how the division bridges the gap between industry requirements and hospital services based on the Managing Director's extensive experience. Present the comprehensive services list including: OHC setup assistance, staffing with full-time/part-time doctors and paramedical staff, running LAB & Pharmacy, conducting Pre-Employment Examinations, Periodic Health Check-ups of employees on-site, organizing Doctors Talks, Health Awareness Sessions, and Free Screening Camps for employees and their families. Use the existing Section component with appropriate styling, maintain consistency with the current AboutPage layout (hero sections, cards, grid layouts), and ensure proper typography and spacing for readability. Position this new section logically within the existing page flow alongside the mission, vision, and core values sections."
         }
       ]
     }

@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-doctor-suites-title-heading-text-from-the-doctorspage-component-while-preserving-the-rest-of-the-page-content-including-hero-section-doctor-portraits-and-cta-buttons",
-      "featureTitle": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving the rest of the page content including hero section, doctor portraits, and CTA buttons",
+      "featureId": "feature-preserve-the-doctor-suites-title-and-section-in-the-doctorspage-component-ensuring-it-remains-visible-as-part-of-the-page-structure",
+      "featureTitle": "Preserve the 'Doctor Suites' title and section in the DoctorsPage component, ensuring it remains visible as part of the page structure",
       "files": [
         "frontend/src/pages/DoctorsPage.tsx"
       ],
@@ -17,6 +17,25 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-comprehensive-about-section-content-to-the-aboutpage-describing-mahalaxmi-health-care-as-an-occupational-health-care-and-wellness-service-provider-a-division-of-mahalaxmi-multi-specialty-hospital-include-details-about-being-first-of-its-kind-in-the-healthcare-industry-expertise-in-managing-health-centres-and-onsite-health-check-ups-the-division-s-purpose-of-bridging-the-gap-between-industry-requirements-and-hospital-services-based-on-managing-director-s-extensive-experience-and-comprehensive-services-including-ohc-setup-assistance-staffing-with-full-time-part-time-doctors-and-paramedical-staff-running-lab-pharmacy-conducting-pre-employment-examinations-periodic-health-check-ups-of-employees-on-site-organizing-doctors-talks-health-awareness-sessions-and-free-screening-camps-for-employees-and-their-families",
+      "featureTitle": "Add comprehensive About section content to the AboutPage describing Mahalaxmi Health Care as an occupational health care and wellness service provider, a division of Mahalaxmi Multi Specialty Hospital. Include details about being first of its kind in the Healthcare Industry, expertise in managing health centres and onsite health check-ups, the division's purpose of bridging the gap between industry requirements and hospital services based on Managing Director's extensive experience, and comprehensive services including: OHC setup assistance, staffing with full-time/part-time doctors and paramedical staff, running LAB & Pharmacy, conducting Pre-Employment Examinations, Periodic Health Check-ups of employees on-site, organizing Doctors Talks, Health Awareness Sessions, and Free Screening Camps for employees and their families",
+      "files": [
+        "frontend/src/pages/AboutPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }

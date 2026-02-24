@@ -1,32 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Remove 'Doctor Suites' title from doctors page",
+  "title": "Keep Doctor Suites section and add comprehensive About content",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving the rest of the page content including hero section, doctor portraits, and CTA buttons",
+      "text": "Preserve the 'Doctor Suites' title and section in the DoctorsPage component, ensuring it remains visible as part of the page structure",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-6"
         ],
         "quotes": [
-          "remove the tittle of Doctor Suites"
+          "no the doctors suites are not removed"
         ]
       },
       "acceptanceCriteria": [
-        "The 'Doctor Suites' title text is no longer visible on the doctors page",
-        "All other page elements (hero image, doctor portraits collage, CTA buttons) remain intact and functional",
-        "Page layout adjusts naturally without the title"
+        "The 'Doctor Suites' title is visible on the Doctors page",
+        "The section displays correctly with existing hero images and doctor portraits",
+        "CTA buttons for appointments and contact remain functional"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add comprehensive About section content to the AboutPage describing Mahalaxmi Health Care as an occupational health care and wellness service provider, a division of Mahalaxmi Multi Specialty Hospital. Include details about being first of its kind in the Healthcare Industry, expertise in managing health centres and onsite health check-ups, the division's purpose of bridging the gap between industry requirements and hospital services based on Managing Director's extensive experience, and comprehensive services including: OHC setup assistance, staffing with full-time/part-time doctors and paramedical staff, running LAB & Pharmacy, conducting Pre-Employment Examinations, Periodic Health Check-ups of employees on-site, organizing Doctors Talks, Health Awareness Sessions, and Free Screening Camps for employees and their families",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "Mahalaxmi Health Care (Occupational health care and wellness service provider) is a division of Mahalaxmi Multi Specialty Hospital, first of its kind in Healthcare Industry. Mahalaxmi Health Care is managing a health centre or running Onsite Health Check-ups are not at all a challenge to us. Mahalaxmi Health Care (Occupational health care and wellness service provider) division was formed to bridge the gap between the \"Industry's Requirement\" and the services provided by Hospitals, which was studied in careful analysis from the extensive experience of our Managing Director in running Multispecialty Hospitals & OHC's. We can assist you in setting up OHC's, running it with required no of Doctors (full time/Part time), Paramedical staff, run LAB & Pharmacy, conduct Pre-Employment Examination, Periodic Health Check up of the EMPLOYEES on- site, organize Doctors Talk, Health Awareness Sessions, Free Screening Camps for the employees & their families, etc."
+        ]
+      },
+      "acceptanceCriteria": [
+        "AboutPage displays the new content prominently in a dedicated section",
+        "Content is well-formatted and easy to read with proper spacing and typography",
+        "All services mentioned are listed clearly (OHC setup, staffing, LAB, Pharmacy, examinations, health programs, screening camps)",
+        "The division relationship to Mahalaxmi Multi Specialty Hospital is clearly stated",
+        "Content maintains professional tone consistent with existing page design"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Do not remove or hide the Doctor Suites title that was previously attempted to be removed",
+    "Maintain existing AboutPage structure and styling patterns",
+    "Keep all existing About page content (mission, vision, values, facility images)"
+  ],
   "nonGoals": [
-    "Removing the entire doctors page or route",
-    "Changing the doctor portraits or images",
-    "Modifying the CTA buttons or their functionality"
+    "Modifying the backend or data structures",
+    "Changing other pages beyond AboutPage and DoctorsPage",
+    "Redesigning the overall layout or navigation",
+    "Adding new routes or pages"
   ],
   "imageRequirements": {
     "required": [],
