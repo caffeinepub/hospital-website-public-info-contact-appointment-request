@@ -1,38 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Project includes a request to create a new logo.",
+  "summary": "New project",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Redesign the logo with a fresh look while keeping a clean, healthcare-appropriate style (mahalaxmi-health-care-logo.dim_512x512.png > mahalaxmi-health-care-logo.dim_512x512.png)\n- Update the 32x32 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_32x32.png > mahalaxmi-health-care-favicon.dim_32x32.png)\n- Update the 192x192 favicon to match the new logo (mahalaxmi-health-care-favicon.dim_192x192.png > mahalaxmi-health-care-favicon.dim_192x192.png)\n- Update the 180x180 Apple touch icon to match the new logo (mahalaxmi-health-care-apple-touch-icon.dim_180x180.png > mahalaxmi-health-care-apple-touch-icon.dim_180x180.png)",
   "existing_features": [
     {
-      "id": "feature-create-a-new-brand-logo-for-mahalaxmi-health-care-and-update-the-app-s-existing-logo-assets-so-the-new-logo-appears-in-the-site-header-and-footer",
-      "title": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
+      "id": "feature-remove-the-doctor-suites-title-heading-text-from-the-doctorspage-component-while-preserving-the-rest-of-the-page-content-including-hero-section-doctor-portraits-and-cta-buttons",
+      "title": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving the rest of the page content including hero section, doctor portraits, and CTA buttons",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-update-the-site-favicon-and-apple-touch-icon-assets-to-match-the-new-logo-keeping-the-filenames-referenced-by-the-html-head-so-browsers-pick-up-the-new-branding-without-code-changes",
-      "title": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Create a new logo for the project",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "projectName": "Create and apply a new logo set (header/footer + favicons)",
+  "new_feature_requests": [],
+  "projectName": "Remove 'Doctor Suites' title from doctors page",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

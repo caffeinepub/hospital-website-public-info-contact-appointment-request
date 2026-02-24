@@ -5,7 +5,6 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
 import AppointmentRequestPage from './pages/AppointmentRequestPage';
-import EmergencyPage from './pages/EmergencyPage';
 import DoctorsPage from './pages/DoctorsPage';
 import DomainDraftPage from './pages/DomainDraftPage';
 import DecommissionedPage from './pages/DecommissionedPage';
@@ -49,12 +48,6 @@ const appointmentsRoute = createRoute({
   component: AppointmentRequestPage,
 });
 
-const emergencyRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/emergency',
-  component: EmergencyPage,
-});
-
 const doctorSuitesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/doctor-suites',
@@ -85,7 +78,6 @@ const routeTree = rootRoute.addChildren([
   servicesRoute,
   contactRoute,
   appointmentsRoute,
-  emergencyRoute,
   doctorSuitesRoute,
   domainDraftRoute,
   decommissionedRoute,

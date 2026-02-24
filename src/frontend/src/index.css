@@ -6,7 +6,7 @@
     :root {
         --radius: 0.75rem;
         
-        /* Modern hospital palette - Clean medical blues and teals */
+        /* Modern hospital palette with professional blue primary */
         /* Crisp white background for clinical feel */
         --background: 0.99 0.01 240;
         --foreground: 0.20 0.04 240;
@@ -18,7 +18,7 @@
         --popover: 1.00 0 0;
         --popover-foreground: 0.20 0.04 240;
         
-        /* Professional medical blue primary */
+        /* Professional blue primary */
         --primary: 0.55 0.18 240;
         --primary-foreground: 0.99 0 0;
         
@@ -64,7 +64,7 @@
     }
 
     .dark {
-        /* Professional dark mode with medical blue undertones */
+        /* Professional dark mode with blue primary */
         --background: 0.15 0.02 240;
         --foreground: 0.95 0.02 240;
         
@@ -75,8 +75,8 @@
         --popover: 0.18 0.02 240;
         --popover-foreground: 0.95 0.02 240;
         
-        /* Bright medical blue for dark mode */
-        --primary: 0.65 0.16 240;
+        /* Bright blue for dark mode */
+        --primary: 0.65 0.20 240;
         --primary-foreground: 0.10 0 0;
         
         /* Lighter teal */
@@ -97,7 +97,7 @@
         /* Subtle borders in dark */
         --border: 0.25 0.02 240;
         --input: 0.22 0.02 240;
-        --ring: 0.65 0.16 240;
+        --ring: 0.65 0.20 240;
         
         /* Orange tokens for dark mode */
         --orange-50: 0.25 0.08 22;
@@ -112,7 +112,7 @@
         --orange-900: 0.88 0.10 50;
         --orange-950: 0.92 0.06 54;
         
-        --chart-1: 0.65 0.16 240;
+        --chart-1: 0.65 0.20 240;
         --chart-2: 0.75 0.12 200;
         --chart-3: 0.70 0.10 190;
         --chart-4: 0.68 0.14 220;

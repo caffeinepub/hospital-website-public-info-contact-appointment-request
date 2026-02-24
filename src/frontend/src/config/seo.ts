@@ -1,92 +1,63 @@
-/**
- * SEO Configuration
- * Single source of truth for site metadata, canonical URLs, and Search Console verification
- */
+import { HOSPITAL_NAME } from './branding';
 
-// Base site URL - Update this to match your production domain
-// For Internet Computer deployments, use your canister's .icp.page or custom domain
-export const SITE_URL = 'https://mahalaxmi-health-care.icp.page';
+export const SITE_URL = 'https://mahalaxmihealthcare.com';
+export const GOOGLE_SITE_VERIFICATION = 'your-google-verification-token';
 
-// Google Search Console Verification Token
-// To verify your site with Google Search Console:
-// 1. Go to https://search.google.com/search-console
-// 2. Add your property (website URL)
-// 3. Choose "HTML tag" verification method
-// 4. Copy the content value from the meta tag (the long string after content="")
-// 5. Paste it below, replacing the empty string
-// Example: 'abc123xyz456' (without quotes in the actual token)
-export const GOOGLE_SITE_VERIFICATION = '';
-
-// Default SEO metadata
 export const DEFAULT_SEO = {
-  title: 'Mahalaxmi Health Care',
-  description: 'Mahalaxmi Health Care provides comprehensive medical services with 24/7 emergency care, specialized treatments, and compassionate healthcare in Arakkonam, Ranipet District. Book your appointment today.',
+  title: `${HOSPITAL_NAME} - Excellence in Healthcare`,
+  description: 'Comprehensive healthcare services with 24/7 emergency care, specialized medical departments, and experienced physicians. Your health is our priority.',
+  keywords: 'hospital, healthcare, medical services, emergency care, doctors, health checkup, Mahalaxmi Health Care',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-} as const;
+};
 
-// Per-route SEO metadata
 export const ROUTE_SEO: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Home',
-    description: 'Mahalaxmi Health Care - Your trusted healthcare partner offering 24/7 emergency services, specialized medical care, and comprehensive health solutions in Arakkonam.',
+    title: `${HOSPITAL_NAME} - Excellence in Healthcare`,
+    description: 'Comprehensive healthcare services with 24/7 emergency care, specialized medical departments, and experienced physicians. Your health is our priority.',
   },
   '/about': {
-    title: 'About',
-    description: 'Learn about Mahalaxmi Health Care\'s mission, vision, and commitment to providing quality healthcare with compassion, integrity, and excellence.',
+    title: `About Us - ${HOSPITAL_NAME}`,
+    description: 'Learn about our mission, values, and commitment to providing exceptional healthcare services to our community.',
   },
   '/services': {
-    title: 'Services',
-    description: 'Explore our comprehensive medical services including emergency care, general medicine, cardiology, orthopedics, CT scan, laboratory facilities, X-ray, and more.',
-  },
-  '/emergency': {
-    title: 'Emergency',
-    description: '24/7 Emergency medical services at Mahalaxmi Health Care. Rapid response team available round-the-clock for all medical emergencies. Call now for immediate assistance.',
-  },
-  '/contact': {
-    title: 'Contact',
-    description: 'Get in touch with Mahalaxmi Health Care. Find our contact information, location in Arakkonam, and reach out for appointments or inquiries.',
-  },
-  '/appointments': {
-    title: 'Appointments',
-    description: 'Book an appointment at Mahalaxmi Health Care. Schedule your visit with our experienced medical professionals for quality healthcare services.',
+    title: `Medical Services - ${HOSPITAL_NAME}`,
+    description: 'Explore our comprehensive range of medical services including emergency care, specialized treatments, diagnostics, and preventive healthcare.',
   },
   '/doctor-suites': {
-    title: 'Doctor Suites',
-    description: 'Explore our specialized medical departments and doctor suites at Mahalaxmi Health Care. Expert physicians across cardiology, orthopedics, pediatrics, neurology, and more.',
+    title: `Doctor Suites - ${HOSPITAL_NAME}`,
+    description: 'Meet our team of experienced specialists across various medical departments including cardiology, orthopedics, pediatrics, and more.',
+  },
+  '/contact': {
+    title: `Contact Us - ${HOSPITAL_NAME}`,
+    description: 'Get in touch with us for appointments, inquiries, or emergency services. We are here to help you 24/7.',
+  },
+  '/appointments': {
+    title: `Book Appointment - ${HOSPITAL_NAME}`,
+    description: 'Schedule your appointment with our specialists. Easy online booking for consultations and medical services.',
   },
 };
 
-/**
- * Get the full page title for a given route
- */
-export function getFullPageTitle(pathname: string): string {
-  const routeData = ROUTE_SEO[pathname];
-  if (routeData) {
-    return `${routeData.title} — ${DEFAULT_SEO.title}`;
-  }
-  return DEFAULT_SEO.title;
+export function getPageTitle(path: string): string {
+  return ROUTE_SEO[path]?.title || DEFAULT_SEO.title;
 }
 
-/**
- * Get the meta description for a given route
- */
-export function getMetaDescription(pathname: string): string {
-  const routeData = ROUTE_SEO[pathname];
-  return routeData?.description || DEFAULT_SEO.description;
+export function getFullPageTitle(path: string): string {
+  return getPageTitle(path);
 }
 
-/**
- * Get the canonical URL for a given route
- */
-export function getCanonicalUrl(pathname: string): string {
-  return `${SITE_URL}${pathname}`;
+export function getPageDescription(path: string): string {
+  return ROUTE_SEO[path]?.description || DEFAULT_SEO.description;
 }
 
-/**
- * Get Open Graph title for a given route
- */
-export function getOgTitle(pathname: string): string {
-  const routeData = ROUTE_SEO[pathname];
-  return routeData ? `${routeData.title} — ${DEFAULT_SEO.title}` : DEFAULT_SEO.title;
+export function getMetaDescription(path: string): string {
+  return getPageDescription(path);
+}
+
+export function getOgTitle(path: string): string {
+  return getPageTitle(path);
+}
+
+export function getCanonicalUrl(path: string): string {
+  return `${SITE_URL}${path}`;
 }

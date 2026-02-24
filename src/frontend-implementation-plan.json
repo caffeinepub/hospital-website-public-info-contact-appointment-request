@@ -1,46 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Apply refreshed Mahalaxmi Health Care logo across header/footer and icons",
+  "title": "Remove 'Doctor Suites' title from doctors page",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Refresh the Mahalaxmi Health Care brand logo and ensure the header/footer render it from the existing generated asset path.",
+      "summary": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving all other page content",
       "acceptanceCriteria": [
-        "A new logo design is produced and saved as a generated static asset in frontend/public/assets/generated.",
-        "The Site Header uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png for the brand mark (as in frontend/src/components/layout/SiteHeader.tsx).",
-        "The Site Footer uses /assets/generated/mahalaxmi-health-care-logo.dim_512x512.png (with cache-busting) and renders without triggering the logo error state (as in frontend/src/components/layout/SiteFooter.tsx)."
+        "The 'Doctor Suites' title text is no longer visible on the doctors page",
+        "All other page elements (hero image, doctor portraits collage, CTA buttons) remain intact and functional",
+        "Page layout adjusts naturally without the title"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png",
+          "path": "frontend/src/pages/DoctorsPage.tsx",
           "operation": "modify",
-          "description": "Replace the existing generated logo asset with the redesigned, clean healthcare-appropriate logo while keeping the exact filename and 512x512 dimensions so existing header/footer references continue to work."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Update favicon and Apple touch icons to match the new logo while preserving the exact filenames referenced by the HTML head.",
-      "acceptanceCriteria": [
-        "The following icon files exist in frontend/public/assets/generated and visually match the new logo: mahalaxmi-health-care-favicon.dim_32x32.png, mahalaxmi-health-care-favicon.dim_192x192.png, mahalaxmi-health-care-apple-touch-icon.dim_180x180.png.",
-        "frontend/index.html continues to reference these exact filenames, and the icons display correctly in the browser tab and on mobile home screen shortcuts (where supported)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_32x32.png",
-          "operation": "modify",
-          "description": "Replace the 32x32 favicon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
-        },
-        {
-          "path": "frontend/public/assets/generated/mahalaxmi-health-care-favicon.dim_192x192.png",
-          "operation": "modify",
-          "description": "Replace the 192x192 favicon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
-        },
-        {
-          "path": "frontend/public/assets/generated/mahalaxmi-health-care-apple-touch-icon.dim_180x180.png",
-          "operation": "modify",
-          "description": "Replace the 180x180 Apple touch icon PNG to visually match the refreshed logo while preserving the exact filename so frontend/index.html references remain valid."
+          "description": "Remove the 'Doctor Suites' title/heading element from the DoctorsPage component. Locate and delete the heading text while keeping the hero section with the image at frontend/public/assets/generated/doctors-hero.dim_1600x700.png, the doctor portraits collage using frontend/public/assets/generated/doctors-portraits-collage.dim_1600x900.png, and all CTA buttons (Book Appointment, Contact Us) intact. Ensure the remaining layout flows naturally without the removed title."
         }
       ]
     }

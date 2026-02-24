@@ -1,10 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Refresh the “Mahalaxmi Health Care” branding by applying a newly redesigned logo across the site header/footer and updating the favicon + Apple touch icons to match.
+**Goal:** Remove the 'Doctor Suites' title from the doctors page.
 
 **Planned changes:**
-- Update the existing generated logo asset so the Site Header and Site Footer display the new “Mahalaxmi Health Care” logo.
-- Update the existing generated favicon (32x32, 192x192) and Apple touch icon (180x180) files so they visually match the new logo while keeping the same filenames referenced by the HTML.
+- Remove the 'Doctor Suites' title/heading text from the DoctorsPage component
+- Preserve all other page content including hero section, doctor portraits, and CTA buttons
 
-**User-visible outcome:** The site shows the new “Mahalaxmi Health Care” logo in the header and footer, and the browser tab/mobile shortcut icons reflect the updated branding.
+**User-visible outcome:** The doctors page will display without the 'Doctor Suites' title, showing a cleaner layout with the hero image, doctor portraits, and action buttons.

@@ -2,9 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-new-brand-logo-for-mahalaxmi-health-care-and-update-the-app-s-existing-logo-assets-so-the-new-logo-appears-in-the-site-header-and-footer",
-      "featureTitle": "Create a new brand logo for \"Mahalaxmi Health Care\" and update the app’s existing logo assets so the new logo appears in the site header and footer.",
-      "files": [],
+      "featureId": "feature-remove-the-doctor-suites-title-heading-text-from-the-doctorspage-component-while-preserving-the-rest-of-the-page-content-including-hero-section-doctor-portraits-and-cta-buttons",
+      "featureTitle": "Remove the 'Doctor Suites' title/heading text from the DoctorsPage component while preserving the rest of the page content including hero section, doctor portraits, and CTA buttons",
+      "files": [
+        "frontend/src/pages/DoctorsPage.tsx"
+      ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -15,23 +17,6 @@
       ],
       "testIds": [
         "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-site-favicon-and-apple-touch-icon-assets-to-match-the-new-logo-keeping-the-filenames-referenced-by-the-html-head-so-browsers-pick-up-the-new-branding-without-code-changes",
-      "featureTitle": "Update the site favicon and Apple touch icon assets to match the new logo, keeping the filenames referenced by the HTML head so browsers pick up the new branding without code changes.",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
       ],
       "confidence": "high"
     }

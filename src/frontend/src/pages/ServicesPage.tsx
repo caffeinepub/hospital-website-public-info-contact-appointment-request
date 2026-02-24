@@ -1,19 +1,29 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useNavigate } from '@tanstack/react-router';
 import { 
   Stethoscope, Heart, Baby, Bone, Eye, Ear, Brain, Microscope, 
   Activity, Syringe, Pill, Ambulance, TestTube, Scan, Users, 
-  Thermometer, Droplet, Shield 
+  Thermometer, Droplet, Shield, AlertCircle, Phone
 } from 'lucide-react';
 import PageHero from '@/components/layout/PageHero';
 import PageHeroImage from '@/components/layout/PageHeroImage';
 import Section from '@/components/layout/Section';
+import { getEmergencyPhone, getEmergencyPhoneTel } from '@/config/contactDetails';
 
 export default function ServicesPage() {
   const navigate = useNavigate();
+  const emergencyPhone = getEmergencyPhone();
+  const emergencyPhoneTel = getEmergencyPhoneTel();
 
   const services = [
+    {
+      title: 'Emergency Services',
+      desc: '24/7 emergency medical services and trauma care - Always available when you need us',
+      icon: AlertCircle,
+      featured: true,
+    },
     {
       title: 'General Medicine',
       desc: 'Comprehensive primary care for common illnesses and health concerns',
@@ -65,8 +75,8 @@ export default function ServicesPage() {
       icon: Scan,
     },
     {
-      title: 'Emergency Care',
-      desc: '24/7 emergency medical services and trauma care',
+      title: 'Ambulance Services',
+      desc: 'Emergency ambulance transport and pre-hospital care',
       icon: Ambulance,
     },
     {
@@ -151,17 +161,86 @@ export default function ServicesPage() {
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {services.map((service) => (
-            <Card key={service.title} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <service.icon className="h-10 w-10 text-primary mb-2" aria-hidden="true" />
-                <CardTitle className="text-lg">{service.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">{service.desc}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {services.map((service) => {
+            if (service.featured) {
+              return (
+                <Card 
+                  key={service.title} 
+                  className="border-destructive/50 bg-destructive/5 hover:shadow-lg transition-all sm:col-span-2 lg:col-span-3"
+                >
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-4 flex-wrap">
+                      <div className="flex items-center gap-3">
+                        <service.icon 
+                          className="h-12 w-12 text-destructive flex-shrink-0" 
+                          aria-hidden="true" 
+                        />
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <CardTitle className="text-2xl">{service.title}</CardTitle>
+                            <Badge variant="destructive" className="text-xs">24/7</Badge>
+                          </div>
+                          <p className="text-sm text-muted-foreground">{service.desc}</p>
+                        </div>
+                      </div>
+                      <Button 
+                        size="lg" 
+                        variant="destructive"
+                        asChild
+                        className="flex-shrink-0"
+                      >
+                        <a href={emergencyPhoneTel} className="flex items-center gap-2">
+                          <Phone className="h-5 w-5" aria-hidden="true" />
+                          <span className="font-bold">{emergencyPhone}</span>
+                        </a>
+                      </Button>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="flex gap-3">
+                        <img
+                          src="/assets/generated/emergency-room.dim_1600x900.png"
+                          alt="Emergency room at Mahalaxmi Health Care"
+                          className="w-full h-48 object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="flex gap-3">
+                        <img
+                          src="/assets/generated/emergency-ambulance.dim_1600x900.png"
+                          alt="Emergency ambulance services"
+                          className="w-full h-48 object-cover rounded-lg"
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-4 p-4 bg-background rounded-lg border border-destructive/20">
+                      <p className="text-sm font-medium text-center">
+                        <span className="text-destructive">Immediate medical attention</span> for trauma, cardiac emergencies, and critical care. Our emergency department is staffed 24/7 with experienced physicians and equipped with advanced life support systems.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            }
+
+            return (
+              <Card 
+                key={service.title} 
+                className="hover:shadow-lg transition-all"
+              >
+                <CardHeader>
+                  <service.icon 
+                    className="h-10 w-10 mb-2 text-primary" 
+                    aria-hidden="true" 
+                  />
+                  <CardTitle className="text-lg">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </Section>
 

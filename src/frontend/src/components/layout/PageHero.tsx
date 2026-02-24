@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { withCacheBust } from '@/utils/generatedAssets';
 
 interface PageHeroProps {
-  title: string;
+  title?: string;
   subtitle?: string;
   badge?: ReactNode;
   children?: ReactNode;
@@ -43,9 +43,11 @@ export default function PageHero({
       <div className="container relative">
         <div className="max-w-3xl mx-auto text-center space-y-6">
           {badge && <div className="flex justify-center">{badge}</div>}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-            {title}
-          </h1>
+          {title && (
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
+              {title}
+            </h1>
+          )}
           {subtitle && (
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               {subtitle}
