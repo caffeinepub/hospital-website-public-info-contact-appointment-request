@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website for Mahalaxmi Health Care, an occupational health care and wellness service provider division of Mahalaxmi Multi Specialty Hospital. The site includes an About section with full company description.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-replace-or-update-the-about-page-text-content-to-include-the-following-full-paragraph-verbatim-mahalaxmi-health-care-occupational-health-care-and-wellness-service-provider-is-a-division-of-mahalaxmi-multi-specialty-hospital-first-of-its-kind-in-healthcare-industry-mahalaxmi-health-care-is-managing-a-health-centre-or-running-onsite-health-check-ups-are-not-at-all-a-challenge-to-us-mahalaxmi-health-care-occupational-health-care-and-wellness-service-provider-division-was-formed-to-bridge-the-gap-between-the-industry-s-requirement-and-the-services-provided-by-hospitals-which-was-studied-in-careful-analysis-from-the-extensive-experience-of-our-managing-director-in-running-multispecialty-hospitals-ohc-s-we-can-assist-you-in-setting-up-ohc-s-running-it-with-required-no-of-doctors-full-time-part-time-paramedical-staff-run-lab-pharmacy-conduct-pre-employment-examination-periodic-health-check-up-of-the-employees-on-site-organize-doctors-talk-health-awareness-sessions-free-screening-camps-for-the-employees-their-families-etc-this-text-must-appear-prominently-in-the-about-section-of-aboutpage-tsx-rendered-as-readable-body-copy",
+      "title": "Replace or update the About page text content to include the following full paragraph verbatim: \"Mahalaxmi Health Care (Occupational health care and wellness service provider) is a division of Mahalaxmi Multi Specialty Hospital, first of its kind in Healthcare Industry. Mahalaxmi Health Care is managing a health centre or running Onsite Health Check-ups are not at all a challenge to us. Mahalaxmi Health Care (Occupational health care and wellness service provider) division was formed to bridge the gap between the 'Industry's Requirement' and the services provided by Hospitals, which was studied in careful analysis from the extensive experience of our Managing Director in running Multispecialty Hospitals & OHC's. We can assist you in setting up OHC's, running it with required no of Doctors (full time/Part time), Paramedical staff, run LAB & Pharmacy, conduct Pre-Employment Examination, Periodic Health Check up of the EMPLOYEES on-site, organize Doctors Talk, Health Awareness Sessions, Free Screening Camps for the employees & their families, etc.\" This text must appear prominently in the About section of AboutPage.tsx, rendered as readable body copy.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add full Mahalaxmi Health Care company description paragraph to the About section",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Mahalaxmi Health Care",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

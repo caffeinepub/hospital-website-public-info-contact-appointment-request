@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.5rem;
+        
+        /* Warm peach palette - professional and welcoming */
+        /* Clean warm white background */
+        --background: 1.00 0 0;
+        --foreground: 0.22 0.03 30;
+        
+        /* Subtle warm card backgrounds */
+        --card: 1.00 0 0;
+        --card-foreground: 0.22 0.03 30;
+        
+        --popover: 1.00 0 0;
+        --popover-foreground: 0.22 0.03 30;
+        
+        /* Deep warm peach primary */
+        --primary: 0.62 0.16 42;
+        --primary-foreground: 1.00 0 0;
+        
+        /* Soft rose-peach secondary accent */
+        --secondary: 0.82 0.10 48;
+        --secondary-foreground: 0.22 0.03 30;
+        
+        /* Light warm muted areas */
+        --muted: 0.97 0.01 50;
+        --muted-foreground: 0.52 0.04 40;
+        
+        /* Warm peach accent */
+        --accent: 0.88 0.09 52;
+        --accent-foreground: 0.22 0.03 30;
+        
+        /* Medical red for emergency */
+        --destructive: 0.55 0.22 20;
+        --destructive-foreground: 1.00 0 0;
+        
+        /* Subtle warm borders */
+        --border: 0.92 0.02 50;
+        --input: 0.95 0.01 50;
+        --ring: 0.62 0.16 42;
+        
+        /* Success green */
+        --success: 0.60 0.15 150;
+        --success-foreground: 1.00 0 0;
+        
+        /* Warning amber */
+        --warning: 0.72 0.18 55;
+        --warning-foreground: 0.15 0 0;
+        
+        --chart-1: 0.62 0.16 42;
+        --chart-2: 0.75 0.13 48;
+        --chart-3: 0.82 0.10 52;
+        --chart-4: 0.55 0.14 35;
+        --chart-5: 0.68 0.12 58;
+    }
+
+    .dark {
+        /* Professional dark mode with peach accents */
+        --background: 0.18 0.02 30;
+        --foreground: 0.95 0.01 50;
+        
+        --card: 0.22 0.02 30;
+        --card-foreground: 0.95 0.01 50;
+        
+        --popover: 0.22 0.02 30;
+        --popover-foreground: 0.95 0.01 50;
+        
+        /* Bright warm peach for dark mode */
+        --primary: 0.75 0.16 44;
+        --primary-foreground: 0.12 0 0;
+        
+        /* Lighter peach secondary */
+        --secondary: 0.68 0.12 48;
+        --secondary-foreground: 0.12 0 0;
+        
+        --muted: 0.25 0.02 30;
+        --muted-foreground: 0.65 0.03 40;
+        
+        --accent: 0.72 0.14 50;
+        --accent-foreground: 0.95 0.01 50;
+        
+        --destructive: 0.60 0.20 20;
+        --destructive-foreground: 0.95 0 0;
+        
+        --border: 0.28 0.03 30;
+        --input: 0.25 0.02 30;
+        --ring: 0.75 0.16 44;
+        
+        --success: 0.65 0.15 150;
+        --success-foreground: 0.10 0 0;
+        
+        --warning: 0.78 0.18 55;
+        --warning-foreground: 0.10 0 0;
+        
+        --chart-1: 0.75 0.16 44;
+        --chart-2: 0.68 0.12 48;
+        --chart-3: 0.72 0.14 50;
+        --chart-4: 0.62 0.14 35;
+        --chart-5: 0.70 0.12 58;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-bold;
+        letter-spacing: -0.025em;
+        word-wrap: break-word;
+    }
+
+    /* Enhanced focus visibility */
+    *:focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    }
+
+    img {
+        @apply max-w-full h-auto;
+    }
+
+    a:focus-visible {
+        @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background rounded-sm;
+    }
+
+    .skip-to-content {
+        @apply absolute left-0 top-0 -translate-y-full bg-primary text-primary-foreground px-4 py-2 z-[100] transition-transform;
+    }
+
+    .skip-to-content:focus {
+        @apply translate-y-0;
+    }
+
+    p, li, span {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@layer utilities {
+    .section-spacing {
+        @apply py-20 md:py-28;
+    }
+
+    .section-spacing-sm {
+        @apply py-12 md:py-16;
+    }
+
+    .section-spacing-lg {
+        @apply py-24 md:py-36;
+    }
+}
+
+/* ============================================================
+   PRINT / PDF STYLES
+   Hide navigation chrome; render page content cleanly.
+   ============================================================ */
+@media print {
+    /* Hide all navigation and interactive chrome */
+    header,
+    footer,
+    nav,
+    .print\:hidden,
+    [data-print-hide] {
+        display: none !important;
+    }
+
+    /* Reset page margins for clean output */
+    @page {
+        margin: 1.5cm 1.5cm;
+        size: A4;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 11pt;
+        line-height: 1.5;
+        overflow: visible !important;
+    }
+
+    /* Ensure main content fills the page */
+    main {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Make sections stack naturally */
+    section {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    /* Flatten gradient backgrounds to white */
+    section[class*="bg-gradient"],
+    section[class*="bg-primary"],
+    section[class*="bg-muted"],
+    .bg-gradient-to-br,
+    .bg-muted\/30 {
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Ensure text on colored backgrounds is readable */
+    .text-white,
+    .text-white\/90 {
+        color: black !important;
+    }
+
+    /* Cards: remove shadows, keep borders */
+    .shadow-lg,
+    .shadow-md,
+    .shadow-sm,
+    .shadow {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+
+    /* Images: keep aspect ratio, avoid page breaks inside */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Headings: avoid orphaned headings */
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid;
+        page-break-after: avoid;
+        color: black !important;
+    }
+
+    /* Links: show URL inline for reference */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #555;
+    }
+
+    /* Buttons: hide interactive buttons */
+    button:not([data-print-show]),
+    [role="button"]:not([data-print-show]) {
+        display: none !important;
+    }
+
+    /* Grid layouts: simplify for print */
+    .grid {
+        display: block !important;
+    }
+
+    .grid > * {
+        margin-bottom: 0.75rem;
+        break-inside: avoid;
+    }
+
+    /* Flex layouts: allow wrapping */
+    .flex {
+        flex-wrap: wrap !important;
+    }
+
+    /* Container: full width */
+    .container {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Overflow: show all content */
+    .overflow-hidden {
+        overflow: visible !important;
+    }
+
+    /* Rounded corners: remove for print */
+    .rounded-xl,
+    .rounded-lg,
+    .rounded-full {
+        border-radius: 4px !important;
+    }
+
+    /* Hover effects: remove */
+    .hover\:shadow-lg:hover,
+    .hover\:scale-105:hover {
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    /* Transitions: remove */
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add full Mahalaxmi Health Care description to About page",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Replace or update the About page text content to include the full Mahalaxmi Health Care description paragraph verbatim as prominent body copy",
+      "acceptanceCriteria": [
+        "The About page displays the full paragraph text exactly as provided without truncation.",
+        "All sentences in the paragraph are visible and readable on both desktop and mobile viewports.",
+        "The text is styled consistently with the rest of the About page body copy.",
+        "The paragraph is positioned in a logical and prominent location within the About section (e.g., introduction or overview area)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Add or replace the introductory content section with the full Mahalaxmi Health Care description paragraph. Position it prominently near the top of the About page content area, after the hero section but before or within the core values/mission sections. Render the paragraph as readable body copy using appropriate typography classes (e.g., text-lg or text-base, leading-relaxed, text-muted-foreground) that match the existing About page styling. Ensure the paragraph text is rendered verbatim without modification. Preserve all existing About page sections (core values, mission/vision, facility highlights) unless they conflict with the new content placement."
+        }
+      ]
+    }
+  ]
+}

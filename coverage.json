@@ -1,0 +1,37 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T12:48:19.703Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Replace or update the About page text content to include the following full paragraph verbatim: \"Mahalaxmi Health Care (Occupational health care and wellness service provider) is a division of Mahalaxmi Multi Specialty Hospital, first of its kind in Healthcare Industry. Mahalaxmi Health Care is managing a health centre or running Onsite Health Check-ups are not at all a challenge to us. Mahalaxmi Health Care (Occupational health care and wellness service provider) division was formed to bridge the gap between the 'Industry's Requirement' and the services provided by Hospitals, which was studied in careful analysis from the extensive experience of our Managing Director in running Multispecialty Hospitals & OHC's. We can assist you in setting up OHC's, running it with required no of Doctors (full time/Part time), Paramedical staff, run LAB & Pharmacy, conduct Pre-Employment Examination, Periodic Health Check up of the EMPLOYEES on-site, organize Doctors Talk, Health Awareness Sessions, Free Screening Camps for the employees & their families, etc.\" This text must appear prominently in the About section of AboutPage.tsx, rendered as readable body copy.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AboutPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AboutPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/pages/AboutPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
