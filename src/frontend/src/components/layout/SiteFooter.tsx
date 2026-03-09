@@ -97,12 +97,20 @@ export default function SiteFooter() {
                   className="h-4 w-4 mt-0.5 flex-shrink-0"
                   aria-hidden="true"
                 />
-                <a
-                  href="tel:+919876543210"
-                  className="hover:text-primary transition-colors"
-                >
-                  +91 98765 43210
-                </a>
+                <span>
+                  <a
+                    href="tel:04177233330"
+                    className="hover:text-primary transition-colors block"
+                  >
+                    04177233330
+                  </a>
+                  <a
+                    href="tel:7200041183"
+                    className="hover:text-primary transition-colors block"
+                  >
+                    7200041183
+                  </a>
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail
@@ -110,10 +118,10 @@ export default function SiteFooter() {
                   aria-hidden="true"
                 />
                 <a
-                  href="mailto:info@mahalaxmihealthcare.com"
+                  href="mailto:mahalaxmihospitalakm@gmail.com"
                   className="hover:text-primary transition-colors break-all"
                 >
-                  info@mahalaxmihealthcare.com
+                  mahalaxmihospitalakm@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -122,7 +130,7 @@ export default function SiteFooter() {
                   aria-hidden="true"
                 />
                 <span>
-                  123 Healthcare Avenue, Medical District, City, State 123456
+                  NO-H 67, JOTHI NAGAR, ARAKKONAM, RANIPET DISTRICT - 631003
                 </span>
               </li>
             </ul>

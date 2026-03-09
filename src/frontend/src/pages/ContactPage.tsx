@@ -2,6 +2,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import PdfExportButton from "@/components/shared/PdfExportButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HOSPITAL_NAME } from "@/config/branding";
+import { CONTACT_DETAILS } from "@/config/contactDetails";
 import { withCacheBust } from "@/utils/generatedAssets";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
@@ -84,11 +85,7 @@ export default function ContactPage() {
                   <address className="not-italic text-muted-foreground">
                     {HOSPITAL_NAME}
                     <br />
-                    123 Healthcare Avenue
-                    <br />
-                    Medical District
-                    <br />
-                    City, State 12345
+                    {CONTACT_DETAILS.address}
                   </address>
                 </CardContent>
               </Card>
@@ -107,21 +104,21 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <div>
-                    <div className="font-medium">Main Line:</div>
+                    <div className="font-medium">Landline:</div>
                     <a
-                      href="tel:+1234567890"
+                      href="tel:04177233330"
                       className="text-primary hover:underline"
                     >
-                      +1 (234) 567-890
+                      04177233330
                     </a>
                   </div>
                   <div>
-                    <div className="font-medium">Emergency:</div>
+                    <div className="font-medium">Mobile:</div>
                     <a
-                      href="tel:+1234567899"
-                      className="text-destructive hover:underline font-semibold"
+                      href="tel:7200041183"
+                      className="text-primary hover:underline font-semibold"
                     >
-                      +1 (234) 567-899
+                      7200041183
                     </a>
                   </div>
                 </CardContent>

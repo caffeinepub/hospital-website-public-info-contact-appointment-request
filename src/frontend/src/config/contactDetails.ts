@@ -4,10 +4,10 @@
  */
 
 export const CONTACT_DETAILS = {
-  phone: "7200041183",
+  phone: "04177233330, 7200041183",
   email: "mahalaxmihospitalakm@gmail.com",
   emergency: "",
-  address: "NO .H-67,JOTHI NAGAR,ARAKKONAM,RANIPET DISTRICT PIN-631003",
+  address: "NO-H 67, JOTHI NAGAR, ARAKKONAM, RANIPET DISTRICT - 631003",
   hours: {
     emergency: "24/7",
     outpatient: "Mon-Fri 8am-6pm",
