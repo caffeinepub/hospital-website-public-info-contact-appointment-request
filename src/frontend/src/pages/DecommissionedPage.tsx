@@ -1,8 +1,8 @@
-import PageHero from '@/components/layout/PageHero';
-import PageHeroImage from '@/components/layout/PageHeroImage';
-import Section from '@/components/layout/Section';
-import { Card, CardContent } from '@/components/ui/card';
-import { AlertTriangle } from 'lucide-react';
+import PageHero from "@/components/layout/PageHero";
+import PageHeroImage from "@/components/layout/PageHeroImage";
+import Section from "@/components/layout/Section";
+import { Card, CardContent } from "@/components/ui/card";
+import { AlertTriangle } from "lucide-react";
 
 export default function DecommissionedPage() {
   return (
@@ -10,7 +10,6 @@ export default function DecommissionedPage() {
       <PageHero
         title="Service Decommissioned"
         subtitle="This service is currently unavailable"
-        variant="pattern"
       >
         <PageHeroImage
           src="/assets/generated/medical-decommissioned-illustration.dim_1200x600.png"
@@ -42,16 +41,23 @@ export default function DecommissionedPage() {
       <Section variant="muted">
         <Card className="max-w-2xl mx-auto">
           <CardContent className="p-8 text-center space-y-4">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-500/10 mb-2">
-              <AlertTriangle className="h-8 w-8 text-orange-600" aria-hidden="true" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-warning/10 mb-2">
+              <AlertTriangle
+                className="h-8 w-8 text-warning"
+                aria-hidden="true"
+              />
             </div>
-            <h3 className="text-2xl font-bold">Service Temporarily Unavailable</h3>
+            <h3 className="text-2xl font-bold">
+              Service Temporarily Unavailable
+            </h3>
             <p className="text-muted-foreground">
-              This service has been temporarily decommissioned for maintenance and improvements. 
-              We apologize for any inconvenience and appreciate your patience.
+              This service has been temporarily decommissioned for maintenance
+              and improvements. We apologize for any inconvenience and
+              appreciate your patience.
             </p>
             <p className="text-sm text-muted-foreground">
-              Please check back later or contact our support team for more information.
+              Please check back later or contact our support team for more
+              information.
             </p>
           </CardContent>
         </Card>

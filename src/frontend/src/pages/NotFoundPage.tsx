@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { useNavigate } from '@tanstack/react-router';
-import { Home, MapPin } from 'lucide-react';
-import PageHero from '@/components/layout/PageHero';
-import PageHeroImage from '@/components/layout/PageHeroImage';
-import Section from '@/components/layout/Section';
+import PageHero from "@/components/layout/PageHero";
+import PageHeroImage from "@/components/layout/PageHeroImage";
+import Section from "@/components/layout/Section";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { useNavigate } from "@tanstack/react-router";
+import { Home, MapPin } from "lucide-react";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
@@ -14,7 +14,6 @@ export default function NotFoundPage() {
       <PageHero
         title="404 - Page Not Found"
         subtitle="The page you're looking for doesn't exist"
-        variant="pattern"
       >
         <PageHeroImage
           src="/assets/generated/medical-404-illustration.dim_1200x600.png"
@@ -28,7 +27,9 @@ export default function NotFoundPage() {
 
       <Section>
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Need Help Finding Your Way?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Need Help Finding Your Way?
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Let us guide you back to the right path
           </p>
@@ -57,7 +58,7 @@ export default function NotFoundPage() {
             </div>
             <Button
               size="lg"
-              onClick={() => navigate({ to: '/' })}
+              onClick={() => navigate({ to: "/" })}
               className="text-base"
             >
               <Home className="mr-2 h-5 w-5" aria-hidden="true" />

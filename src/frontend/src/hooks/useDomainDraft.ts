@@ -1,14 +1,14 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { useActor } from './useActor';
-import type { DomainDraft } from '@/backend';
+import type { DomainDraft } from "@/backend";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useActor } from "./useActor";
 
 export function useGetDomainDraft() {
   const { actor, isFetching: actorFetching } = useActor();
 
   const query = useQuery<DomainDraft | null>({
-    queryKey: ['domainDraft'],
+    queryKey: ["domainDraft"],
     queryFn: async () => {
-      if (!actor) throw new Error('Actor not available');
+      if (!actor) throw new Error("Actor not available");
       return actor.getDomainDraft();
     },
     enabled: !!actor && !actorFetching,
@@ -28,14 +28,14 @@ export function useSaveDomainDraft() {
 
   return useMutation({
     mutationFn: async (content: string) => {
-      if (!actor) throw new Error('Actor not available');
+      if (!actor) throw new Error("Actor not available");
       return actor.saveDomainDraft(content);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['domainDraft'] });
+      queryClient.invalidateQueries({ queryKey: ["domainDraft"] });
     },
     onError: (error: Error) => {
-      console.error('Failed to save domain draft:', error);
+      console.error("Failed to save domain draft:", error);
     },
   });
 }

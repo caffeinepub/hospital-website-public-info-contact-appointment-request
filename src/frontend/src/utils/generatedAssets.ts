@@ -1,10 +1,10 @@
-import { getBuildId } from '@/config/buildInfo';
+import { getBuildId } from "@/config/buildInfo";
 
 /**
  * Check if a URL points to a generated asset
  */
 export function isGeneratedAsset(url: string): boolean {
-  return url.includes('/assets/generated/');
+  return url.includes("/assets/generated/");
 }
 
 /**
@@ -17,14 +17,14 @@ export function withCacheBust(url: string): string {
   }
 
   const buildId = getBuildId();
-  
+
   try {
     const urlObj = new URL(url, window.location.origin);
-    urlObj.searchParams.set('v', buildId);
+    urlObj.searchParams.set("v", buildId);
     return urlObj.pathname + urlObj.search + urlObj.hash;
   } catch {
     // Fallback for relative URLs or parsing errors
-    const separator = url.includes('?') ? '&' : '?';
+    const separator = url.includes("?") ? "&" : "?";
     return `${url}${separator}v=${buildId}`;
   }
 }

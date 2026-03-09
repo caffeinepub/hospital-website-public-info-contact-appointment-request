@@ -1,136 +1,207 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
-import ContactForm from '@/components/forms/ContactForm';
-import PageHero from '@/components/layout/PageHero';
-import PageHeroImage from '@/components/layout/PageHeroImage';
-import Section from '@/components/layout/Section';
+import ContactForm from "@/components/forms/ContactForm";
+import PdfExportButton from "@/components/shared/PdfExportButton";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { HOSPITAL_NAME } from "@/config/branding";
+import { withCacheBust } from "@/utils/generatedAssets";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 export default function ContactPage() {
   return (
     <div className="flex flex-col">
+      {/* PDF Export Button - floating */}
+      <div className="fixed bottom-6 right-6 z-50 print:hidden">
+        <PdfExportButton filename="mahalaxmi-health-care-contact.pdf" />
+      </div>
+
       {/* Hero Section */}
-      <PageHero
-        title="Contact Us"
-        subtitle="Get in touch with our team for appointments, inquiries, or feedback"
-        variant="pattern"
-      >
-        <PageHeroImage
-          src="/assets/generated/hospital-exterior.dim_1600x900.png"
-          alt="Mahalaxmi Health Care hospital exterior"
-          width={1600}
-          height={900}
-          loading="eager"
-          className="mt-8 max-w-4xl mx-auto"
-        />
-      </PageHero>
-
-      {/* Reception Photo */}
-      <Section>
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Visit Our Reception</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our friendly staff is ready to assist you with appointments and inquiries
-          </p>
-        </div>
-        <PageHeroImage
-          src="/assets/generated/contact-reception.dim_1600x900.png"
-          alt="Reception desk at Mahalaxmi Health Care"
-          width={1600}
-          height={900}
-          loading="lazy"
-          className="max-w-5xl mx-auto"
-        />
-      </Section>
-
-      {/* Contact Information */}
-      <Section variant="muted">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We're here to help with all your healthcare needs
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-          <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="mx-auto mb-2">
-                <Phone className="h-10 w-10 text-primary" aria-hidden="true" />
-              </div>
-              <CardTitle className="text-lg">Phone</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                <a href="tel:+919876543210" className="hover:text-primary transition-colors">
-                  +91 98765 43210
-                </a>
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">Mon-Sat: 9 AM - 6 PM</p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="mx-auto mb-2">
-                <Mail className="h-10 w-10 text-primary" aria-hidden="true" />
-              </div>
-              <CardTitle className="text-lg">Email</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground break-all">
-                <a href="mailto:info@mahalaxmihealthcare.com" className="hover:text-primary transition-colors">
-                  info@mahalaxmihealthcare.com
-                </a>
-              </p>
-              <p className="text-xs text-muted-foreground mt-1">24-48 hour response</p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="mx-auto mb-2">
-                <MapPin className="h-10 w-10 text-primary" aria-hidden="true" />
-              </div>
-              <CardTitle className="text-lg">Location</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                123 Healthcare Avenue<br />
-                Medical District<br />
-                City, State 123456
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="mx-auto mb-2">
-                <Clock className="h-10 w-10 text-primary" aria-hidden="true" />
-              </div>
-              <CardTitle className="text-lg">Hours</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Mon-Sat: 9 AM - 6 PM<br />
-                Sunday: Closed<br />
-                Emergency: 24/7
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </Section>
-
-      {/* Contact Form */}
-      <Section>
-        <div className="max-w-2xl mx-auto">
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Send Us a Message</h2>
-            <p className="text-lg text-muted-foreground">
-              Fill out the form below and we'll get back to you as soon as possible
+      <section className="section-spacing-sm bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Contact Us
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Get in touch with us for appointments, inquiries, or feedback
             </p>
           </div>
-          <ContactForm />
         </div>
-      </Section>
+      </section>
+
+      {/* Reception Image */}
+      <section className="section-spacing bg-muted/30">
+        <div className="container">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-xl shadow-lg">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/hospital-reception.dim_1200x800.png",
+                )}
+                alt="Hospital reception area"
+                className="w-full h-96 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                <div className="p-8 text-white">
+                  <h2 className="text-3xl font-bold mb-2">
+                    Visit Our Modern Facility
+                  </h2>
+                  <p className="text-white/90 text-lg">
+                    Our friendly staff is ready to assist you
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Information and Form */}
+      <section className="section-spacing">
+        <div className="container">
+          <div className="grid gap-8 lg:grid-cols-2 max-w-7xl mx-auto">
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
+                <p className="text-muted-foreground text-lg mb-8">
+                  We're here to help. Reach out to us through any of the
+                  following channels.
+                </p>
+              </div>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <MapPin
+                        className="h-6 w-6 text-primary"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle>Address</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <address className="not-italic text-muted-foreground">
+                    {HOSPITAL_NAME}
+                    <br />
+                    123 Healthcare Avenue
+                    <br />
+                    Medical District
+                    <br />
+                    City, State 12345
+                  </address>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Phone
+                        className="h-6 w-6 text-primary"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle>Phone</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div>
+                    <div className="font-medium">Main Line:</div>
+                    <a
+                      href="tel:+1234567890"
+                      className="text-primary hover:underline"
+                    >
+                      +1 (234) 567-890
+                    </a>
+                  </div>
+                  <div>
+                    <div className="font-medium">Emergency:</div>
+                    <a
+                      href="tel:+1234567899"
+                      className="text-destructive hover:underline font-semibold"
+                    >
+                      +1 (234) 567-899
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Mail
+                        className="h-6 w-6 text-primary"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle>Email</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <a
+                    href="mailto:info@mahalaxmihealthcare.com"
+                    className="text-primary hover:underline"
+                  >
+                    info@mahalaxmihealthcare.com
+                  </a>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Clock
+                        className="h-6 w-6 text-primary"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle>Hours</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      Monday - Friday:
+                    </span>
+                    <span className="font-medium">8:00 AM - 8:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Saturday:</span>
+                    <span className="font-medium">9:00 AM - 5:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Sunday:</span>
+                    <span className="font-medium">10:00 AM - 4:00 PM</span>
+                  </div>
+                  <div className="pt-2 border-t">
+                    <div className="flex justify-between">
+                      <span className="text-destructive font-medium">
+                        Emergency:
+                      </span>
+                      <span className="font-semibold">24/7</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <Card className="shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ContactForm />
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

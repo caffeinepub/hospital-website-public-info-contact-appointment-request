@@ -1,155 +1,170 @@
-import { useState } from 'react';
-import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { Menu, X, Search, Phone } from 'lucide-react';
-import { HOSPITAL_NAME } from '@/config/branding';
-import { Button } from '@/components/ui/button';
-import { getEmergencyPhone, getEmergencyPhoneTel } from '@/config/contactDetails';
+import { Button } from "@/components/ui/button";
+import { HOSPITAL_NAME } from "@/config/branding";
+import {
+  getEmergencyPhone,
+  getEmergencyPhoneTel,
+} from "@/config/contactDetails";
+import { useLocation, useNavigate } from "@tanstack/react-router";
+import { Menu, Phone, X } from "lucide-react";
+import { useState } from "react";
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const routerState = useRouterState();
-  const currentPath = routerState.location.pathname;
+  const location = useLocation();
   const emergencyPhone = getEmergencyPhone();
   const emergencyPhoneTel = getEmergencyPhoneTel();
 
-  const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/services', label: 'Services' },
-    { path: '/doctor-suites', label: 'Doctor Suites' },
-    { path: '/contact', label: 'Contact' },
-    { path: '/appointments', label: 'Appointments' },
+  const logoUrl = "/assets/uploads/NEW-LOGO-1-1.png";
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Services", path: "/services" },
+    { label: "About", path: "/about" },
+    { label: "Contact", path: "/contact" },
   ];
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(path);
+  };
 
   const handleNavigation = (path: string) => {
     navigate({ to: path });
     setMobileMenuOpen(false);
   };
 
-  const googleSearchUrl = 'https://www.google.com/search?q=Mahalakshmi+Health+Care';
-
   return (
-    <header className="sticky top-0 z-50 w-full bg-card shadow-sm">
-      {/* Top bar with emergency contact */}
-      <div className="bg-primary text-primary-foreground">
-        <div className="container flex flex-wrap h-auto min-h-10 items-center justify-between py-2 gap-2">
-          <div className="flex items-center gap-4">
-            <a 
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
+      {/* Emergency Contact Bar — ivory background */}
+      <div
+        style={{ backgroundColor: "#FFFFF0" }}
+        className="border-b border-stone-200"
+      >
+        <div className="container py-2">
+          <div
+            className="flex items-center justify-center gap-2 text-sm font-medium"
+            style={{ color: "#1c1917" }}
+          >
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            <span>24/7 Emergency:</span>
+            <a
               href={emergencyPhoneTel}
-              className="flex items-center gap-2 hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-sm px-1"
+              className="font-bold hover:underline"
+              style={{ color: "#1c1917" }}
               aria-label={`Call emergency number ${emergencyPhone}`}
             >
-              <Phone className="h-3.5 w-3.5 flex-shrink-0" aria-hidden="true" />
-              <span className="font-medium text-sm">Emergency: {emergencyPhone}</span>
+              {emergencyPhone}
             </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-primary-foreground/90 font-bold text-base md:text-2xl">24/7 Emergency Services Available</span>
           </div>
         </div>
       </div>
 
-      {/* Main header */}
-      <div className="border-b border-border/40">
-        <div className="container flex h-20 items-center justify-between gap-4">
+      {/* Main Header */}
+      <div className="container">
+        <div className="flex h-20 items-center justify-between">
+          {/* Logo */}
           <button
-            onClick={() => handleNavigation('/')}
-            className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm flex-shrink-0"
-            aria-label={`Go to ${HOSPITAL_NAME} homepage`}
+            type="button"
+            onClick={() => handleNavigation("/")}
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            aria-label={`${HOSPITAL_NAME} home`}
           >
             <img
-              src="/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png"
-              alt=""
-              className="h-12 w-12"
-              width="48"
-              height="48"
-              aria-hidden="true"
+              src={logoUrl}
+              alt={`${HOSPITAL_NAME} logo`}
+              className="h-16 w-16 object-contain"
+              width="64"
+              height="64"
             />
-            <div className="flex flex-col items-start">
-              <span className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+            <div className="text-left">
+              <div className="font-bold text-lg leading-tight text-foreground">
                 {HOSPITAL_NAME}
-              </span>
-              <span className="text-xs text-muted-foreground hidden sm:block">Excellence in Healthcare</span>
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Quality Healthcare
+              </div>
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
-            {navLinks.map((link) => (
+          <nav
+            className="hidden md:flex items-center gap-1"
+            aria-label="Main navigation"
+          >
+            {navItems.map((item) => (
               <Button
-                key={link.path}
-                variant={currentPath === link.path ? 'default' : 'ghost'}
-                onClick={() => handleNavigation(link.path)}
-                className="text-sm font-medium"
-                aria-current={currentPath === link.path ? 'page' : undefined}
+                key={item.path}
+                variant="ghost"
+                onClick={() => handleNavigation(item.path)}
+                className={`text-base font-medium ${
+                  isActive(item.path)
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-current={isActive(item.path) ? "page" : undefined}
               >
-                {link.label}
+                {item.label}
               </Button>
             ))}
             <Button
-              variant="outline"
-              size="sm"
-              asChild
-              className="ml-2"
+              onClick={() => handleNavigation("/appointments")}
+              className="ml-4"
             >
-              <a href={googleSearchUrl} target="_blank" rel="noopener noreferrer">
-                <Search className="h-4 w-4 mr-2" aria-hidden="true" />
-                Find Us
-              </a>
+              Book Appointment
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
+          <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-muted rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" aria-hidden="true" />
             ) : (
               <Menu className="h-6 w-6" aria-hidden="true" />
             )}
-          </Button>
+          </button>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="lg:hidden border-b border-border/40 bg-card"
-        >
-          <nav className="container py-4 flex flex-col gap-2" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
+        {/* Mobile Navigation */}
+        {mobileMenuOpen && (
+          <nav
+            className="md:hidden py-4 border-t"
+            aria-label="Mobile navigation"
+          >
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <Button
+                  key={item.path}
+                  variant="ghost"
+                  onClick={() => handleNavigation(item.path)}
+                  className={`justify-start text-base font-medium ${
+                    isActive(item.path)
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground"
+                  }`}
+                  aria-current={isActive(item.path) ? "page" : undefined}
+                >
+                  {item.label}
+                </Button>
+              ))}
               <Button
-                key={link.path}
-                variant={currentPath === link.path ? 'default' : 'ghost'}
-                onClick={() => handleNavigation(link.path)}
-                className="justify-start text-base font-medium"
-                aria-current={currentPath === link.path ? 'page' : undefined}
+                onClick={() => handleNavigation("/appointments")}
+                className="mt-2"
               >
-                {link.label}
+                Book Appointment
               </Button>
-            ))}
-            <Button
-              variant="outline"
-              asChild
-              className="justify-start mt-2"
-            >
-              <a href={googleSearchUrl} target="_blank" rel="noopener noreferrer">
-                <Search className="h-4 w-4 mr-2" aria-hidden="true" />
-                Find Us on Google
-              </a>
-            </Button>
+            </div>
           </nav>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 }

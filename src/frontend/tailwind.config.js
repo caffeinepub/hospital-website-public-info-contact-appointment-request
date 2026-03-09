@@ -13,8 +13,8 @@ export default {
                 DEFAULT: '1rem',
                 sm: '1.5rem',
                 lg: '2rem',
-                xl: '2.5rem',
-                '2xl': '3rem',
+                xl: '3rem',
+                '2xl': '4rem',
             },
             screens: {
                 '2xl': '1400px'
@@ -55,18 +55,13 @@ export default {
                     DEFAULT: 'oklch(var(--card))',
                     foreground: 'oklch(var(--card-foreground))'
                 },
-                orange: {
-                    50: 'oklch(var(--orange-50))',
-                    100: 'oklch(var(--orange-100))',
-                    200: 'oklch(var(--orange-200))',
-                    300: 'oklch(var(--orange-300))',
-                    400: 'oklch(var(--orange-400))',
-                    500: 'oklch(var(--orange-500))',
-                    600: 'oklch(var(--orange-600))',
-                    700: 'oklch(var(--orange-700))',
-                    800: 'oklch(var(--orange-800))',
-                    900: 'oklch(var(--orange-900))',
-                    950: 'oklch(var(--orange-950))',
+                success: {
+                    DEFAULT: 'oklch(var(--success) / <alpha-value>)',
+                    foreground: 'oklch(var(--success-foreground))'
+                },
+                warning: {
+                    DEFAULT: 'oklch(var(--warning) / <alpha-value>)',
+                    foreground: 'oklch(var(--warning-foreground))'
                 },
                 chart: {
                     '1': 'oklch(var(--chart-1))',
@@ -89,9 +84,10 @@ export default {
                 '128': '32rem',
             },
             boxShadow: {
-                'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
-                'medium': '0 4px 20px -2px rgba(0, 0, 0, 0.1), 0 12px 28px -4px rgba(0, 0, 0, 0.08)',
-                'strong': '0 10px 40px -5px rgba(0, 0, 0, 0.15), 0 20px 50px -10px rgba(0, 0, 0, 0.12)',
+                'soft': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05)',
+                'medium': '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.08)',
+                'strong': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
+                'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
             },
             fontFamily: {
                 sans: [
@@ -105,6 +101,20 @@ export default {
                     'Arial',
                     'sans-serif',
                 ],
+            },
+            fontSize: {
+                'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.01em' }],
+                'sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0.005em' }],
+                'base': ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
+                'lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
+                'xl': ['1.25rem', { lineHeight: '1.5', letterSpacing: '-0.015em' }],
+                '2xl': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.02em' }],
+                '3xl': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.025em' }],
+                '4xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.03em' }],
+                '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.035em' }],
+                '6xl': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.04em' }],
+                '7xl': ['4.5rem', { lineHeight: '1', letterSpacing: '-0.045em' }],
+                '8xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.05em' }],
             },
         }
     },

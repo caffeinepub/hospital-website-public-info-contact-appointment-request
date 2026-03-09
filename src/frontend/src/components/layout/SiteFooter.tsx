@@ -1,112 +1,160 @@
-import { useState } from 'react';
-import { Heart, Phone, MapPin, Clock, AlertCircle, RefreshCw } from 'lucide-react';
-import { HOSPITAL_NAME } from '@/config/branding';
-import { CONTACT_DETAILS } from '@/config/contactDetails';
-import { getBuildVersion } from '@/config/buildInfo';
-import { withCacheBust } from '@/utils/generatedAssets';
+import { HOSPITAL_NAME } from "@/config/branding";
+import { getBuildVersion } from "@/config/buildInfo";
+import { withCacheBust } from "@/utils/generatedAssets";
+import { useNavigate } from "@tanstack/react-router";
+import { Clock, Heart, Mail, MapPin, Phone } from "lucide-react";
 
 export default function SiteFooter() {
-  const appIdentifier = typeof window !== 'undefined' 
-    ? encodeURIComponent(window.location.hostname)
-    : 'unknown-app';
-  
+  const navigate = useNavigate();
+  const currentYear = new Date().getFullYear();
+  const logoUrl = withCacheBust(
+    "/assets/generated/mhc-logo-hq.dim_512x512.png",
+  );
   const buildVersion = getBuildVersion();
-  const [logoError, setLogoError] = useState(false);
-  const logoUrl = withCacheBust('/assets/generated/mahalaxmi-health-care-logo.dim_512x512.png');
+
+  const appIdentifier =
+    typeof window !== "undefined"
+      ? encodeURIComponent(window.location.hostname)
+      : "unknown-app";
+  const caffeineUrl = `https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`;
+
+  const quickLinks = [
+    { label: "Home", path: "/" },
+    { label: "Services", path: "/services" },
+    { label: "About Us", path: "/about" },
+    { label: "Appointments", path: "/appointments" },
+    { label: "Contact", path: "/contact" },
+  ];
 
   return (
-    <footer className="bg-muted/30 border-t border-border/40">
-      <div className="container py-16">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Section */}
-          <div className="space-y-4 lg:col-span-2">
+    <footer className="bg-muted/30 border-t">
+      <div className="container py-12 md:py-16">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {/* About */}
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
-              {logoError ? (
-                <div className="h-12 w-12 rounded-lg bg-muted/50 border border-border flex items-center justify-center">
-                  <AlertCircle className="h-6 w-6 text-muted-foreground/50" aria-hidden="true" />
-                </div>
-              ) : (
-                <img
-                  src={logoUrl}
-                  alt=""
-                  className="h-12 w-12"
-                  width="48"
-                  height="48"
-                  aria-hidden="true"
-                  onError={() => setLogoError(true)}
-                />
-              )}
-              <div className="flex flex-col">
-                <span className="text-lg font-bold">{HOSPITAL_NAME}</span>
-                <span className="text-xs text-muted-foreground">Excellence in Healthcare</span>
+              <img
+                src={logoUrl}
+                alt={`${HOSPITAL_NAME} logo`}
+                className="h-12 w-12"
+                width="48"
+                height="48"
+              />
+              <div className="font-bold text-lg leading-tight">
+                {HOSPITAL_NAME}
               </div>
             </div>
-            <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
-              Providing compassionate, quality healthcare to our community with state-of-the-art facilities and experienced medical professionals dedicated to your wellbeing.
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Providing quality healthcare services with compassion and
+              excellence. Your health is our priority.
             </p>
           </div>
 
-          {/* Contact Info */}
+          {/* Quick Links - reordered to match header navigation */}
           <div className="space-y-4">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">Contact Us</h2>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" aria-hidden="true" />
-                <address className="not-italic">{CONTACT_DETAILS.address}</address>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 flex-shrink-0 text-primary" aria-hidden="true" />
-                <a
-                  href={`tel:${CONTACT_DETAILS.phone}`}
-                  className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-                >
-                  {CONTACT_DETAILS.phone}
-                </a>
-              </div>
-              {CONTACT_DETAILS.emergency && (
-                <div className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 flex-shrink-0 text-destructive" aria-hidden="true" />
-                  <a
-                    href={`tel:${CONTACT_DETAILS.emergency}`}
-                    className="font-medium text-destructive hover:text-destructive/80 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            <h3 className="font-bold text-base">Quick Links</h3>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.path}>
+                  <button
+                    type="button"
+                    onClick={() => navigate({ to: link.path })}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    Emergency: {CONTACT_DETAILS.emergency}
-                  </a>
-                </div>
-              )}
-            </div>
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Hours */}
+          {/* Operating Hours - moved before contact for better visual balance */}
           <div className="space-y-4">
-            <h2 className="text-sm font-semibold uppercase tracking-wider text-foreground">Hours</h2>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-start gap-3">
-                <Clock className="h-4 w-4 mt-0.5 flex-shrink-0 text-primary" aria-hidden="true" />
+            <h3 className="font-bold text-base">Operating Hours</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <Clock
+                  className="h-4 w-4 mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                />
                 <div>
-                  <p className="font-medium text-foreground">Emergency Care</p>
-                  <p>{CONTACT_DETAILS.hours.emergency}</p>
+                  <div>Mon-Sat: 9 AM - 6 PM</div>
+                  <div>Sunday: Closed</div>
+                  <div className="text-destructive font-medium mt-1">
+                    Emergency: 24/7
+                  </div>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info - moved to last column */}
+          <div className="space-y-4">
+            <h3 className="font-bold text-base">Contact Us</h3>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2">
+                <Phone
+                  className="h-4 w-4 mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <a
+                  href="tel:+919876543210"
+                  className="hover:text-primary transition-colors"
+                >
+                  +91 98765 43210
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Mail
+                  className="h-4 w-4 mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <a
+                  href="mailto:info@mahalaxmihealthcare.com"
+                  className="hover:text-primary transition-colors break-all"
+                >
+                  info@mahalaxmihealthcare.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin
+                  className="h-4 w-4 mt-0.5 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <span>
+                  123 Healthcare Avenue, Medical District, City, State 123456
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p className="flex items-center justify-center gap-1 flex-wrap">
-            © {new Date().getFullYear()} {HOSPITAL_NAME}. Built with <Heart className="h-4 w-4 text-destructive fill-destructive" aria-label="love" /> using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-            >
-              caffeine.ai
-            </a>
-          </p>
-          <p className="text-xs text-muted-foreground/70">
-            Version {buildVersion}
-          </p>
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+            <div>
+              © {currentYear} {HOSPITAL_NAME}. All rights reserved.
+            </div>
+            <div className="flex items-center gap-2">
+              <span>Built with</span>
+              <Heart
+                className="h-4 w-4 text-destructive fill-destructive"
+                aria-label="love"
+              />
+              <span>using</span>
+              <a
+                href={caffeineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:text-primary transition-colors"
+              >
+                caffeine.ai
+              </a>
+            </div>
+            {buildVersion && buildVersion !== "dev" && (
+              <div className="text-xs">v{buildVersion}</div>
+            )}
+          </div>
         </div>
       </div>
     </footer>

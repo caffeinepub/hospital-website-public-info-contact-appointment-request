@@ -1,14 +1,19 @@
-import { createRouter, createRoute, createRootRoute, RouterProvider, Outlet } from '@tanstack/react-router';
-import SiteLayout from './components/layout/SiteLayout';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import ServicesPage from './pages/ServicesPage';
-import ContactPage from './pages/ContactPage';
-import AppointmentRequestPage from './pages/AppointmentRequestPage';
-import DoctorsPage from './pages/DoctorsPage';
-import DomainDraftPage from './pages/DomainDraftPage';
-import DecommissionedPage from './pages/DecommissionedPage';
-import NotFoundPage from './pages/NotFoundPage';
+import {
+  Outlet,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from "@tanstack/react-router";
+import SiteLayout from "./components/layout/SiteLayout";
+import AboutPage from "./pages/AboutPage";
+import AppointmentRequestPage from "./pages/AppointmentRequestPage";
+import ContactPage from "./pages/ContactPage";
+import DecommissionedPage from "./pages/DecommissionedPage";
+import DomainDraftPage from "./pages/DomainDraftPage";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ServicesPage from "./pages/ServicesPage";
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -20,55 +25,49 @@ const rootRoute = createRootRoute({
 
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/',
+  path: "/",
   component: HomePage,
 });
 
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/about',
+  path: "/about",
   component: AboutPage,
 });
 
 const servicesRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/services',
+  path: "/services",
   component: ServicesPage,
 });
 
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/contact',
+  path: "/contact",
   component: ContactPage,
 });
 
 const appointmentsRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/appointments',
+  path: "/appointments",
   component: AppointmentRequestPage,
-});
-
-const doctorSuitesRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/doctor-suites',
-  component: DoctorsPage,
 });
 
 const domainDraftRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/domain-draft',
+  path: "/domain-draft",
   component: DomainDraftPage,
 });
 
 const decommissionedRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/decommissioned',
+  path: "/decommissioned",
   component: DecommissionedPage,
 });
 
 const notFoundRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '*',
+  path: "*",
   component: NotFoundPage,
 });
 
@@ -78,7 +77,6 @@ const routeTree = rootRoute.addChildren([
   servicesRoute,
   contactRoute,
   appointmentsRoute,
-  doctorSuitesRoute,
   domainDraftRoute,
   decommissionedRoute,
   notFoundRoute,
@@ -86,7 +84,7 @@ const routeTree = rootRoute.addChildren([
 
 const router = createRouter({ routeTree });
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

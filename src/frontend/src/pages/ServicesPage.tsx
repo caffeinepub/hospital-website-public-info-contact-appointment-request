@@ -1,268 +1,409 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { useNavigate } from '@tanstack/react-router';
-import { 
-  Stethoscope, Heart, Baby, Bone, Eye, Ear, Brain, Microscope, 
-  Activity, Syringe, Pill, Ambulance, TestTube, Scan, Users, 
-  Thermometer, Droplet, Shield, AlertCircle, Phone
-} from 'lucide-react';
-import PageHero from '@/components/layout/PageHero';
-import PageHeroImage from '@/components/layout/PageHeroImage';
-import Section from '@/components/layout/Section';
-import { getEmergencyPhone, getEmergencyPhoneTel } from '@/config/contactDetails';
+import PdfExportButton from "@/components/shared/PdfExportButton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { withCacheBust } from "@/utils/generatedAssets";
+import { useNavigate } from "@tanstack/react-router";
+import {
+  Activity,
+  Baby,
+  Bone,
+  Brain,
+  Droplet,
+  Eye,
+  Heart,
+  Microscope,
+  Pill,
+  Scan,
+  Scissors,
+  Shield,
+  Stethoscope,
+  Syringe,
+  Thermometer,
+  Waves,
+  Zap,
+} from "lucide-react";
 
 export default function ServicesPage() {
   const navigate = useNavigate();
-  const emergencyPhone = getEmergencyPhone();
-  const emergencyPhoneTel = getEmergencyPhoneTel();
 
   const services = [
     {
-      title: 'Emergency Services',
-      desc: '24/7 emergency medical services and trauma care - Always available when you need us',
-      icon: AlertCircle,
-      featured: true,
-    },
-    {
-      title: 'General Medicine',
-      desc: 'Comprehensive primary care for common illnesses and health concerns',
       icon: Stethoscope,
+      title: "General Medicine",
+      description: "Comprehensive primary care and health management",
     },
     {
-      title: 'Cardiology',
-      desc: 'Heart health assessment, treatment, and cardiovascular care',
       icon: Heart,
+      title: "Cardiology",
+      description: "Advanced heart care and cardiovascular treatments",
     },
     {
-      title: 'Pediatrics',
-      desc: 'Specialized medical care for infants, children, and adolescents',
       icon: Baby,
+      title: "Pediatrics",
+      description: "Specialized care for infants, children, and adolescents",
     },
     {
-      title: 'Orthopedics',
-      desc: 'Treatment of bone, joint, and musculoskeletal conditions',
       icon: Bone,
+      title: "Orthopedics",
+      description: "Treatment for bone, joint, and muscle conditions",
     },
     {
-      title: 'Ophthalmology',
-      desc: 'Eye care, vision testing, and treatment of eye conditions',
       icon: Eye,
+      title: "Ophthalmology",
+      description: "Complete eye care and vision services",
     },
     {
-      title: 'ENT (Ear, Nose, Throat)',
-      desc: 'Diagnosis and treatment of ear, nose, and throat disorders',
-      icon: Ear,
-    },
-    {
-      title: 'Neurology',
-      desc: 'Treatment of nervous system and neurological disorders',
       icon: Brain,
+      title: "Neurology",
+      description: "Expert care for neurological disorders",
     },
     {
-      title: 'Dermatology',
-      desc: 'Skin care, treatment of skin conditions and cosmetic procedures',
-      icon: Shield,
-    },
-    {
-      title: 'Laboratory Services',
-      desc: 'Complete diagnostic testing and pathology services',
-      icon: Microscope,
-    },
-    {
-      title: 'Radiology & Imaging',
-      desc: 'X-ray, CT scan, ultrasound, and other imaging services',
-      icon: Scan,
-    },
-    {
-      title: 'Ambulance Services',
-      desc: 'Emergency ambulance transport and pre-hospital care',
-      icon: Ambulance,
-    },
-    {
-      title: 'Physiotherapy',
-      desc: 'Rehabilitation and physical therapy services',
-      icon: Activity,
-    },
-    {
-      title: 'Vaccination Services',
-      desc: 'Immunization programs for children and adults',
       icon: Syringe,
+      title: "Vaccination",
+      description: "Immunization services for all age groups",
     },
     {
-      title: 'Pharmacy',
-      desc: 'In-house pharmacy with prescription and OTC medications',
+      icon: Activity,
+      title: "Physiotherapy",
+      description: "Rehabilitation and physical therapy services",
+    },
+    {
       icon: Pill,
+      title: "Pharmacy",
+      description: "24/7 in-house pharmacy with quality medications",
     },
     {
-      title: 'Health Checkups',
-      desc: 'Comprehensive health screening and preventive care packages',
-      icon: TestTube,
+      icon: Microscope,
+      title: "Laboratory",
+      description: "Advanced diagnostic and pathology services",
     },
     {
-      title: 'Diabetes Care',
-      desc: 'Specialized care and management for diabetic patients',
-      icon: Droplet,
+      icon: Scan,
+      title: "Radiology",
+      description: "State-of-the-art imaging and diagnostic services",
     },
     {
-      title: 'Fever Clinic',
-      desc: 'Dedicated clinic for fever assessment and treatment',
+      icon: Scissors,
+      title: "Surgery",
+      description: "Modern surgical facilities with expert surgeons",
+    },
+    {
       icon: Thermometer,
+      title: "Emergency Care",
+      description: "24/7 emergency medical services",
     },
     {
-      title: 'Geriatric Care',
-      desc: 'Specialized healthcare services for elderly patients',
-      icon: Users,
+      icon: Droplet,
+      title: "Dialysis",
+      description: "Comprehensive kidney care and dialysis services",
+    },
+    {
+      icon: Zap,
+      title: "Critical Care",
+      description: "Intensive care unit with advanced life support",
+    },
+    {
+      icon: Waves,
+      title: "Ultrasound",
+      description: "Advanced ultrasound and sonography services",
+    },
+    {
+      icon: Shield,
+      title: "Preventive Care",
+      description: "Health screenings and wellness programs",
     },
   ];
 
   return (
     <div className="flex flex-col">
+      {/* PDF Export Button - floating */}
+      <div className="fixed bottom-6 right-6 z-50 print:hidden">
+        <PdfExportButton filename="mahalaxmi-health-care-services.pdf" />
+      </div>
+
       {/* Hero Section */}
-      <PageHero
-        title="Our Medical Services"
-        subtitle="Comprehensive healthcare services delivered with expertise and compassion"
-        variant="pattern"
-      >
-        <PageHeroImage
-          src="/assets/generated/doctor-consultation.dim_1600x900.png"
-          alt="Doctor consultation at Mahalaxmi Health Care"
-          width={1600}
-          height={900}
-          loading="eager"
-          className="mt-8 max-w-4xl mx-auto"
-        />
-      </PageHero>
-
-      {/* Medical Equipment Photo */}
-      <Section>
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Advanced Medical Equipment</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            State-of-the-art technology for accurate diagnosis and effective treatment
-          </p>
+      <section className="section-spacing-sm bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+              Our Medical Services
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Comprehensive healthcare solutions tailored to your needs
+            </p>
+          </div>
         </div>
-        <PageHeroImage
-          src="/assets/generated/services-equipment-collage.dim_1600x900.png"
-          alt="Medical services equipment at Mahalaxmi Health Care"
-          width={1600}
-          height={900}
-          loading="lazy"
-          className="max-w-5xl mx-auto"
-        />
-      </Section>
+      </section>
 
-      {/* Services Grid */}
-      <Section variant="muted">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Complete Healthcare Solutions</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From routine checkups to specialized treatments, we've got you covered
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-          {services.map((service) => {
-            if (service.featured) {
-              return (
-                <Card 
-                  key={service.title} 
-                  className="border-destructive/50 bg-destructive/5 hover:shadow-lg transition-all sm:col-span-2 lg:col-span-3"
+      {/* Emergency Services Highlight - moved to top for immediate visibility */}
+      <section className="section-spacing bg-destructive/5 border-y border-destructive/20">
+        <div className="container">
+          <div className="grid gap-8 lg:grid-cols-2 max-w-7xl mx-auto items-center">
+            <div className="space-y-6">
+              <div className="inline-block px-4 py-2 bg-destructive/10 text-destructive rounded-full text-sm font-semibold">
+                Available 24/7
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                Emergency Services
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our emergency department is equipped with state-of-the-art
+                facilities and staffed by experienced medical professionals
+                ready to handle any medical emergency, 24 hours a day, 7 days a
+                week.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  variant="destructive"
+                  onClick={() => navigate({ to: "/contact" })}
                 >
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-4 flex-wrap">
-                      <div className="flex items-center gap-3">
-                        <service.icon 
-                          className="h-12 w-12 text-destructive flex-shrink-0" 
-                          aria-hidden="true" 
-                        />
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            <CardTitle className="text-2xl">{service.title}</CardTitle>
-                            <Badge variant="destructive" className="text-xs">24/7</Badge>
-                          </div>
-                          <p className="text-sm text-muted-foreground">{service.desc}</p>
-                        </div>
-                      </div>
-                      <Button 
-                        size="lg" 
-                        variant="destructive"
-                        asChild
-                        className="flex-shrink-0"
-                      >
-                        <a href={emergencyPhoneTel} className="flex items-center gap-2">
-                          <Phone className="h-5 w-5" aria-hidden="true" />
-                          <span className="font-bold">{emergencyPhone}</span>
-                        </a>
-                      </Button>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="flex gap-3">
-                        <img
-                          src="/assets/generated/emergency-room.dim_1600x900.png"
-                          alt="Emergency room at Mahalaxmi Health Care"
-                          className="w-full h-48 object-cover rounded-lg"
-                        />
-                      </div>
-                      <div className="flex gap-3">
-                        <img
-                          src="/assets/generated/emergency-ambulance.dim_1600x900.png"
-                          alt="Emergency ambulance services"
-                          className="w-full h-48 object-cover rounded-lg"
-                        />
-                      </div>
-                    </div>
-                    <div className="mt-4 p-4 bg-background rounded-lg border border-destructive/20">
-                      <p className="text-sm font-medium text-center">
-                        <span className="text-destructive">Immediate medical attention</span> for trauma, cardiac emergencies, and critical care. Our emergency department is staffed 24/7 with experienced physicians and equipped with advanced life support systems.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            }
+                  Emergency Contact
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate({ to: "/appointments" })}
+                >
+                  Book Appointment
+                </Button>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/emergency-department.dim_1200x800.png",
+                )}
+                alt="Emergency department"
+                className="w-full h-96 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-            return (
-              <Card 
-                key={service.title} 
-                className="hover:shadow-lg transition-all"
+      {/* Advanced Medical Technology - moved up to showcase capabilities */}
+      <section className="section-spacing">
+        <div className="container">
+          <div className="grid gap-8 lg:grid-cols-2 max-w-7xl mx-auto items-center">
+            <div className="relative overflow-hidden rounded-xl shadow-lg order-2 lg:order-1">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/medical-equipment.dim_1200x800.png",
+                )}
+                alt="Advanced medical equipment"
+                className="w-full h-96 object-cover"
+              />
+            </div>
+            <div className="space-y-6 order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                Advanced Medical Technology
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We invest in the latest medical equipment and technology to
+                ensure accurate diagnoses and effective treatments. Our modern
+                facilities are designed to provide the highest standard of care.
+              </p>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <Scan
+                    className="h-6 w-6 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span>State-of-the-art diagnostic imaging equipment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Microscope
+                    className="h-6 w-6 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span>Advanced laboratory and pathology services</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Activity
+                    className="h-6 w-6 text-primary flex-shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span>Modern surgical and critical care facilities</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comprehensive Services Grid - moved after technology showcase */}
+      <section className="section-spacing bg-muted/30">
+        <div className="container">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              Comprehensive Medical Services
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              From routine checkups to specialized treatments, we're here for
+              you
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mx-auto">
+            {services.map((service) => (
+              <Card
+                key={service.title}
+                className="hover:shadow-lg transition-shadow"
               >
                 <CardHeader>
-                  <service.icon 
-                    className="h-10 w-10 mb-2 text-primary" 
-                    aria-hidden="true" 
-                  />
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
+                    <service.icon
+                      className="h-6 w-6 text-primary"
+                      aria-hidden="true"
+                    />
+                  </div>
                   <CardTitle className="text-lg">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{service.desc}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {service.description}
+                  </p>
                 </CardContent>
               </Card>
-            );
-          })}
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* CTA Section */}
-      <Section>
-        <Card className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-primary/20 max-w-4xl mx-auto">
-          <CardContent className="p-8 md:p-12 text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Need Medical Care?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Book an appointment with our specialists or contact us for more information
+      {/* Hospital Facilities Photo Gallery */}
+      <section className="section-spacing">
+        <div className="container">
+          <div className="text-center space-y-4 mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              Our Facilities
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              World-class infrastructure to support every aspect of your care
             </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/operation-theatre.dim_1200x800.png",
+                )}
+                alt="Operation theatre"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  Operation Theatre
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/icu-ward.dim_1200x800.png",
+                )}
+                alt="ICU ward"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  Intensive Care Unit
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/laboratory-facility.dim_1200x800.png",
+                )}
+                alt="Laboratory"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  Modern Laboratory
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/radiology-room.dim_1200x800.png",
+                )}
+                alt="Radiology room"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  Radiology & CT Scan
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/hospital-pharmacy.dim_1200x800.png",
+                )}
+                alt="Hospital pharmacy"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  24/7 Pharmacy
+                </p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl shadow-lg group">
+              <img
+                src={withCacheBust(
+                  "/assets/generated/hospital-ward.dim_1200x800.png",
+                )}
+                alt="Hospital ward"
+                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent flex items-end">
+                <p className="p-5 text-white font-semibold text-lg">
+                  Patient Wards
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - remains at bottom */}
+      <section className="section-spacing bg-gradient-to-br from-primary via-primary to-primary/90 text-white">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                Need Medical Assistance?
+              </h2>
+              <p className="text-lg md:text-xl text-white/90">
+                Our team is ready to provide the care you need
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" onClick={() => navigate({ to: '/appointments' })}>
+              <Button
+                size="lg"
+                variant="secondary"
+                onClick={() => navigate({ to: "/appointments" })}
+                className="text-base font-semibold shadow-lg"
+              >
                 Book Appointment
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/contact' })}>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => navigate({ to: "/contact" })}
+                className="text-base font-semibold bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:text-white"
+              >
                 Contact Us
               </Button>
             </div>
-          </CardContent>
-        </Card>
-      </Section>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

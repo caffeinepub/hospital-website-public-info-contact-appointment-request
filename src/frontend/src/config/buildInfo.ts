@@ -8,7 +8,7 @@ export function getBuildId(): string {
 
 export function getBuildVersion(): string {
   // Format for user display: show first 8 chars if it looks like a hash, otherwise show as-is
-  if (BUILD_ID.length > 12 && !BUILD_ID.startsWith('dev-')) {
+  if (BUILD_ID.length > 12 && !BUILD_ID.startsWith("dev-")) {
     return BUILD_ID.substring(0, 8);
   }
   return BUILD_ID;

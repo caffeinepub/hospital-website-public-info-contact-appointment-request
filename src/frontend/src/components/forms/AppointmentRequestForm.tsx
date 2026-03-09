@@ -1,56 +1,67 @@
-import { useState } from 'react';
-import { useSubmitAppointmentRequest } from '@/hooks/useSubmitAppointmentRequest';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { useSubmitAppointmentRequest } from "@/hooks/useSubmitAppointmentRequest";
+import { CheckCircle2, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function AppointmentRequestForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    contactDetails: '',
-    preferredDateTime: '',
-    departmentService: '',
-    notes: '',
+    name: "",
+    contactDetails: "",
+    preferredDateTime: "",
+    departmentService: "",
+    notes: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const { mutate: submitAppointment, isPending, isError, error } = useSubmitAppointmentRequest();
+  const {
+    mutate: submitAppointment,
+    isPending,
+    isError,
+    error,
+  } = useSubmitAppointmentRequest();
 
   const departments = [
-    'General Medicine',
-    'Cardiology',
-    'Pediatrics',
-    'Orthopedics',
-    'Ophthalmology',
-    'Neurology',
-    'Surgery',
-    'Emergency Care',
-    'Diabetes Care',
-    'Physiotherapy',
-    'CT Scan',
-    'Laboratory (Lab Facilities)',
-    'X-Ray',
+    "General Medicine",
+    "Cardiology",
+    "Pediatrics",
+    "Orthopedics",
+    "Ophthalmology",
+    "Neurology",
+    "Surgery",
+    "Emergency Care",
+    "Diabetes Care",
+    "Physiotherapy",
+    "CT Scan",
+    "Laboratory (Lab Facilities)",
+    "X-Ray",
   ];
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
     if (!formData.contactDetails.trim()) {
-      newErrors.contactDetails = 'Contact details are required';
+      newErrors.contactDetails = "Contact details are required";
     }
     if (!formData.preferredDateTime.trim()) {
-      newErrors.preferredDateTime = 'Preferred date/time is required';
+      newErrors.preferredDateTime = "Preferred date/time is required";
     }
     if (!formData.departmentService) {
-      newErrors.departmentService = 'Please select a department';
+      newErrors.departmentService = "Please select a department";
     }
 
     setErrors(newErrors);
@@ -77,32 +88,32 @@ export default function AppointmentRequestForm() {
         onSuccess: () => {
           setShowSuccess(true);
           setFormData({
-            name: '',
-            contactDetails: '',
-            preferredDateTime: '',
-            departmentService: '',
-            notes: '',
+            name: "",
+            contactDetails: "",
+            preferredDateTime: "",
+            departmentService: "",
+            notes: "",
           });
           setErrors({});
         },
-      }
+      },
     );
   };
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {showSuccess && (
-        <Alert className="bg-primary/10 border-primary/20">
-          <CheckCircle2 className="h-4 w-4 text-primary" aria-hidden="true" />
-          <AlertDescription className="text-primary">
-            Your appointment request has been submitted successfully! We'll contact you soon to confirm.
+        <Alert className="bg-success/10 border-success/30">
+          <CheckCircle2 className="h-4 w-4 text-success" aria-hidden="true" />
+          <AlertDescription className="text-success-foreground">
+            Thank you! We'll contact you soon to confirm your appointment.
           </AlertDescription>
         </Alert>
       )}
@@ -110,24 +121,29 @@ export default function AppointmentRequestForm() {
       {isError && (
         <Alert variant="destructive">
           <AlertDescription>
-            {error instanceof Error ? error.message : 'Failed to submit appointment request. Please try again.'}
+            {error instanceof Error
+              ? error.message
+              : "Failed to submit appointment request. Please try again."}
           </AlertDescription>
         </Alert>
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="name">
-          Name <span className="text-destructive" aria-label="required">*</span>
+        <Label htmlFor="name" className="text-sm font-medium">
+          Name{" "}
+          <span className="text-destructive" aria-label="required">
+            *
+          </span>
         </Label>
         <Input
           id="name"
           value={formData.name}
-          onChange={(e) => handleChange('name', e.target.value)}
+          onChange={(e) => handleChange("name", e.target.value)}
           placeholder="John Doe"
           disabled={isPending}
-          className={errors.name ? 'border-destructive' : ''}
+          className={errors.name ? "border-destructive" : ""}
           aria-invalid={!!errors.name}
-          aria-describedby={errors.name ? 'name-error' : undefined}
+          aria-describedby={errors.name ? "name-error" : undefined}
           required
         />
         {errors.name && (
@@ -138,64 +154,55 @@ export default function AppointmentRequestForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="contactDetails">
-          Contact Details <span className="text-destructive" aria-label="required">*</span>
+        <Label htmlFor="contactDetails" className="text-sm font-medium">
+          Contact Details{" "}
+          <span className="text-destructive" aria-label="required">
+            *
+          </span>
         </Label>
         <Input
           id="contactDetails"
           value={formData.contactDetails}
-          onChange={(e) => handleChange('contactDetails', e.target.value)}
-          placeholder="Phone number or email"
+          onChange={(e) => handleChange("contactDetails", e.target.value)}
+          placeholder="email@example.com or phone number"
           disabled={isPending}
-          className={errors.contactDetails ? 'border-destructive' : ''}
+          className={errors.contactDetails ? "border-destructive" : ""}
           aria-invalid={!!errors.contactDetails}
-          aria-describedby={errors.contactDetails ? 'contactDetails-error' : undefined}
+          aria-describedby={
+            errors.contactDetails ? "contactDetails-error" : undefined
+          }
           required
         />
         {errors.contactDetails && (
-          <p id="contactDetails-error" className="text-sm text-destructive" role="alert">
+          <p
+            id="contactDetails-error"
+            className="text-sm text-destructive"
+            role="alert"
+          >
             {errors.contactDetails}
           </p>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="preferredDateTime">
-          Preferred Date & Time <span className="text-destructive" aria-label="required">*</span>
-        </Label>
-        <Input
-          id="preferredDateTime"
-          value={formData.preferredDateTime}
-          onChange={(e) => handleChange('preferredDateTime', e.target.value)}
-          placeholder="e.g., Tomorrow 10 AM or Feb 15, 2026 at 2 PM"
-          disabled={isPending}
-          className={errors.preferredDateTime ? 'border-destructive' : ''}
-          aria-invalid={!!errors.preferredDateTime}
-          aria-describedby={errors.preferredDateTime ? 'preferredDateTime-error' : undefined}
-          required
-        />
-        {errors.preferredDateTime && (
-          <p id="preferredDateTime-error" className="text-sm text-destructive" role="alert">
-            {errors.preferredDateTime}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="departmentService">
-          Department / Service <span className="text-destructive" aria-label="required">*</span>
+        <Label htmlFor="departmentService" className="text-sm font-medium">
+          Department/Service{" "}
+          <span className="text-destructive" aria-label="required">
+            *
+          </span>
         </Label>
         <Select
           value={formData.departmentService}
-          onValueChange={(value) => handleChange('departmentService', value)}
+          onValueChange={(value) => handleChange("departmentService", value)}
           disabled={isPending}
-          required
         >
           <SelectTrigger
             id="departmentService"
-            className={errors.departmentService ? 'border-destructive' : ''}
+            className={errors.departmentService ? "border-destructive" : ""}
             aria-invalid={!!errors.departmentService}
-            aria-describedby={errors.departmentService ? 'departmentService-error' : undefined}
+            aria-describedby={
+              errors.departmentService ? "departmentService-error" : undefined
+            }
           >
             <SelectValue placeholder="Select a department" />
           </SelectTrigger>
@@ -208,32 +215,70 @@ export default function AppointmentRequestForm() {
           </SelectContent>
         </Select>
         {errors.departmentService && (
-          <p id="departmentService-error" className="text-sm text-destructive" role="alert">
+          <p
+            id="departmentService-error"
+            className="text-sm text-destructive"
+            role="alert"
+          >
             {errors.departmentService}
           </p>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="notes">Additional Notes (Optional)</Label>
+        <Label htmlFor="preferredDateTime" className="text-sm font-medium">
+          Preferred Date & Time{" "}
+          <span className="text-destructive" aria-label="required">
+            *
+          </span>
+        </Label>
+        <Input
+          id="preferredDateTime"
+          value={formData.preferredDateTime}
+          onChange={(e) => handleChange("preferredDateTime", e.target.value)}
+          placeholder="e.g., Monday, 10 AM or 2024-03-15 at 2:00 PM"
+          disabled={isPending}
+          className={errors.preferredDateTime ? "border-destructive" : ""}
+          aria-invalid={!!errors.preferredDateTime}
+          aria-describedby={
+            errors.preferredDateTime ? "preferredDateTime-error" : undefined
+          }
+          required
+        />
+        {errors.preferredDateTime && (
+          <p
+            id="preferredDateTime-error"
+            className="text-sm text-destructive"
+            role="alert"
+          >
+            {errors.preferredDateTime}
+          </p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="notes" className="text-sm font-medium">
+          Additional Notes{" "}
+          <span className="text-muted-foreground text-xs">(Optional)</span>
+        </Label>
         <Textarea
           id="notes"
           value={formData.notes}
-          onChange={(e) => handleChange('notes', e.target.value)}
+          onChange={(e) => handleChange("notes", e.target.value)}
           placeholder="Any specific concerns or requirements..."
           rows={4}
           disabled={isPending}
         />
       </div>
 
-      <Button type="submit" disabled={isPending} className="w-full">
+      <Button type="submit" disabled={isPending} className="w-full" size="lg">
         {isPending ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
             Submitting...
           </>
         ) : (
-          'Submit Appointment Request'
+          "Request Appointment"
         )}
       </Button>
     </form>
